@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SPARC - Specially Adapted Resource Centers. Where adults with disabilities thrive. Community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia.">
+    <meta name="keywords" content="SPARC, disability services, Northern Virginia, community integration, adults with disabilities, day programs">
+    <title>SPARC - Specially Adapted Resource Centers | Where Adults with Disabilities Thrive</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .footer a { color: white; }
+
+        /* Sponsor Carousel Styles */
+        .sponsor-carousel-section {
+            padding: 60px 0;
+            background: white;
+        }
+        .sponsor-carousel-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .sponsor-carousel-section .section-header h2 {
+            color: var(--sparc-dark-navy);
+            margin-bottom: 0.5rem;
+        }
+        .sponsor-carousel-section .section-header p {
+            color: var(--sparc-dark-navy);
+        }
+        .sponsor-carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+        .sponsor-carousel-wrapper::before,
+        .sponsor-carousel-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .sponsor-carousel-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, white, transparent);
+        }
+        .sponsor-carousel-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, white, transparent);
+        }
+        .sponsor-carousel {
+            overflow: hidden;
+        }
+        .sponsor-track {
+            display: flex;
+            width: max-content;
+        }
+        .sponsor-slide {
+            flex-shrink: 0;
+            width: 280px;
+            height: 140px;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sponsor-slide img {
+            max-width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        .sponsor-slide:hover img {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .sponsor-slide {
+                width: 200px;
+                height: 100px;
+                margin: 0 25px;
+            }
+            .sponsor-slide img {
+                max-height: 80px;
+            }
+            .sponsor-carousel-wrapper::before,
+            .sponsor-carousel-wrapper::after {
+                width: 50px;
+            }
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="SPARC - Specially Adapted Resource Centers" style="height: 50px; width: auto;">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="about.html" class="nav-link">About</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html">About SPARC</a>
+                        <a href="team.html">Our Team</a>
+                        <a href="board.html">Board of Directors</a>
+                        <a href="financials.html">Financials</a>
+                        <a href="strategic-plan.html">Strategic Plan</a>
+                        <a href="news.html">SPARC in the News</a>
+                        <a href="ada-compliance.html">ADA Compliance</a>
+                    </div>
+                </li>
+                <li><a href="programs.html" class="nav-link">Programs</a></li>
+                <li><a href="locations.html" class="nav-link">Locations</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="stories.html" class="nav-link">Stories</a>
+                    <div class="dropdown-menu">
+                        <a href="blog.html">Blog</a>
+                        <a href="newsletter.html">Newsletter</a>
+                    </div>
+                </li>
+                <li class="nav-item-dropdown">
+                    <a href="events.html" class="nav-link">Events</a>
+                    <div class="dropdown-menu">
+                        <a href="gala.html">An Evening to SPARCle</a>
+                        <a href="summit.html">A Call to Conscience</a>
+                    </div>
+                </li>
+                <li class="nav-item-dropdown">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                    <div class="dropdown-menu">
+                        <a href="get-involved.html">Volunteer</a>
+                        <a href="participants.html">Participants & Families</a>
+                    </div>
+                </li>
+                <li><a href="donate-checkout.html" class="nav-link nav-donate">Donate</a></li>
+            </ul>
+
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with YouTube Video -->
+    <section class="hero">
+        <div class="hero-video-container">
+            <iframe
+                src="https://www.youtube.com/embed/vziM6GpFYpo?autoplay=1&mute=1&loop=1&playlist=vziM6GpFYpo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="hero-video-iframe">
+            </iframe>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Where Adults with Disabilities Thrive</h1>
+            <p class="hero-subtitle">Providing community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia since 2006</p>
+            <div class="hero-buttons">
+                <a href="programs.html" class="btn btn-primary btn-lg">Explore Our Programs</a>
+                <a href="donate-checkout.html" class="btn btn-secondary btn-lg">Support Our Mission</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="mission-grid">
+                    <div class="mission-content fade-in">
+                        <h2>Filling the Gap in Virginia's Safety Net</h2>
+                        <p>SPARC is the only nonprofit in Virginia organized to provide community-integrated day programs for adults with severe and multiple disabilities who require 1:1 support for all daily activities and are not able to work. We exist because families in need created us when there was no other option.</p>
+                        <p>Our participants have aged out of the K-12 special education system, lost access to school-based supports, and require direct support every hour of every day. SPARC delivers community-integrated day services that directly advance Virginia's obligations under <em>United States v. Virginia</em> and the ADA's integration mandate.</p>
+                        <a href="about.html" class="btn btn-outline">Learn More About Us</a>
+                    </div>
+                    <div class="mission-image fade-in">
+                        <img src="images/Augie and his mom Kathy.jpg" alt="SPARC participant with family member">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Stats -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="5">5</div>
+                        <div class="stat-label">Centers in Northern Virginia</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="20">20</div>
+                        <div class="stat-label">Years of Service</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="55">55</div>
+                        <div class="stat-label">Current Participants</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">$21.5k</div>
+                        <div class="stat-label">Cost Per Participant (vs. $58,264 for Medicaid)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 style="font-size: 200%;">Our Programs</h2>
+                    <p>SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities.</p>
+                </div>
+                <div class="programs-grid">
+                    <div class="program-card fade-in">
+                        <div class="program-image">
+                            <img src="images/Food Pantry.png" alt="Community integration activities" style="object-position: center 20%;">
+                        </div>
+                        <div class="program-content">
+                            <h3>Community Integration</h3>
+                            <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging and independence.</p>
+                            <a href="programs.html" class="program-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="program-card fade-in">
+                        <div class="program-image">
+                            <img src="images/art therapy.jpg" alt="Art therapy program" style="object-position: center 20%;">
+                        </div>
+                        <div class="program-content">
+                            <h3>Art Therapy</h3>
+                            <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
+                            <a href="programs.html" class="program-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="program-card fade-in">
+                        <div class="program-image">
+                            <img src="images/Regatta SPARC friends.jpg" alt="Social engagement activities">
+                        </div>
+                        <div class="program-content">
+                            <h3>Social Engagement</h3>
+                            <p>Building meaningful friendships and connections through group activities, recreational programs, and community events.</p>
+                            <a href="programs.html" class="program-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <div class="testimonial-content fade-in">
+                    <p class="testimonial-quote">"SPARC is filling a hole in our safety net. I view it as a kind of pilot for the state."</p>
+                    <p class="testimonial-author">Senator Janet Howell</p>
+                    <p class="testimonial-role">Virginia State Senator</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why SPARC Section -->
+        <section class="mission-section bg-light">
+            <div class="container">
+                <div class="mission-grid">
+                    <div class="mission-image fade-in">
+                        <img src="images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC community event">
+                    </div>
+                    <div class="mission-content fade-in">
+                        <h2>Why SPARC Matters</h2>
+                        <p>Federal civil rights law requires Virginia to provide services to people with disabilities in community-based settings. Despite nearly two decades of efforts, Virginia remains under a permanent injunction for failing to meet these obligations.</p>
+                        <p>SPARC's innovative participant-directed model is both cost-effective and person-centered. By enabling individuals to bring their own Direct Support Professional, we ensure continuity of care while keeping costs at just over $21,000 per participant annually - compared to $58,264 through traditional Medicaid services.</p>
+                        <p>Leaders across Virginia - from U.S. Senators Tim Kaine and Mark Warner to local county supervisors - recognize SPARC's value and have championed our growth.</p>
+                        <a href="donate-checkout.html" class="btn btn-primary">Support Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Gallery -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Community in Action</h2>
+                    <p>From galas to a national policy summit, our community comes together to build momentum for lasting change.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in">
+                        <img src="images/SPARC-Gala 2025-Photo-1633.jpg" alt="An Evening to SPARCle 2025">
+                        <div class="gallery-overlay">
+                            <h4>An Evening to SPARCle 2025</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="images/advocacy.jpg" alt="SPARC advocacy" style="transform: scale(1.2); object-position: center center;">
+                        <div class="gallery-overlay">
+                            <h4>Community Celebration</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="images/IMG_6084.JPG" alt="SPARC program activity">
+                        <div class="gallery-overlay">
+                            <h4>Program Activities</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Participant Testimonials Section -->
+        <section class="testimonials-section" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="testimonials-heading">What Our Participants Say</h2>
+                    <p>Hear from the adults whose lives have been transformed by SPARC's programs</p>
+                </div>
+                <div class="testimonials-grid">
+                    <blockquote class="testimonial-card fade-in">
+                        <p class="testimonial-quote">"When I graduated from high school I felt like I aged out of life…until I found SPARC."</p>
+                        <footer>
+                            <cite>— Justin</cite>
+                                                    </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-card fade-in">
+                        <p class="testimonial-quote">"Before SPARC, I just sat in my room and listened to shows."</p>
+                        <footer>
+                            <cite>— Maureen</cite>
+                                                    </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-card fade-in">
+                        <p class="testimonial-quote">"At SPARC, I find peace."</p>
+                        <footer>
+                            <cite>— Kaitlyn</cite>
+                                                    </footer>
+                    </blockquote>
+                </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="stories.html" class="btn btn-outline">Read More Stories</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content fade-in">
+                    <h2>Help Us Expand Our Impact</h2>
+                    <p>With your support, SPARC can continue to provide essential services to adults with severe and multiple disabilities across Virginia.</p>
+                    <div class="cta-buttons">
+                        <a href="donate-checkout.html" class="btn btn-white btn-lg">Donate Now</a>
+                        <a href="get-involved.html" class="btn btn-secondary btn-lg">Get Involved</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsor Carousel -->
+        <section class="sponsor-carousel-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Generous Sponsors</h2>
+                    <p>Thank you to our partners who support our mission</p>
+                </div>
+                <div class="sponsor-carousel-wrapper">
+                    <div class="sponsor-carousel" id="sponsorCarousel">
+                        <div class="sponsor-track">
+                            <!-- Sponsor logos -->
+                            <div class="sponsor-slide"><img src="images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/micron-logo-black.png" alt="Micron"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/HCA.jpg" alt="HCA"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/GS.jpg" alt="GS"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/next-day-access.png" alt="Next Day Access"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/nwfc.jpg" alt="NWFC"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/TF_KS.jpg" alt="TF KS"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/fairfax county.png" alt="Fairfax County"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/arlington county logo.png" alt="Arlington County"></div>
+                            <!-- Duplicates for seamless loop -->
+                            <div class="sponsor-slide"><img src="images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/micron-logo-black.png" alt="Micron"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/HCA.jpg" alt="HCA"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/GS.jpg" alt="GS"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/next-day-access.png" alt="Next Day Access"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/nwfc.jpg" alt="NWFC"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/TF_KS.jpg" alt="TF KS"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/fairfax county.png" alt="Fairfax County"></div>
+                            <div class="sponsor-slide"><img src="images/sponsors/arlington county logo.png" alt="Arlington County"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="color: white;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="images/SPARC_logo_white.png" alt="SPARC" style="height: 60px; width: auto; margin-bottom: 15px;">
+                    <p>Specially Adapted Resource Centers provides community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia. We believe every adult deserves a meaningful life filled with connection, purpose, and belonging.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064372517571" class="social-link" aria-label="Facebook" target="_blank">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/sparc.solutions/" class="social-link" aria-label="Instagram" target="_blank">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/specially-adapted-resource-centers" class="social-link" aria-label="LinkedIn" target="_blank">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SPARC_VA" class="social-link" aria-label="YouTube" target="_blank">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="mailto:debi@sparcsolutions.org" class="social-link" aria-label="Email">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="locations.html">Locations & Pricing</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="stories.html">Stories & Impact</a></li>
+                        <li><a href="donate-checkout.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="financials.html">Annual Reports</a></li>
+                        <li><a href="board.html">Board of Directors</a></li>
+                        <li><a href="news.html">News & Press</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><strong>Mailing Address:</strong><br>
+                    1775 Tysons Blvd., Fifth Floor<br>
+                    Tysons, VA 22102</p>
+                    <p><strong>Phone:</strong> <a href="tel:571-407-1807" style="color: white;">(571) 407-1807</a></p>
+                    <p><a href="mailto:debi@sparcsolutions.org" style="color: white;">debi@sparcsolutions.org</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Bottom Bar -->
+    <div style="background: white; padding: 30px 0; color: var(--sparc-dark-navy);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p style="margin: 0 0 5px 0; color: var(--sparc-dark-navy);">&copy; 2025 SPARC - Specially Adapted Resource Centers. All rights reserved.</p>
+                <p style="margin: 0 0 10px 0; color: var(--sparc-dark-navy);">501(c)(3) Nonprofit Organization | EIN: 20-5513060</p>
+                <nav aria-label="Legal links">
+                    <a href="accessibility.html" style="color: var(--sparc-dark-navy); text-decoration: none;">Accessibility</a> |
+                    <a href="faq.html" style="color: var(--sparc-dark-navy); text-decoration: none;">FAQs</a> |
+                    <a href="contact.html" style="color: var(--sparc-dark-navy); text-decoration: none;">Contact</a>
+                </nav>
+            </div>
+            <img src="images/Powered by Google.png" alt="Powered by Google" style="height: 160px; width: auto;">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Sponsor Carousel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.sponsor-track');
+            if (track) {
+                const slides = track.querySelectorAll('.sponsor-slide');
+                const totalSlides = slides.length / 2; // Half are duplicates
+                const slideWidth = 320; // 280px width + 40px margin
+                const totalWidth = totalSlides * slideWidth;
+
+                let position = 0;
+                const speed = 1; // pixels per frame
+                let isPaused = false;
+
+                track.addEventListener('mouseenter', () => isPaused = true);
+                track.addEventListener('mouseleave', () => isPaused = false);
+
+                function animate() {
+                    if (!isPaused) {
+                        position -= speed;
+                        if (Math.abs(position) >= totalWidth) {
+                            position = 0;
+                        }
+                        track.style.transform = `translateX(${position}px)`;
+                    }
+                    requestAnimationFrame(animate);
+                }
+
+                animate();
+            }
+        });
+    </script>
+
+<!-- Mailing List Modal -->
+<div class="mailing-list-modal-overlay" id="mailingListModal">
+    <div class="mailing-list-modal">
+        <button class="mailing-list-modal-close" onclick="closeMailingListModal()" aria-label="Close">&times;</button>
+        <div class="mailing-list-modal-header">
+            <h2>Join Our Mailing List</h2>
+            <p>Stay connected with updates on programs, events, and stories from the SPARC community.</p>
+        </div>
+        <div class="mailing-list-modal-body">
+            <script type="text/javascript" id="bloomerangForm719872"></script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var insertForm719872 = function() {
+        var html719872 = '<style text=\'text/css\'>' +
+'.email-registration-form label{color: #404040;' +
+'                display: block;}' +
+'' +
+'.email-registration-form label.error{color:#900;' +
+'                display: inline-block; ' +
+'                padding: 0 10px;}' +
+'' +
+'.email-registration-form .field{padding: 4px 0;}' +
+'' +
+'.email-registration-form .consent{padding-bottom: 4px;}' +
+'' +
+'.email-registration-form .field .required-star{color: #aa0000; ' +
+'                display: inline-block; ' +
+'                margin-left: 5px;}' +
+'' +
+'.email-registration-form .field .checkboxes{max-width:275px;' +
+'                border: 1px solid #A9A9A9;' +
+'                -webkit-transition: all .3s ease-out;' +
+'                -moz-transition: all .3s ease-out;' +
+'                transition: all .3s ease-out;}' +
+'' +
+'.email-registration-form .field .checkbox{display:block;' +
+'                position:relative;' +
+'                -moz-box-sizing:border-box;' +
+'                box-sizing:border-box;' +
+'                height:30px;' +
+'                line-height:26px;' +
+'                padding:2px 28px 2px 8px;' +
+'                border-bottom:1px solid rgba(0,0,0,0.1);' +
+'                color:#404040;  ' +
+'                overflow:hidden;' +
+'                text-decoration:none; }' +
+'' +
+'.email-registration-form .field .checkbox input{opacity:0.01;' +
+'                position:absolute;' +
+'                left:-50px;  ' +
+'                z-index:-5;}' +
+'' +
+'.email-registration-form .field .checkbox:last-child{border-bottom:none;}' +
+'' +
+'.email-registration-form .field .checkbox.selected{background: rgb(50, 142, 253);' +
+'                color:#fff; }' +
+'' +
+'.email-registration-form .field .checkbox.selected:before{color:#fff;' +
+'                line-height:30px;' +
+'                position:absolute;' +
+'                right:10px; }' +
+'' +
+'.email-registration-form .field input{padding: 4px; ' +
+'                width: 275px;}' +
+'' +
+'.email-registration-form .errors{border: 1px solid #900;' +
+'                color: #900;  ' +
+'                padding: 10px;}' +
+'' +
+'.email-registration-form .hidden{display: none;}' +
+'' +
+'.btn-group .btn-submit-email{padding: 4px 10px;}' +
+'' +
+'input, select, textarea, button{font-family: inherit;}' +
+'' +
+'</style>' +
+'' +
+'<div id="email-registration-form-container">' +
+'  <form id="email-registration-form" class="email-registration-form" method="post" action="javascript:void(0)">' +
+'    <div class="errors hidden"></div>' +
+'    <div class="section contact">' +
+'      <h3>Contact Information</h3>' +
+'      <div class="field text first-name required" >' +
+'<label for="first-name"><span class="label">First Name</span><span class="required-star">*</span></label>' +
+'<input id="first-name" name="first-name" class="required" type="text"></input>' +
+'</div>' +
+'<div class="field text last-name required" >' +
+'<label for="last-name"><span class="label">Last Name</span><span class="required-star">*</span></label>' +
+'<input id="last-name" name="last-name" class="required" type="text"></input>' +
+'</div>' +
+'<div class="field email email-address required" >' +
+'<label for="email-address"><span class="label">Email</span><span class="required-star">*</span></label>' +
+'<input id="email-address" name="email-address" class="email required" type="email" placeholder="someone@website.com"></input>' +
+'</div>' +
+'<div class="consent">I want to receive emails at this address</div>' +
+'' +
+'</div>' +
+'    ' +
+'    <div class="section captcha">' +
+'      <label id=\'noCaptchaResponseError\' class=\'error noCaptchaResponseError\' style=\'display: none\'>You must fill out the CAPTCHA</label><div id="captcha719872"></div>' +
+'' +
+'</div>' +
+'    <div class="btn-group">' +
+'      <input class="btn btn-submit btn-submit-email" type="submit" value="Sign up"/>' +
+'    </div>' +
+'  </form>' +
+'</div>' +
+'' +
+'' +  '';var successHtml719872 = '<div class=\'donation-success\'>' +
+                                                       '  <h2>Thank you for Registering!</h2>' +
+                                                       '  <p>Your email address has been added to our mailing list.</p>' +
+                                                        '   ' +
+                                                        '</div>';( function($) {if (!Bloomerang.useEmailId('719872')) {
+                                    html719872 = '<p style="color: red">Only one email sign-up form can be used on each page.</p>';
+                                }
+                                Bloomerang.Util.requireStripe();if (jQuery('#bloomerangForm719872').length) {
+
+                        jQuery('#bloomerangForm719872').after(html719872);
+
+
+
+
+                    };
+                    if (Bloomerang.emailSignupFormLoaded) {
+                                            return false;
+                                        }
+                                        Bloomerang.emailSignupFormLoaded = true;
+
+                        Bloomerang.reCaptchaV3SiteKey = '6LeH9PUrAAAAAN0wv9VTVahiByfF9sGDQglOBEYK';
+                        Bloomerang.gRecaptchaV3Threshold = 0.5;
+
+                        window.captchaLoadCallback = function() {
+                            Bloomerang.gRecaptchaLoaded = true;
+                        };
+
+                        window.captchaV3LoadCallback = function() {
+                            Bloomerang.gRecaptchaV3Loaded = true;
+                        };
+
+                        if(Bloomerang.donationFormReCaptchaV3SelfHostedFlag === undefined) {
+                            function success (result) {
+                                Bloomerang.donationFormReCaptchaV3SelfHostedFlag = result.DonationFormReCaptchaV3SelfHostedFlag;
+                                initializeCaptcha();
+                            }
+
+                            function failure (result) {
+                                Bloomerang.donationFormReCaptchaV3SelfHostedFlag = false;
+                                initializeCaptcha();
+                            }
+
+                            Bloomerang.Api._post('v1/ReCaptchaV3SelfHostedFlag', {}, success, failure);
+                        } else {
+                            initializeCaptcha();
+                        }
+
+                        async function getRecaptchaV3Token() {
+                              const token = await new Promise((resolve, reject) => {
+                                 grecaptcha.ready(function() {
+                                    grecaptcha.execute(Bloomerang.reCaptchaV3SiteKey, {action: 'submit'}).then(function(token) {
+                                       resolve(token);
+                                     });
+                                  });
+                                });
+
+                                return token;
+                        }
+
+                        function initializeCaptcha() {
+                            Bloomerang.Util.load('https://www.google.com/recaptcha/api.js?onload=captchaLoadCallback&render=explicit',
+                                function() { return Bloomerang.gRecaptchaLoaded; },
+                                function() {
+                                    jQuery('.section.captcha').removeAttr('style');
+                                    jQuery('form.email-registration-form').data('captcha-id', grecaptcha.render('captcha719872', { 'sitekey' : '6LdM9EsrAAAAAGOAM46W9nBGf3WNXrN1bZ6PQWed' }));
+
+                                    if((Bloomerang.donationFormReCaptchaV3Flag && Bloomerang.isBloomerangHostedForm && Bloomerang.isDonationForm) || (Bloomerang.donationFormReCaptchaV3SelfHostedFlag && !Bloomerang.isBloomerangHostedForm && Bloomerang.reCaptchaV3SiteKey && Bloomerang.isDonationForm)) {
+                                        jQuery('.section.captcha').attr('style', 'display: none');
+                                    }
+                                },
+                                true,
+                                true);
+
+                            if((Bloomerang.donationFormReCaptchaV3Flag && Bloomerang.isBloomerangHostedForm && Bloomerang.isDonationForm) || (Bloomerang.donationFormReCaptchaV3SelfHostedFlag && !Bloomerang.isBloomerangHostedForm && Bloomerang.isDonationForm && Bloomerang.reCaptchaV3SiteKey)) {
+                                 Bloomerang.Util.load('https://www.google.com/recaptcha/api.js?onload=captchaV3LoadCallback&render=' + Bloomerang.reCaptchaV3SiteKey,
+                                    function() { return Bloomerang.gRecaptchaV3Loaded; },
+                                    function() {
+                                        grecaptcha.ready(function() {
+                                          grecaptcha.execute(Bloomerang.reCaptchaV3SiteKey, {action: 'submit'}).then(function(token) {
+                                              async function success (result) {
+                                                if(parseFloat(result.Score) < Bloomerang.gRecaptchaV3Threshold) {
+                                                    Bloomerang.isForcePuzzle = true;
+                                                    jQuery('.section.captcha').attr('style', 'display: block');
+                                                } else {
+
+                                                    const initialRecaptchaV3Token = await getRecaptchaV3Token();
+
+                                                     // Append to the form data container to be included when submitting the form on bloomerangV2.js
+                                                     Bloomerang.captchaResponseV3(initialRecaptchaV3Token);
+
+                                                     setInterval(async ()=> {
+                                                         const recaptchaV3Token = await getRecaptchaV3Token();
+
+                                                        // Append to the form data container to be included when submitting the form on bloomerangV2.js
+                                                        Bloomerang.captchaResponseV3(recaptchaV3Token);
+                                                     }, 80000);
+                                                }
+                                               }
+
+                                               function failure (result) {
+                                                Bloomerang.isForcePuzzle = true;
+                                                jQuery('.section.captcha').attr('style', 'display: block');
+                                               }
+
+                                               var data = {
+                                                  token: token,
+                                                  isSelfHosted: !Bloomerang.isBloomerangHostedForm
+                                               };
+
+                                                Bloomerang.Api._post('v1/ReCaptchaV3', data, success, failure);
+                                          });
+                                        });
+                                    },
+                                    true,
+                                    true);
+                               }
+                           }
+
+
+                    Bloomerang.useKey('pub_0671a94c-634e-11f0-9fbb-06179723032d');
+
+        // Register proper callbacks for various stages/outcomes of submission
+        Bloomerang.Widget.Email.OnSubmit = function (args) {
+            jQuery(".btn-submit-email").val("Registering...").prop("disabled", true).addClass("disabled");
+            var val = function (selector) { return jQuery(selector).val(); };
+            Bloomerang.Account
+                    .individual()
+                    .firstName(val(".email-registration-form #first-name"))
+                    .lastName(val(".email-registration-form #last-name"))
+                    .homeEmail(val(".email-registration-form #email-address"))
+                    .applyEmailSignupCustomFields();
+
+           Bloomerang.Interaction.applyEmailSignupCustomFields();
+        };
+        Bloomerang.ValidateEmailSignupFormCaptcha = function() {
+            if (typeof(grecaptcha) !== "undefined" && jQuery("#captcha" + Bloomerang.Data.WidgetIds.EmailSignup).children().length) {
+                var captchaResponse = grecaptcha.getResponse(jQuery(".email-registration-form").data("captcha-id"));
+                if (captchaResponse) {
+                    jQuery(".email-registration-form .noCaptchaResponseError").hide();
+                    Bloomerang.captchaResponse(captchaResponse);
+                    return true;
+                } else {
+                    jQuery(".email-registration-form .noCaptchaResponseError").show();
+                    return false;
+                }
+            } else return true;
+        };
+        Bloomerang.Api.OnSuccess = Bloomerang.Widget.Email.OnSuccess = function (response) {
+            jQuery("#email-registration-form-container").html(successHtml719872);
+            var distance = 100;
+            var offset = jQuery("#email-registration-form-container").offset().top;
+            var offsetTop = offset > distance ? offset - distance : offset;
+                jQuery('html, body').animate({ scrollTop : offsetTop}, 500);
+        };
+        Bloomerang.Api.OnError = Bloomerang.Widget.Email.OnError = function (response) {
+            jQuery(".btn-submit-email").val("Register").prop("disabled", false).removeClass("disabled");
+            jQuery("#email-registration-form-container .errors").removeClass("hidden").html(response.Message);
+            var distance = 100;
+            var offset = jQuery("#email-registration-form-container .errors").offset().top;
+            var offsetTop = offset > distance ? offset - distance : offset;
+                jQuery('html, body').animate({ scrollTop : offsetTop}, 500);
+            if (typeof(grecaptcha) !== "undefined" && jQuery("#captcha" + Bloomerang.Data.WidgetIds.EmailSignup).children().length) {
+              grecaptcha.reset(jQuery(".email-registration-form").data("captcha-id"));
+            }
+        };
+
+        Bloomerang.Util.applyEmailSignupCustomFields = function (obj, type) {
+
+            // Clear any fields from a previous failed submission
+            obj.clearCustomFields();
+
+            // Apply all <input> (not multiselect), <select> and <textarea> fields
+            jQuery(".email-registration-form .section.custom-fields :input:not(a > input, select)[id*=" + type + "]").each(function() {
+                if (jQuery(this).val().hasValue()) {
+                    obj.customFreeformField(jQuery(this).attr("id").toUntypedValue(), jQuery(this).val());
+                }
+            });
+
+            // Apply all <select> fields
+            jQuery(".email-registration-form .section.custom-fields select[id*=" + type + "]").each(function() {
+                if (jQuery(this).val().hasValue()) {
+                    obj.customPickField(jQuery(this).attr("id").toUntypedValue(), jQuery(this).val());
+                }
+            });
+
+            // Apply all multiselect fields
+            jQuery(".email-registration-form .section.custom-fields .checkboxes[id*=" + type + "]").each(function() {
+                obj.customPickField(jQuery(this).attr("id").toUntypedValue(),
+                jQuery.map(jQuery(this).children(".checkbox.selected"), function(v) { return jQuery(v).attr("data-id"); }));
+            });
+        };
+
+        String.prototype.hasValue = function() {
+            return (this && jQuery.trim(this)); //IE8 doesn't have a native trim function
+        };
+
+        Bloomerang.Account.applyEmailSignupCustomFields = function () {
+            Bloomerang.Util.applyEmailSignupCustomFields(this, "Account");
+            return this;
+        };
+
+        Bloomerang.Interaction.applyEmailSignupCustomFields = function () {
+            Bloomerang.Util.applyEmailSignupCustomFields(this, "Interaction");
+            return this;
+        };
+
+        String.prototype.toUntypedValue = function() {
+            return this.substring(this.indexOf('_') + 1);
+        };
+
+        jQuery.validator.addMethod("currency", function (value, element, options) {
+            return !value ||
+                value
+                  .replace("$", "")
+                  .replace(".", "")
+                  .split(",").join("")
+                  .match(/^\d+$/g);
+        }, "Not a valid currency");
+
+        jQuery.validator.classRuleSettings.currency = { currency: true };
+
+        jQuery.validator.addMethod("number", function (value, element, options) {
+            return !value ||
+                value
+                  .replace(".", "")
+                  .split(",").join("")
+                  .match(/^\d+$/g);
+        }, "Not a valid number");
+
+        jQuery.validator.classRuleSettings.number = { number: true };
+
+        jQuery.validator.addMethod("validYear", function (value, element, options) {
+            try {
+                return (!value || value.match(/^[1-9]\d\d\d$/)) ? true : false;
+            }
+            catch (e) {
+                return false;
+            }
+        }, function () { return "Must be a 4 digit year"; });
+
+        jQuery.validator.classRuleSettings.validYear = { validYear: true };
+
+        // Intercept form submission to validate then submit via API
+        jQuery("#email-registration-form-container form").validate({
+            submitHandler: function () {
+                if (!Bloomerang.ValidateEmailSignupFormCaptcha()) {
+                  return false;
+                }
+
+                // Restore proper callbacks in case there are multiple widgets on the page
+                Bloomerang.Api.OnSubmit = Bloomerang.Widget.Email.OnSubmit;
+                Bloomerang.Api.OnSuccess = Bloomerang.Widget.Email.OnSuccess;
+                Bloomerang.Api.OnError = Bloomerang.Widget.Email.OnError;
+                Bloomerang.Api.joinMailingList();
+            }
+        });
+
+})(jQuery);
+    };
+
+                var startBloomerangLoadEmail = function() {
+                    if (window.bloomerangLoadStarted == undefined) {
+                        window.bloomerangLoadStarted = true;
+                        var script = document.createElement('script');
+                        script.type = 'text/javascript';
+                        script.src = 'https://crm.bloomerang.co/Content/Scripts/Api/Bloomerang-v2.js?nocache=1768604272';
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                        waitForBloomerangLoadEmail(function() { Bloomerang.Util.requireJQueryValidation(function() { insertForm719872(); })});
+                    }
+                    else {
+                        waitForBloomerangLoadEmail(function() { Bloomerang.Util.requireJQueryValidation(function() { insertForm719872(); })});
+                    }
+                };
+
+                var waitForBloomerangLoadEmail = function(callback) {
+                    if (typeof(Bloomerang) === 'undefined' || !Bloomerang._isReady) {
+                        setTimeout(function () { waitForBloomerangLoadEmail(callback) }, 500);
+                    }
+                    else {
+                        if (true) {
+                            callback();
+                        } else {
+                            window.bloomerangLoadStarted = undefined;
+                            Bloomerang = undefined;
+                            startBloomerangLoadEmail();
+                        }
+                    }
+                };
+
+                startBloomerangLoadEmail();
+</script>
+
+</body>
+</html>
