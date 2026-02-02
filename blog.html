@@ -148,6 +148,39 @@
             margin-bottom: 16px;
         }
 
+        .share-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .share-buttons span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sparc-charcoal);
+        }
+        .share-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .share-btn:hover {
+            transform: scale(1.15);
+            opacity: 0.9;
+        }
+        .share-btn.facebook { background: #1877F2; }
+        .share-btn.twitter { background: #000000; }
+        .share-btn.linkedin { background: #0A66C2; }
+        .share-btn.email { background: var(--sparc-charcoal); }
+
         .blog-empty {
             text-align: center;
             padding: 60px 20px;
@@ -490,6 +523,13 @@
                                 <p>Reading their insights and seeing the art our participants created as part of this exercise drives home the point that our participants are people. Just because high school and the supported services it provided ended for these young adults, doesn't mean that their lives did too.</p>
                                 <p>At SPARC, we create community. The energy in our classrooms and activities and the excitement that comes from learning or experiencing something new is palpable. Through community, people like Akila, Mejie, Chris, Sandy, Adam, and so many more flourish while their families have peace of mind, time to make a living, and a moment to care for themselves too.</p>
                                 <p>SPARC delivers a higher-quality, inclusive day program for adults with severe disabilities at less than one-third of the cost to taxpayers than the Medicaid supported programs. More importantly, SPARC ensures that the dreams, hope, and essence that define each of our participants flourishes. They are not simply a number in an imperfect and overburdened system. Instead, SPARC members shine as we ignite their interests, encourage them to reach their potential, and help them share the sparkle that makes each of them unique. They are worthy.</p>
+                            </div>
+                            <div class="share-buttons">
+                                <span>Share:</span>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://erica-83.github.io/sparcwebsite/blog.html" target="_blank" rel="noopener noreferrer" class="share-btn facebook" aria-label="Share on Facebook"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                                <a href="https://twitter.com/intent/tweet?url=https://erica-83.github.io/sparcwebsite/blog.html&text=I am Me... I am Worthy - SPARC Blog" target="_blank" rel="noopener noreferrer" class="share-btn twitter" aria-label="Share on X"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://erica-83.github.io/sparcwebsite/blog.html" target="_blank" rel="noopener noreferrer" class="share-btn linkedin" aria-label="Share on LinkedIn"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                                <a href="mailto:?subject=I am Me... I am Worthy - SPARC Blog&body=Check out this post from SPARC: https://erica-83.github.io/sparcwebsite/blog.html" class="share-btn email" aria-label="Share via Email"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></a>
                             </div>
                         </div>
                     </div>
