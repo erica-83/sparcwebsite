@@ -1,0 +1,514 @@
+================================================================================
+SPARC BINGO WEEKLY SIGNUP SYSTEM - COMPLETE SETUP GUIDE
+================================================================================
+
+This guide will help you set up a free weekly bingo card signup system using
+Google Forms, Google Sheets, and Google Apps Script.
+
+================================================================================
+PART 1: CREATE THE GOOGLE SHEET
+================================================================================
+
+1. Go to Google Sheets (sheets.google.com) and create a new spreadsheet
+2. Name it "SPARC Bingo Signups"
+3. Create TWO sheets (tabs at the bottom):
+   - Sheet 1: Rename to "Signups" (this will store all registrations)
+   - Sheet 2: Rename to "Available Cards" (this tracks which cards are taken)
+
+4. In the "Signups" sheet, add these headers in Row 1:
+   A1: Timestamp
+   B1: Name
+   C1: Email
+   D1: Card Number
+
+5. In the "Available Cards" sheet, add these headers in Row 1:
+   A1: Card Number
+   B1: Status
+   C1: Claimed By
+   D1: Claimed Email
+   E1: Claimed At
+
+6. Fill in Card Numbers 1-30 in column A (rows 2-31):
+   A2: 1
+   A3: 2
+   ... and so on to ...
+   A31: 30
+
+7. Set column B (Status) to "Available" for all cards:
+   B2 through B31: Available
+
+================================================================================
+PART 2: CREATE THE GOOGLE FORM
+================================================================================
+
+1. Go to Google Forms (forms.google.com) and create a new form
+2. Name it "SPARC Weekly Bingo Signup"
+
+3. Add Question 1:
+   - Type: Short answer
+   - Question: "Full Name"
+   - Required: Yes
+
+4. Add Question 2:
+   - Type: Short answer
+   - Question: "Email Address"
+   - Required: Yes
+   - Add validation: Response validation > Text > Email
+
+5. Add Question 3:
+   - Type: Dropdown
+   - Question: "Select Your Bingo Card Number"
+   - Required: Yes
+   - Options: Add numbers 1 through 30 (one per option)
+
+6. Link Form to Sheet:
+   - Click the "Responses" tab at the top of the form
+   - Click the green Sheets icon
+   - Select "Select existing spreadsheet"
+   - Choose your "SPARC Bingo Signups" spreadsheet
+   - This creates a "Form Responses 1" sheet - you can rename it or use it
+
+================================================================================
+PART 3: ADD THE APPS SCRIPT
+================================================================================
+
+1. In your Google Sheet, go to Extensions > Apps Script
+2. Delete any existing code in the editor
+3. Copy and paste the ENTIRE script below:
+
+--------------------------------------------------------------------------------
+BEGIN APPS SCRIPT CODE (copy everything between the dashed lines)
+--------------------------------------------------------------------------------
+
+// ============================================================================
+// SPARC BINGO SIGNUP SYSTEM - CONFIGURATION
+// ============================================================================
+// UPDATE THESE VALUES WITH YOUR INFORMATION:
+
+const CONFIG = {
+  // Zoom meeting link for bingo
+  ZOOM_LINK: "https://zoom.us/j/YOUR_MEETING_ID?pwd=YOUR_PASSWORD",
+
+  // Base URL for bingo card images (cards should be named card1.png, card2.png, etc.)
+  // Or use a Google Drive folder link
+  CARD_BASE_URL: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID",
+
+  // Email settings
+  SENDER_NAME: "SPARC Bingo",
+  EMAIL_SUBJECT: "Your SPARC Bingo Card Confirmation",
+
+  // Sheet names
+  SIGNUPS_SHEET: "Signups",
+  AVAILABLE_CARDS_SHEET: "Available Cards",
+  FORM_RESPONSES_SHEET: "Form Responses 1",  // Change if you renamed it
+
+  // Total number of bingo cards
+  TOTAL_CARDS: 30
+};
+
+// ============================================================================
+// FORM SUBMISSION HANDLER
+// ============================================================================
+
+function onFormSubmit(e) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const availableSheet = ss.getSheetByName(CONFIG.AVAILABLE_CARDS_SHEET);
+  const signupsSheet = ss.getSheetByName(CONFIG.SIGNUPS_SHEET);
+
+  // Get form response data
+  const responses = e.namedValues;
+  const name = responses["Full Name"][0];
+  const email = responses["Email Address"][0];
+  const cardNumber = parseInt(responses["Select Your Bingo Card Number"][0]);
+  const timestamp = new Date();
+
+  // Use lock to prevent race conditions
+  const lock = LockService.getScriptLock();
+
+  try {
+    // Wait up to 30 seconds for the lock
+    lock.waitLock(30000);
+
+    // Check if card is still available
+    const cardRow = cardNumber + 1; // Row 1 is header, so card 1 is row 2
+    const cardStatus = availableSheet.getRange(cardRow, 2).getValue();
+
+    if (cardStatus === "Taken") {
+      // Card was claimed by someone else - send rejection email
+      sendRejectionEmail(name, email, cardNumber);
+
+      // Remove the invalid form response from signups
+      // (The form response sheet will still have it, but we won't add to main signups)
+      return;
+    }
+
+    // Card is available - claim it
+    availableSheet.getRange(cardRow, 2).setValue("Taken");
+    availableSheet.getRange(cardRow, 3).setValue(name);
+    availableSheet.getRange(cardRow, 4).setValue(email);
+    availableSheet.getRange(cardRow, 5).setValue(timestamp);
+
+    // Add to signups sheet
+    signupsSheet.appendRow([timestamp, name, email, cardNumber]);
+
+    // Send confirmation email
+    sendConfirmationEmail(name, email, cardNumber);
+
+  } catch (e) {
+    console.error("Error processing signup: " + e.toString());
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// ============================================================================
+// EMAIL FUNCTIONS
+// ============================================================================
+
+function sendConfirmationEmail(name, email, cardNumber) {
+  const cardUrl = getCardUrl(cardNumber);
+
+  const htmlBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background: #F5841F; padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">SPARC Bingo</h1>
+      </div>
+      <div style="padding: 30px; background: #f9f9f9;">
+        <h2 style="color: #1B365D;">You're All Set, ${name}!</h2>
+        <p style="font-size: 16px; color: #333;">
+          Your bingo card has been reserved for this week's game.
+        </p>
+
+        <div style="background: white; border-radius: 8px; padding: 20px; margin: 20px 0; border-left: 4px solid #F5841F;">
+          <p style="margin: 0 0 10px 0;"><strong>Your Card Number:</strong> ${cardNumber}</p>
+          <p style="margin: 0;"><strong>View/Print Your Card:</strong><br>
+            <a href="${cardUrl}" style="color: #F5841F;">${cardUrl}</a>
+          </p>
+        </div>
+
+        <div style="background: #1B365D; color: white; border-radius: 8px; padding: 20px; margin: 20px 0;">
+          <h3 style="margin: 0 0 10px 0;">Join the Zoom Meeting</h3>
+          <p style="margin: 0;">
+            <a href="${CONFIG.ZOOM_LINK}" style="color: #F5841F; font-size: 18px;">${CONFIG.ZOOM_LINK}</a>
+          </p>
+        </div>
+
+        <p style="font-size: 14px; color: #666;">
+          Have your bingo card ready when you join. Good luck!
+        </p>
+      </div>
+      <div style="background: #1B365D; padding: 15px; text-align: center;">
+        <p style="color: white; margin: 0; font-size: 12px;">
+          SPARC - Specially Adapted Resource Centers<br>
+          <a href="https://sparcsolutions.org" style="color: #F5841F;">sparcsolutions.org</a>
+        </p>
+      </div>
+    </div>
+  `;
+
+  const plainBody = `
+Hi ${name},
+
+Your SPARC Bingo card has been reserved!
+
+YOUR CARD NUMBER: ${cardNumber}
+
+VIEW YOUR CARD: ${cardUrl}
+
+JOIN THE ZOOM MEETING: ${CONFIG.ZOOM_LINK}
+
+Have your bingo card ready when you join. Good luck!
+
+- SPARC Team
+  `;
+
+  GmailApp.sendEmail(email, CONFIG.EMAIL_SUBJECT, plainBody, {
+    name: CONFIG.SENDER_NAME,
+    htmlBody: htmlBody
+  });
+}
+
+function sendRejectionEmail(name, email, cardNumber) {
+  const htmlBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background: #F5841F; padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">SPARC Bingo</h1>
+      </div>
+      <div style="padding: 30px; background: #f9f9f9;">
+        <h2 style="color: #1B365D;">Oops! Card ${cardNumber} Was Just Taken</h2>
+        <p style="font-size: 16px; color: #333;">
+          Hi ${name},
+        </p>
+        <p style="font-size: 16px; color: #333;">
+          Unfortunately, Card #${cardNumber} was claimed by another player just moments before your submission.
+        </p>
+        <p style="font-size: 16px; color: #333;">
+          <strong>Please sign up again</strong> and choose a different available card number.
+        </p>
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://sparcsolutions.org/bingo.html"
+             style="background: #F5841F; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+            Sign Up Again
+          </a>
+        </div>
+        <p style="font-size: 14px; color: #666;">
+          We apologize for the inconvenience. Cards go fast!
+        </p>
+      </div>
+      <div style="background: #1B365D; padding: 15px; text-align: center;">
+        <p style="color: white; margin: 0; font-size: 12px;">
+          SPARC - Specially Adapted Resource Centers
+        </p>
+      </div>
+    </div>
+  `;
+
+  const plainBody = `
+Hi ${name},
+
+Unfortunately, Card #${cardNumber} was claimed by another player just moments before your submission.
+
+Please sign up again and choose a different available card number:
+https://sparcsolutions.org/bingo.html
+
+We apologize for the inconvenience!
+
+- SPARC Team
+  `;
+
+  GmailApp.sendEmail(email, "SPARC Bingo - Please Choose Another Card", plainBody, {
+    name: CONFIG.SENDER_NAME,
+    htmlBody: htmlBody
+  });
+}
+
+function getCardUrl(cardNumber) {
+  // If using Google Drive folder, construct the URL
+  // You may need to adjust this based on how you store cards
+  return CONFIG.CARD_BASE_URL + "/card" + cardNumber + ".png";
+
+  // Alternative: If each card has its own direct link, use a lookup:
+  // const cardLinks = {
+  //   1: "https://drive.google.com/file/d/ABC123/view",
+  //   2: "https://drive.google.com/file/d/DEF456/view",
+  //   // ... etc
+  // };
+  // return cardLinks[cardNumber];
+}
+
+// ============================================================================
+// WEEKLY RESET FUNCTION (runs every Friday at midnight)
+// ============================================================================
+
+function weeklyReset() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const availableSheet = ss.getSheetByName(CONFIG.AVAILABLE_CARDS_SHEET);
+
+  // Reset all cards to Available
+  for (let i = 2; i <= CONFIG.TOTAL_CARDS + 1; i++) {
+    availableSheet.getRange(i, 2).setValue("Available"); // Status
+    availableSheet.getRange(i, 3).setValue("");          // Claimed By
+    availableSheet.getRange(i, 4).setValue("");          // Claimed Email
+    availableSheet.getRange(i, 5).setValue("");          // Claimed At
+  }
+
+  console.log("Weekly reset completed at " + new Date());
+}
+
+// ============================================================================
+// UPDATE FORM DROPDOWN (removes taken cards from form)
+// ============================================================================
+// NOTE: This is an OPTIONAL advanced feature.
+// Google Forms API requires additional setup to dynamically update dropdowns.
+// For simplicity, the system handles race conditions via email notification instead.
+
+function updateFormDropdown() {
+  // This function is a placeholder for advanced dynamic dropdown updates
+  // Requires Forms API and additional permissions
+  // The current system handles conflicts by sending rejection emails
+  console.log("Form dropdown update - not implemented (using rejection email system instead)");
+}
+
+// ============================================================================
+// UTILITY: Manual reset (run this to reset cards manually)
+// ============================================================================
+
+function manualReset() {
+  weeklyReset();
+  SpreadsheetApp.getUi().alert("All bingo cards have been reset to Available!");
+}
+
+// ============================================================================
+// UTILITY: View current status
+// ============================================================================
+
+function viewStatus() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const availableSheet = ss.getSheetByName(CONFIG.AVAILABLE_CARDS_SHEET);
+
+  let available = 0;
+  let taken = 0;
+
+  for (let i = 2; i <= CONFIG.TOTAL_CARDS + 1; i++) {
+    const status = availableSheet.getRange(i, 2).getValue();
+    if (status === "Available") {
+      available++;
+    } else {
+      taken++;
+    }
+  }
+
+  SpreadsheetApp.getUi().alert(
+    "Bingo Card Status\n\n" +
+    "Available: " + available + "\n" +
+    "Taken: " + taken + "\n" +
+    "Total: " + CONFIG.TOTAL_CARDS
+  );
+}
+
+--------------------------------------------------------------------------------
+END APPS SCRIPT CODE
+--------------------------------------------------------------------------------
+
+================================================================================
+PART 4: CONFIGURE THE SCRIPT
+================================================================================
+
+1. At the top of the script, update the CONFIG object:
+   - ZOOM_LINK: Your actual Zoom meeting link
+   - CARD_BASE_URL: Where your bingo card images are stored
+
+2. If your sheet names are different, update:
+   - SIGNUPS_SHEET
+   - AVAILABLE_CARDS_SHEET
+   - FORM_RESPONSES_SHEET
+
+3. Save the script (Ctrl+S or Cmd+S)
+
+================================================================================
+PART 5: SET UP TRIGGERS
+================================================================================
+
+1. In Apps Script, click the clock icon on the left sidebar (Triggers)
+
+2. Click "+ Add Trigger" in the bottom right
+
+3. Set up the FORM SUBMISSION trigger:
+   - Choose which function to run: onFormSubmit
+   - Choose deployment: Head
+   - Select event source: From spreadsheet
+   - Select event type: On form submit
+   - Click Save
+   - Authorize the app when prompted (click through the "unsafe app" warning)
+
+4. Click "+ Add Trigger" again for the WEEKLY RESET:
+   - Choose which function to run: weeklyReset
+   - Choose deployment: Head
+   - Select event source: Time-driven
+   - Select type of time based trigger: Week timer
+   - Select day of week: Friday
+   - Select time of day: Midnight to 1am
+   - Click Save
+
+================================================================================
+PART 6: AUTHORIZE THE SCRIPT
+================================================================================
+
+1. Run the script once manually to authorize it:
+   - In Apps Script, select "viewStatus" from the function dropdown
+   - Click Run
+   - A popup will ask you to review permissions
+   - Click "Review Permissions"
+   - Select your Google account
+   - Click "Advanced" then "Go to SPARC Bingo (unsafe)"
+   - Click "Allow"
+
+2. The script now has permission to:
+   - Read/write to your spreadsheet
+   - Send emails on your behalf
+
+================================================================================
+PART 7: EMBED THE FORM ON YOUR WEBSITE
+================================================================================
+
+1. In Google Forms, click the Send button (top right)
+2. Click the embed icon (< >)
+3. Copy the iframe code
+4. In bingo.html, find this section:
+
+   <div class="bingo-form-embed">
+       <!-- EMBED YOUR GOOGLE FORM HERE -->
+       ...
+   </div>
+
+5. Replace the placeholder content with your iframe code:
+
+   <div class="bingo-form-embed">
+       <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+               width="100%"
+               height="700"
+               frameborder="0"
+               marginheight="0"
+               marginwidth="0">
+           Loading...
+       </iframe>
+   </div>
+
+================================================================================
+PART 8: PREPARE YOUR BINGO CARDS
+================================================================================
+
+1. Create 30 unique bingo cards (use a bingo card generator online)
+2. Save them as card1.png, card2.png, ... card30.png
+3. Upload to Google Drive and make the folder/files publicly viewable
+4. Update CARD_BASE_URL in the script with your folder link
+
+Alternative: Use a free online bingo card generator that provides printable links
+
+================================================================================
+PART 9: TESTING
+================================================================================
+
+1. Submit a test entry through your form
+2. Check that:
+   - The "Available Cards" sheet shows the card as "Taken"
+   - The "Signups" sheet has the new entry
+   - You received the confirmation email
+
+3. Test the reset:
+   - In Apps Script, run the "manualReset" function
+   - Check that all cards are back to "Available"
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Q: Emails aren't sending
+A: Make sure you authorized the script and check your Gmail sent folder
+
+Q: Form submission doesn't trigger the script
+A: Verify the trigger is set up correctly in Apps Script > Triggers
+
+Q: Cards show as available in form but error says taken
+A: This is the race condition handling - it's working as designed
+
+Q: Weekly reset didn't happen
+A: Check the trigger settings and make sure it's set to Friday midnight
+
+================================================================================
+CUSTOMIZATION OPTIONS
+================================================================================
+
+- Change email colors/branding in the sendConfirmationEmail function
+- Adjust the number of cards by changing TOTAL_CARDS
+- Add more fields to the form (phone number, etc.)
+- Change reset day/time in the trigger settings
+
+================================================================================
+SUPPORT
+================================================================================
+
+For questions about this system, contact:
+debi@sparcsolutions.org
+
+================================================================================
