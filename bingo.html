@@ -28,8 +28,25 @@
         .bingo-hero p {
             font-size: 1.25rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
             opacity: 0.95;
+        }
+        .btn-bingo-signup {
+            display: inline-block;
+            background: #4CBB17;
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(76, 187, 23, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-bingo-signup:hover {
+            background: #3da314;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 187, 23, 0.5);
         }
         .bingo-info {
             padding: 60px 0;
@@ -215,6 +232,7 @@
         <div class="container">
             <h1>SPARC Weekly Bingo</h1>
             <p>Join us every week for a fun-filled game of Bingo with the SPARC community! Sign up below to claim your card and get the Zoom link.</p>
+            <a href="#bingo-form" class="btn-bingo-signup">Sign Up for Bingo</a>
         </div>
     </section>
 
@@ -254,7 +272,7 @@
         </section>
 
         <!-- Sign Up Form -->
-        <section class="bingo-form-section">
+        <section class="bingo-form-section" id="bingo-form">
             <div class="container">
                 <div class="bingo-form-container fade-in">
                     <h2>Sign Up for This Week's Bingo</h2>
