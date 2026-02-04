@@ -92,13 +92,109 @@
             background: var(--sparc-soft-gray);
             border-radius: 12px;
             padding: 40px;
-            min-height: 400px;
         }
-        .bingo-form-embed iframe {
+        .bingo-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .bingo-form .form-group {
+            margin-bottom: 20px;
+        }
+        .bingo-form label {
+            display: block;
+            color: var(--sparc-dark-navy);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .bingo-form label .required {
+            color: #c00;
+        }
+        .bingo-form input[type="text"],
+        .bingo-form input[type="email"],
+        .bingo-form select {
             width: 100%;
-            min-height: 600px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        .bingo-form input:focus,
+        .bingo-form select:focus {
+            outline: none;
+            border-color: var(--sparc-orange);
+        }
+        .bingo-form select {
+            cursor: pointer;
+            background: white;
+        }
+        .bingo-form .btn-submit {
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--sparc-orange);
+            color: white;
             border: none;
             border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .bingo-form .btn-submit:hover {
+            background: #e8a530;
+            transform: translateY(-2px);
+        }
+        .bingo-form .form-note {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--sparc-charcoal);
+            font-size: 14px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .card-option {
+            position: relative;
+        }
+        .card-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .card-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 45px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--sparc-dark-navy);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0;
+        }
+        .card-option input[type="radio"]:checked + label {
+            background: var(--sparc-orange);
+            border-color: var(--sparc-orange);
+            color: white;
+        }
+        .card-option input[type="radio"]:hover + label {
+            border-color: var(--sparc-orange);
+        }
+        @media (max-width: 500px) {
+            .card-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
         }
         .bingo-rules {
             padding: 60px 0;
@@ -241,7 +337,7 @@
                             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         </div>
                         <h3>Step 2: Get Your Card</h3>
-                        <p>Receive an automatic confirmation email with a link to your bingo card and the Zoom meeting details.</p>
+                        <p>We'll email you a confirmation with your bingo card and the Zoom meeting link to join the game.</p>
                     </div>
                     <div class="bingo-info-card fade-in">
                         <div class="icon">
@@ -261,15 +357,68 @@
                     <h2>Sign Up for This Week's Bingo</h2>
                     <p>Cards reset every Friday at midnight. Choose an available card number below!</p>
                     <div class="bingo-form-embed">
-                        <!-- EMBED YOUR GOOGLE FORM HERE -->
-                        <!-- Replace the placeholder below with your Google Form embed code -->
-                        <p style="color: var(--sparc-charcoal); padding: 40px;">
-                            <strong>Form Coming Soon!</strong><br><br>
-                            The bingo signup form will be embedded here once set up.
-                        </p>
-                        <!-- Example embed (uncomment and replace with your form URL):
-                        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-                        -->
+                        <form class="bingo-form" action="https://formsubmit.co/debi@sparcsolutions.org" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Bingo Signup!">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://sparcsolutions.org/bingo.html?success=true">
+
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="Name" required placeholder="Enter your full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="Email" required placeholder="Enter your email address">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Your Bingo Card (1-30) <span class="required">*</span></label>
+                                <div class="card-grid">
+                                    <div class="card-option"><input type="radio" id="card1" name="Card Number" value="1" required><label for="card1">1</label></div>
+                                    <div class="card-option"><input type="radio" id="card2" name="Card Number" value="2"><label for="card2">2</label></div>
+                                    <div class="card-option"><input type="radio" id="card3" name="Card Number" value="3"><label for="card3">3</label></div>
+                                    <div class="card-option"><input type="radio" id="card4" name="Card Number" value="4"><label for="card4">4</label></div>
+                                    <div class="card-option"><input type="radio" id="card5" name="Card Number" value="5"><label for="card5">5</label></div>
+                                    <div class="card-option"><input type="radio" id="card6" name="Card Number" value="6"><label for="card6">6</label></div>
+                                    <div class="card-option"><input type="radio" id="card7" name="Card Number" value="7"><label for="card7">7</label></div>
+                                    <div class="card-option"><input type="radio" id="card8" name="Card Number" value="8"><label for="card8">8</label></div>
+                                    <div class="card-option"><input type="radio" id="card9" name="Card Number" value="9"><label for="card9">9</label></div>
+                                    <div class="card-option"><input type="radio" id="card10" name="Card Number" value="10"><label for="card10">10</label></div>
+                                    <div class="card-option"><input type="radio" id="card11" name="Card Number" value="11"><label for="card11">11</label></div>
+                                    <div class="card-option"><input type="radio" id="card12" name="Card Number" value="12"><label for="card12">12</label></div>
+                                    <div class="card-option"><input type="radio" id="card13" name="Card Number" value="13"><label for="card13">13</label></div>
+                                    <div class="card-option"><input type="radio" id="card14" name="Card Number" value="14"><label for="card14">14</label></div>
+                                    <div class="card-option"><input type="radio" id="card15" name="Card Number" value="15"><label for="card15">15</label></div>
+                                    <div class="card-option"><input type="radio" id="card16" name="Card Number" value="16"><label for="card16">16</label></div>
+                                    <div class="card-option"><input type="radio" id="card17" name="Card Number" value="17"><label for="card17">17</label></div>
+                                    <div class="card-option"><input type="radio" id="card18" name="Card Number" value="18"><label for="card18">18</label></div>
+                                    <div class="card-option"><input type="radio" id="card19" name="Card Number" value="19"><label for="card19">19</label></div>
+                                    <div class="card-option"><input type="radio" id="card20" name="Card Number" value="20"><label for="card20">20</label></div>
+                                    <div class="card-option"><input type="radio" id="card21" name="Card Number" value="21"><label for="card21">21</label></div>
+                                    <div class="card-option"><input type="radio" id="card22" name="Card Number" value="22"><label for="card22">22</label></div>
+                                    <div class="card-option"><input type="radio" id="card23" name="Card Number" value="23"><label for="card23">23</label></div>
+                                    <div class="card-option"><input type="radio" id="card24" name="Card Number" value="24"><label for="card24">24</label></div>
+                                    <div class="card-option"><input type="radio" id="card25" name="Card Number" value="25"><label for="card25">25</label></div>
+                                    <div class="card-option"><input type="radio" id="card26" name="Card Number" value="26"><label for="card26">26</label></div>
+                                    <div class="card-option"><input type="radio" id="card27" name="Card Number" value="27"><label for="card27">27</label></div>
+                                    <div class="card-option"><input type="radio" id="card28" name="Card Number" value="28"><label for="card28">28</label></div>
+                                    <div class="card-option"><input type="radio" id="card29" name="Card Number" value="29"><label for="card29">29</label></div>
+                                    <div class="card-option"><input type="radio" id="card30" name="Card Number" value="30"><label for="card30">30</label></div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Sign Up for Bingo</button>
+                            <p class="form-note">We'll email you your card and Zoom link before game time!</p>
+                        </form>
+                    </div>
+
+                    <!-- Success Message (shown after form submission) -->
+                    <div id="successMessage" style="display: none; background: #d4edda; border: 1px solid #28a745; border-radius: 12px; padding: 40px; text-align: center; margin-top: 20px;">
+                        <h3 style="color: #155724; margin-bottom: 15px;">You're Signed Up!</h3>
+                        <p style="color: #155724;">Check your email for confirmation with your bingo card and Zoom link.</p>
                     </div>
                 </div>
             </div>
@@ -399,6 +548,21 @@
     </div>
 
     <script src="js/main.js"></script>
+
+    <!-- Show success message if redirected from form submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('successMessage').style.display = 'block';
+                document.querySelector('.bingo-form').style.display = 'none';
+                // Scroll to the form section
+                document.querySelector('.bingo-form-section').scrollIntoView({ behavior: 'smooth' });
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
 
 <!-- Mailing List Modal -->
 <div class="mailing-list-modal-overlay" id="mailingListModal">
