@@ -1193,11 +1193,41 @@ p {
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+        text-align: center;
+    }
+
+    .footer-grid .footer-links ul {
+        padding-left: 0;
+    }
+
+    .footer-about .social-links {
+        justify-content: center;
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Footer bottom bar mobile fix */
+    .footer-bottom-bar {
+        padding: 20px 15px !important;
+    }
+
+    .footer-bottom-bar .container {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-bottom-bar img {
+        height: 100px !important;
+        margin-top: 15px;
+    }
+
+    .footer-bottom-bar nav a {
+        display: inline-block;
+        margin: 5px 10px;
     }
 
     .donate-amounts {
