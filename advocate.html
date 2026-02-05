@@ -148,53 +148,133 @@
         .letter-header {
             background: var(--sparc-dark-navy);
             color: white;
-            padding: 25px 40px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .letter-header h3 {
             color: white;
             margin: 0;
             font-size: 1.3rem;
         }
-        .letter-body {
-            padding: 40px;
+        .letter-header-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-        .letter-body .fill-in {
-            background: #fff8e1;
-            border: 1px dashed #ffc107;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-style: italic;
-            color: #856404;
+        .letter-body {
+            padding: 50px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 14px;
+            line-height: 1.7;
         }
         .letter-body p {
-            color: var(--sparc-charcoal);
+            color: #333;
+            margin-bottom: 18px;
+        }
+        .letter-body .address-block {
+            margin-bottom: 25px;
             line-height: 1.8;
-            margin-bottom: 20px;
+        }
+        .letter-body .date-line {
+            margin-bottom: 25px;
         }
         .letter-body .salutation {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .letter-body .closing {
-            margin-top: 40px;
+            margin-top: 35px;
+            margin-bottom: 50px;
+        }
+        .letter-body .signature-block {
+            line-height: 2;
+        }
+        .fill-in {
+            background: #fffde7;
+            border-bottom: 2px solid #ffc107;
+            padding: 2px 8px;
+            min-width: 120px;
+            display: inline-block;
+            cursor: text;
+            transition: all 0.2s ease;
+            color: #666;
+            font-style: normal;
+        }
+        .fill-in:hover {
+            background: #fff8e1;
+            border-color: #ff9800;
+        }
+        .fill-in:focus {
+            outline: none;
+            background: #fff;
+            border-color: var(--sparc-royal-blue);
+            box-shadow: 0 2px 0 var(--sparc-royal-blue);
+            color: #333;
+        }
+        .fill-in.filled {
+            background: #e8f5e9;
+            border-color: var(--sparc-kelly-green);
+            color: #333;
+            font-style: normal;
+        }
+        .example-text {
+            color: #999;
+            font-size: 0.85em;
+            font-style: italic;
         }
         .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--sparc-kelly-green);
             color: white;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
         .download-btn:hover {
             background: #3da812;
             transform: translateY(-2px);
+        }
+
+        /* Print Styles for Letter */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .letter-body, .letter-body * {
+                visibility: visible;
+            }
+            .letter-body {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 0.75in;
+                box-shadow: none;
+            }
+            .letter-container {
+                box-shadow: none;
+            }
+            .letter-header, .example-text {
+                display: none !important;
+            }
+            .fill-in {
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                min-width: 0 !important;
+            }
         }
 
         /* ZIP Lookup Feature */
@@ -641,22 +721,30 @@
                 <h2>Write to Your Legislators</h2>
                 <p class="subtitle">Use this template letter to contact your State Senator and Delegate. Personalize it with your story and send it via email or mail.</p>
 
-                <div class="letter-container">
+                <div class="letter-container" id="letterContainer">
                     <div class="letter-header">
-                        <h3>Letter Template</h3>
-                        <a href="downloads/SPARC-Advocacy-Letter.html" class="download-btn" target="_blank" onclick="gtag('event', 'download', {'event_category': 'advocacy', 'event_label': 'letter_template'});">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            Download PDF
-                        </a>
+                        <h3>Letter Template <span class="example-text">- Click fields to edit, then download</span></h3>
+                        <div class="letter-header-buttons">
+                            <button class="download-btn" onclick="downloadLetter()">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Download PDF
+                            </button>
+                        </div>
                     </div>
-                    <div class="letter-body">
-                        <p><span class="fill-in">[Your Name]</span><br>
-                        <span class="fill-in">[Your Address]</span><br>
-                        <span class="fill-in">[City, State ZIP]</span></p>
+                    <div class="letter-body" id="letterBody">
+                        <div class="address-block">
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Name"></span><br>
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Street Address"></span><br>
+                            <span class="fill-in" contenteditable="true" data-placeholder="City, State ZIP"></span>
+                        </div>
 
-                        <p><span class="fill-in">[Date]</span></p>
+                        <div class="date-line">
+                            <span class="fill-in" contenteditable="true" data-placeholder="Date"></span>
+                        </div>
 
-                        <p class="salutation">Dear Senator/Delegate <span class="fill-in">[Last Name]</span>,</p>
+                        <p class="salutation">
+                            Dear <span class="fill-in" contenteditable="true" data-placeholder="Title & Name" style="min-width: 180px;"></span>, <span class="example-text">(e.g., Senator Smith, Delegate Jones, Supervisor Lee)</span>
+                        </p>
 
                         <p>I am writing as the parent of an adult son/daughter with severe and multiple disabilities who lives in your district. I am asking you to support the SPARC (Specially Adapted Resource Centers) budget amendment currently before the General Assembly.</p>
 
@@ -670,10 +758,12 @@
 
                         <p class="closing">Sincerely,</p>
 
-                        <p><span class="fill-in">[Your Signature]</span><br>
-                        <span class="fill-in">[Your Printed Name]</span><br>
-                        <span class="fill-in">[Your Phone Number]</span><br>
-                        <span class="fill-in">[Your Email]</span></p>
+                        <div class="signature-block">
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Signature" style="min-width: 200px;"></span><br>
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Printed Name"></span><br>
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Phone Number"></span><br>
+                            <span class="fill-in" contenteditable="true" data-placeholder="Your Email Address"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -1095,6 +1185,67 @@
     <script src="js/main.js"></script>
 
     <script>
+        // Initialize fillable letter fields
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.letter-body .fill-in').forEach(field => {
+                const placeholder = field.getAttribute('data-placeholder');
+
+                // Set initial placeholder text
+                if (!field.textContent.trim()) {
+                    field.textContent = placeholder;
+                }
+
+                // Clear placeholder on focus
+                field.addEventListener('focus', function() {
+                    if (this.textContent === placeholder) {
+                        this.textContent = '';
+                    }
+                    this.classList.remove('filled');
+                });
+
+                // Restore placeholder if empty, mark as filled if has content
+                field.addEventListener('blur', function() {
+                    if (!this.textContent.trim()) {
+                        this.textContent = placeholder;
+                        this.classList.remove('filled');
+                    } else if (this.textContent !== placeholder) {
+                        this.classList.add('filled');
+                    }
+                });
+
+                // Prevent Enter key from creating new lines
+                field.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.blur();
+                    }
+                });
+            });
+        });
+
+        // Download letter as PDF
+        function downloadLetter() {
+            // Track in GA
+            gtag('event', 'download', {'event_category': 'advocacy', 'event_label': 'letter_template'});
+
+            // Check if any fields are still placeholders and warn
+            let hasUnfilled = false;
+            document.querySelectorAll('.letter-body .fill-in').forEach(field => {
+                const placeholder = field.getAttribute('data-placeholder');
+                if (field.textContent === placeholder) {
+                    hasUnfilled = true;
+                }
+            });
+
+            if (hasUnfilled) {
+                if (!confirm('Some fields are not filled in. Download anyway?')) {
+                    return;
+                }
+            }
+
+            window.print();
+        }
+
         // County panel toggle functionality
         function showCounty(county) {
             // Remove active class from all buttons
