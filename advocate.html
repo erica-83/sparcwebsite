@@ -752,6 +752,21 @@
                 <h2>Write to Your Legislators</h2>
                 <p class="subtitle">Use this template letter to contact your State Senator and Delegate. Personalize it with your story and send it via email or mail.</p>
 
+                <!-- ZIP Code Lookup -->
+                <div class="zip-lookup-box">
+                    <h3>Find Your Representatives</h3>
+                    <p>Enter your ZIP code to see your State Senator, Delegate, and County Supervisor with contact information.</p>
+
+                    <div class="zip-input-group">
+                        <input type="text" id="zipInput" placeholder="Enter ZIP" maxlength="5" pattern="[0-9]{5}">
+                        <button onclick="lookupZip()">Search</button>
+                    </div>
+
+                    <div class="zip-results" id="zipResults">
+                        <!-- Results will be populated by JavaScript -->
+                    </div>
+                </div>
+
                 <div class="letter-container" id="letterContainer">
                     <div class="letter-header">
                         <h3>Letter Template <span class="example-text">- Click fields to edit, then download</span></h3>
@@ -795,21 +810,6 @@
                             <span class="fill-in" contenteditable="true" data-placeholder="Your Phone Number"></span><br>
                             <span class="fill-in" contenteditable="true" data-placeholder="Your Email Address"></span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- ZIP Code Lookup -->
-                <div class="zip-lookup-box">
-                    <h3>Find Your Representatives</h3>
-                    <p>Enter your ZIP code to see your State Senator, Delegate, and County Supervisor with contact information.</p>
-
-                    <div class="zip-input-group">
-                        <input type="text" id="zipInput" placeholder="Enter ZIP" maxlength="5" pattern="[0-9]{5}">
-                        <button onclick="lookupZip()">Search</button>
-                    </div>
-
-                    <div class="zip-results" id="zipResults">
-                        <!-- Results will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
