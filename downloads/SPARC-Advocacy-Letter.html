@@ -2,110 +2,267 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPARC Advocacy Letter Template</title>
     <style>
         @media print {
-            body { margin: 1in; }
-            .no-print { display: none; }
+            body { margin: 0.75in; padding: 0; }
+            .no-print { display: none !important; }
+            .fill-in {
+                background: none !important;
+                border: none !important;
+                border-bottom: none !important;
+            }
+            .letter-content {
+                box-shadow: none !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+            }
+        }
+        * {
+            box-sizing: border-box;
         }
         body {
             font-family: Georgia, 'Times New Roman', serif;
             font-size: 12pt;
             line-height: 1.6;
-            max-width: 8.5in;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 1in;
+            padding: 20px;
             color: #333;
+            background: #f5f5f5;
+        }
+        .instructions {
+            background: linear-gradient(135deg, #1a3a5c 0%, #2e5a8b 100%);
+            color: white;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            color: #4CAF50;
+            font-size: 1.3rem;
+        }
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        .instructions a {
+            color: #81D4FA;
+        }
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: white;
+            color: #1a3a5c;
+        }
+        .btn-secondary:hover {
+            background: #e3f2fd;
+            transform: translateY(-2px);
+        }
+        .letter-content {
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .header-info {
             margin-bottom: 30px;
         }
         .fill-in {
             background: #fffde7;
-            border-bottom: 1px solid #666;
-            padding: 0 5px;
+            border: 1px dashed #ffc107;
+            padding: 3px 10px;
             min-width: 150px;
             display: inline-block;
+            border-radius: 4px;
+            cursor: text;
+            transition: all 0.2s ease;
+        }
+        .fill-in:hover {
+            background: #fff8e1;
+            border-color: #ff9800;
+        }
+        .fill-in:focus {
+            outline: none;
+            background: #fff;
+            border-color: #2196f3;
+            border-style: solid;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        }
+        .fill-in.edited {
+            background: #e8f5e9;
+            border-color: #4CAF50;
+            border-style: solid;
+        }
+        .fill-in.placeholder {
+            color: #999;
+            font-style: italic;
         }
         .date {
             margin-bottom: 30px;
         }
         .salutation {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
         }
         .closing {
-            margin-top: 40px;
+            margin-top: 35px;
         }
         .signature-area {
-            margin-top: 60px;
+            margin-top: 50px;
+            line-height: 2;
         }
-        .instructions {
-            background: #e3f2fd;
-            border: 1px solid #2196f3;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 8px;
+        .signature-line {
+            min-width: 250px;
         }
-        .instructions h3 {
-            margin-top: 0;
-            color: #1565c0;
+        em {
+            font-style: italic;
         }
-        .instructions ul {
-            margin-bottom: 0;
-        }
-        @media print {
-            .instructions { display: none; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .letter-content { padding: 30px 20px; }
+            .btn-container { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="instructions no-print">
-        <h3>Instructions</h3>
-        <ul>
-            <li>Fill in the highlighted areas with your information</li>
-            <li>Print this page (Ctrl+P or Cmd+P) or save as PDF</li>
-            <li>Sign the letter and mail it, or copy the text into an email</li>
-            <li>Find your legislators at: <a href="https://whosmy.virginiageneralassembly.gov/" target="_blank">whosmy.virginiageneralassembly.gov</a></li>
-        </ul>
+        <h3>How to Use This Letter</h3>
+        <ol>
+            <li><strong>Click on the yellow highlighted fields</strong> to type your information</li>
+            <li><strong>Personalize the letter</strong> - add details about your family member if you'd like</li>
+            <li><strong>Click "Download as PDF"</strong> to save your completed letter</li>
+            <li>Email or mail your letter to your legislators</li>
+        </ol>
+        <div class="btn-container">
+            <button class="btn btn-primary" onclick="downloadPDF()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download as PDF
+            </button>
+            <a href="https://erica-83.github.io/sparcwebsite/advocate.html" class="btn btn-secondary">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+                Find Your Legislators
+            </a>
+        </div>
     </div>
 
-    <div class="header-info">
-        <span class="fill-in">[Your Name]</span><br>
-        <span class="fill-in">[Your Street Address]</span><br>
-        <span class="fill-in">[City, State ZIP]</span>
+    <div class="letter-content">
+        <div class="header-info">
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Your Name">Your Name</span><br>
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Your Street Address">Your Street Address</span><br>
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="City, State ZIP">City, State ZIP</span>
+        </div>
+
+        <div class="date">
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Date">Date</span>
+        </div>
+
+        <div class="salutation">
+            Dear <span class="fill-in placeholder" contenteditable="true" data-placeholder="Senator/Delegate Name">Senator/Delegate Name</span>,
+        </div>
+
+        <p>I am writing as the parent of an adult son/daughter with severe and multiple disabilities who lives in your district. I am asking you to support the SPARC (Specially Adapted Resource Centers) budget amendment currently before the General Assembly.</p>
+
+        <p>SPARC provides integrated, community-based day services for adults with complex disabilities who are unable to work and require continuous one-to-one personal care support. This is the exact population Virginia has struggled - over decades - to serve in compliance with the Americans with Disabilities Act and the Permanent Injunction issued against Virginia in <em>United States v. Virginia</em>.</p>
+
+        <p>SPARC is not a pilot or a proposal. It is an established, fully operating program already delivering the integrated services the Commonwealth is legally required to provide - at substantially lower cost than Medicaid-funded day programs and with a significantly higher level of programming, including richer community integration, individualized engagement, and meaningful daily activities that far exceed the programs currently serving adults with complex needs.</p>
+
+        <p>Funding SPARC is a strategic, direct, and cost effective way for Virginia to demonstrate measurable progress toward compliance with the Permanent Injunction.</p>
+
+        <p>I urge you to support this budget amendment and help ensure that adults with severe disabilities in Virginia have access to the quality community-based services they deserve.</p>
+
+        <div class="closing">
+            Sincerely,
+        </div>
+
+        <div class="signature-area">
+            <span class="fill-in placeholder signature-line" contenteditable="true" data-placeholder="Your Signature">Your Signature</span><br>
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Your Printed Name">Your Printed Name</span><br>
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Your Phone Number">Your Phone Number</span><br>
+            <span class="fill-in placeholder" contenteditable="true" data-placeholder="Your Email Address">Your Email Address</span>
+        </div>
     </div>
 
-    <div class="date">
-        <span class="fill-in">[Date]</span>
-    </div>
+    <script>
+        // Handle placeholder behavior for contenteditable fields
+        document.querySelectorAll('.fill-in').forEach(field => {
+            const placeholder = field.getAttribute('data-placeholder');
 
-    <div class="salutation">
-        Dear <span class="fill-in">[Title and Name, e.g., Senator Smith]</span>,
-    </div>
+            // Clear placeholder on focus
+            field.addEventListener('focus', function() {
+                if (this.classList.contains('placeholder')) {
+                    this.textContent = '';
+                    this.classList.remove('placeholder');
+                }
+            });
 
-    <p>I am writing as the parent of an adult son/daughter with severe and multiple disabilities who lives in your district. I am asking you to support the SPARC (Specially Adapted Resource Centers) budget amendment currently before the General Assembly.</p>
+            // Restore placeholder if empty on blur
+            field.addEventListener('blur', function() {
+                if (this.textContent.trim() === '') {
+                    this.textContent = placeholder;
+                    this.classList.add('placeholder');
+                    this.classList.remove('edited');
+                } else {
+                    this.classList.add('edited');
+                }
+            });
 
-    <p>SPARC provides integrated, community-based day services for adults with complex disabilities who are unable to work and require continuous one-to-one personal care support. This is the exact population Virginia has struggled - over decades - to serve in compliance with the Americans with Disabilities Act and the Permanent Injunction issued against Virginia in <em>United States v. Virginia</em>.</p>
+            // Mark as edited when typing
+            field.addEventListener('input', function() {
+                if (this.textContent.trim() !== '' && this.textContent !== placeholder) {
+                    this.classList.add('edited');
+                    this.classList.remove('placeholder');
+                }
+            });
+        });
 
-    <p>SPARC is not a pilot or a proposal. It is an established, fully operating program already delivering the integrated services the Commonwealth is legally required to provide - at substantially lower cost than Medicaid-funded day programs and with a significantly higher level of programming, including richer community integration, individualized engagement, and meaningful daily activities that far exceed the programs currently serving adults with complex needs.</p>
+        // Download as PDF using browser print
+        function downloadPDF() {
+            // Remove placeholder styling before printing
+            document.querySelectorAll('.fill-in.placeholder').forEach(field => {
+                field.style.color = '#999';
+            });
+            document.querySelectorAll('.fill-in.edited').forEach(field => {
+                field.style.color = '#333';
+            });
 
-    <p>Funding SPARC is a strategic, direct, and cost effective way for Virginia to demonstrate measurable progress toward compliance with the Permanent Injunction.</p>
-
-    <p>I urge you to support this budget amendment and help ensure that adults with severe disabilities in Virginia have access to the quality community-based services they deserve.</p>
-
-    <div class="closing">
-        Sincerely,
-    </div>
-
-    <div class="signature-area">
-        <span class="fill-in" style="min-width: 250px;">[Your Signature]</span><br><br>
-        <span class="fill-in">[Your Printed Name]</span><br>
-        <span class="fill-in">[Your Phone Number]</span><br>
-        <span class="fill-in">[Your Email Address]</span>
-    </div>
+            window.print();
+        }
+    </script>
 </body>
 </html>
