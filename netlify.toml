@@ -1,0 +1,23 @@
+# Netlify configuration for SPARC website
+
+[build]
+  publish = "."
+
+# Enable pretty URLs (removes .html extension)
+[[redirects]]
+  from = "/*"
+  to = "/:splat.html"
+  status = 200
+  force = false
+
+# Redirect home.html to root
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# Root serves home.html
+[[redirects]]
+  from = "/"
+  to = "/home.html"
+  status = 200
