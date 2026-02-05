@@ -197,6 +197,131 @@
             transform: translateY(-2px);
         }
 
+        /* ZIP Lookup Feature */
+        .zip-lookup-box {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .zip-lookup-box h3 {
+            color: var(--sparc-dark-navy);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .zip-lookup-box > p {
+            color: var(--sparc-charcoal);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .zip-input-group {
+            display: flex;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+        .zip-input-group input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        .zip-input-group input:focus {
+            outline: none;
+            border-color: var(--sparc-royal-blue);
+        }
+        .zip-input-group button {
+            background: var(--sparc-kelly-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .zip-input-group button:hover {
+            background: #3da812;
+        }
+        .zip-results {
+            display: none;
+        }
+        .zip-results.active {
+            display: block;
+        }
+        .zip-results-header {
+            background: var(--sparc-dark-navy);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 0;
+        }
+        .zip-results-header h4 {
+            color: white;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .zip-results-body {
+            border: 2px solid var(--sparc-dark-navy);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 25px;
+        }
+        .legislator-result {
+            padding: 20px;
+            background: var(--sparc-soft-gray);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .legislator-result:last-child {
+            margin-bottom: 0;
+        }
+        .legislator-result h5 {
+            color: var(--sparc-kelly-green);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .legislator-result .name {
+            color: var(--sparc-dark-navy);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .legislator-result .contact-details {
+            font-size: 0.95rem;
+            color: var(--sparc-charcoal);
+        }
+        .legislator-result .contact-details p {
+            margin: 5px 0;
+        }
+        .legislator-result .contact-details a {
+            color: var(--sparc-royal-blue);
+            text-decoration: none;
+        }
+        .legislator-result .contact-details a:hover {
+            text-decoration: underline;
+        }
+        .zip-error {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .zip-error a {
+            color: var(--sparc-royal-blue);
+        }
+
         /* Lookup Section */
         .lookup-section {
             padding: 100px 0;
@@ -455,9 +580,9 @@
                 <li class="nav-item-dropdown">
                     <a href="get-involved.html" class="nav-link active">Get Involved</a>
                     <div class="dropdown-menu">
+                        <a href="advocate.html">Advocate for SPARC</a>
                         <a href="get-involved.html">Volunteer</a>
                         <a href="participants.html">Participants & Families</a>
-                        <a href="advocate.html">Advocate for SPARC</a>
                         <a href="javascript:void(0)" onclick="openMailingListModal()">Join Our Mailing List</a>
                         <a href="https://teamlocker.squadlocker.com/#/lockers/specially-adapted-resource-centers" target="_blank" rel="noopener noreferrer">Purchase SPARC Swag</a>
                     </div>
@@ -549,6 +674,21 @@
                         <span class="fill-in">[Your Printed Name]</span><br>
                         <span class="fill-in">[Your Phone Number]</span><br>
                         <span class="fill-in">[Your Email]</span></p>
+                    </div>
+                </div>
+
+                <!-- ZIP Code Lookup -->
+                <div class="zip-lookup-box">
+                    <h3>Find Your Representatives</h3>
+                    <p>Enter your ZIP code to see your State Senator, Delegate, and County Supervisor with contact information.</p>
+
+                    <div class="zip-input-group">
+                        <input type="text" id="zipInput" placeholder="Enter ZIP" maxlength="5" pattern="[0-9]{5}">
+                        <button onclick="lookupZip()">Search</button>
+                    </div>
+
+                    <div class="zip-results" id="zipResults">
+                        <!-- Results will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -973,6 +1113,157 @@
             // Show corresponding panel
             document.getElementById(county + '-panel').classList.add('active');
         }
+
+        // ZIP Code Legislator Lookup Database
+        const legislatorData = {
+            // Fairfax County ZIP codes
+            '22003': { county: 'Fairfax', supervisor: { name: 'Andres F. Jimenez', district: 'Mason District', email: 'mason@fairfaxcounty.gov', phone: '703-256-7717', address: '6507 Columbia Pike, Annandale, VA 22003' }, senator: { name: 'Saddam Salim', district: 'District 35', email: 'district35@senate.virginia.gov', phone: '804-698-7535', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kathy Tran', district: 'District 42', email: 'DelKTran@house.virginia.gov', phone: '804-698-1042', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22015': { county: 'Fairfax', supervisor: { name: 'Rachna Sizemore Heizer', district: 'Braddock District', email: 'braddock@fairfaxcounty.gov', phone: '703-425-9300', address: '9002 Burke Lake Rd, Burke, VA 22015' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dan Helmer', district: 'District 40', email: 'DelDHelmer@house.virginia.gov', phone: '804-698-1040', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22030': { county: 'Fairfax', supervisor: { name: 'Dalia A. Palchik', district: 'Providence District', email: 'providence@fairfaxcounty.gov', phone: '703-560-6946', address: '8739 Lee Hwy, Fairfax, VA 22031' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Holly Seibold', district: 'District 38', email: 'DelHSeibold@house.virginia.gov', phone: '804-698-1038', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22031': { county: 'Fairfax', supervisor: { name: 'Dalia A. Palchik', district: 'Providence District', email: 'providence@fairfaxcounty.gov', phone: '703-560-6946', address: '8739 Lee Hwy, Fairfax, VA 22031' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Holly Seibold', district: 'District 38', email: 'DelHSeibold@house.virginia.gov', phone: '804-698-1038', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22032': { county: 'Fairfax', supervisor: { name: 'Rachna Sizemore Heizer', district: 'Braddock District', email: 'braddock@fairfaxcounty.gov', phone: '703-425-9300', address: '9002 Burke Lake Rd, Burke, VA 22015' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dan Helmer', district: 'District 40', email: 'DelDHelmer@house.virginia.gov', phone: '804-698-1040', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22033': { county: 'Fairfax', supervisor: { name: 'Kathy L. Smith', district: 'Sully District', email: 'sully@fairfaxcounty.gov', phone: '703-814-7100', address: '4900 Stonecroft Blvd, Chantilly, VA 20151' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Irene Shin', district: 'District 37', email: 'DelIShin@house.virginia.gov', phone: '804-698-1037', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22035': { county: 'Fairfax', supervisor: { name: 'Jeffrey C. McKay', district: 'Chairman (At-Large)', email: 'chairman@fairfaxcounty.gov', phone: '703-324-2321', address: '12000 Government Center Pkwy #530, Fairfax, VA 22035' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Holly Seibold', district: 'District 38', email: 'DelHSeibold@house.virginia.gov', phone: '804-698-1038', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22041': { county: 'Fairfax', supervisor: { name: 'Andres F. Jimenez', district: 'Mason District', email: 'mason@fairfaxcounty.gov', phone: '703-256-7717', address: '6507 Columbia Pike, Annandale, VA 22003' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22042': { county: 'Fairfax', supervisor: { name: 'Andres F. Jimenez', district: 'Mason District', email: 'mason@fairfaxcounty.gov', phone: '703-256-7717', address: '6507 Columbia Pike, Annandale, VA 22003' }, senator: { name: 'Saddam Salim', district: 'District 35', email: 'district35@senate.virginia.gov', phone: '804-698-7535', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kathy Tran', district: 'District 42', email: 'DelKTran@house.virginia.gov', phone: '804-698-1042', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22043': { county: 'Fairfax', supervisor: { name: 'James N. Bierman Jr.', district: 'Dranesville District', email: 'dranesville@fairfaxcounty.gov', phone: '703-356-0551', address: '1437 Balls Hill Rd, McLean, VA 22101' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Karrie Delaney', district: 'District 67', email: 'DelKDelaney@house.virginia.gov', phone: '804-698-1067', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22044': { county: 'Fairfax', supervisor: { name: 'Andres F. Jimenez', district: 'Mason District', email: 'mason@fairfaxcounty.gov', phone: '703-256-7717', address: '6507 Columbia Pike, Annandale, VA 22003' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Mark Sickles', district: 'District 43', email: 'DelMSickles@house.virginia.gov', phone: '804-698-1043', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22046': { county: 'Fairfax', supervisor: { name: 'James N. Bierman Jr.', district: 'Dranesville District', email: 'dranesville@fairfaxcounty.gov', phone: '703-356-0551', address: '1437 Balls Hill Rd, McLean, VA 22101' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Karrie Delaney', district: 'District 67', email: 'DelKDelaney@house.virginia.gov', phone: '804-698-1067', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22101': { county: 'Fairfax', supervisor: { name: 'James N. Bierman Jr.', district: 'Dranesville District', email: 'dranesville@fairfaxcounty.gov', phone: '703-356-0551', address: '1437 Balls Hill Rd, McLean, VA 22101' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Karrie Delaney', district: 'District 67', email: 'DelKDelaney@house.virginia.gov', phone: '804-698-1067', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22102': { county: 'Fairfax', supervisor: { name: 'James N. Bierman Jr.', district: 'Dranesville District', email: 'dranesville@fairfaxcounty.gov', phone: '703-356-0551', address: '1437 Balls Hill Rd, McLean, VA 22101' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Karrie Delaney', district: 'District 67', email: 'DelKDelaney@house.virginia.gov', phone: '804-698-1067', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22124': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22150': { county: 'Fairfax', supervisor: { name: 'Pat Herrity', district: 'Springfield District', email: 'springfield@fairfaxcounty.gov', phone: '703-451-8873', address: '6140 Rolling Rd, Springfield, VA 22152' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dan Helmer', district: 'District 40', email: 'DelDHelmer@house.virginia.gov', phone: '804-698-1040', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22151': { county: 'Fairfax', supervisor: { name: 'Pat Herrity', district: 'Springfield District', email: 'springfield@fairfaxcounty.gov', phone: '703-451-8873', address: '6140 Rolling Rd, Springfield, VA 22152' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Vivian Watts', district: 'District 39', email: 'DelVWatts@house.virginia.gov', phone: '804-698-1039', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22152': { county: 'Fairfax', supervisor: { name: 'Pat Herrity', district: 'Springfield District', email: 'springfield@fairfaxcounty.gov', phone: '703-451-8873', address: '6140 Rolling Rd, Springfield, VA 22152' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Vivian Watts', district: 'District 39', email: 'DelVWatts@house.virginia.gov', phone: '804-698-1039', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22153': { county: 'Fairfax', supervisor: { name: 'Pat Herrity', district: 'Springfield District', email: 'springfield@fairfaxcounty.gov', phone: '703-451-8873', address: '6140 Rolling Rd, Springfield, VA 22152' }, senator: { name: 'Jeremy McPike', district: 'District 29', email: 'district29@senate.virginia.gov', phone: '804-698-7529', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dan Helmer', district: 'District 40', email: 'DelDHelmer@house.virginia.gov', phone: '804-698-1040', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22180': { county: 'Fairfax', supervisor: { name: 'Dalia A. Palchik', district: 'Providence District', email: 'providence@fairfaxcounty.gov', phone: '703-560-6946', address: '8739 Lee Hwy, Fairfax, VA 22031' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Marcus Simon', district: 'District 53', email: 'DelMSimon@house.virginia.gov', phone: '804-698-1053', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22181': { county: 'Fairfax', supervisor: { name: 'Dalia A. Palchik', district: 'Providence District', email: 'providence@fairfaxcounty.gov', phone: '703-560-6946', address: '8739 Lee Hwy, Fairfax, VA 22031' }, senator: { name: 'Stella Pekarsky', district: 'District 36', email: 'district36@senate.virginia.gov', phone: '804-698-7536', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Marcus Simon', district: 'District 53', email: 'DelMSimon@house.virginia.gov', phone: '804-698-1053', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22182': { county: 'Fairfax', supervisor: { name: 'Dalia A. Palchik', district: 'Providence District', email: 'providence@fairfaxcounty.gov', phone: '703-560-6946', address: '8739 Lee Hwy, Fairfax, VA 22031' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Marcus Simon', district: 'District 53', email: 'DelMSimon@house.virginia.gov', phone: '804-698-1053', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22306': { county: 'Fairfax', supervisor: { name: 'Daniel G. Storck', district: 'Mount Vernon District', email: 'mtvernon@fairfaxcounty.gov', phone: '703-780-7518', address: '2511 Parkers Lane, Alexandria, VA 22306' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Paul Krizek', district: 'District 44', email: 'DelPKrizek@house.virginia.gov', phone: '804-698-1044', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22307': { county: 'Fairfax', supervisor: { name: 'Daniel G. Storck', district: 'Mount Vernon District', email: 'mtvernon@fairfaxcounty.gov', phone: '703-780-7518', address: '2511 Parkers Lane, Alexandria, VA 22306' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Paul Krizek', district: 'District 44', email: 'DelPKrizek@house.virginia.gov', phone: '804-698-1044', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22308': { county: 'Fairfax', supervisor: { name: 'Daniel G. Storck', district: 'Mount Vernon District', email: 'mtvernon@fairfaxcounty.gov', phone: '703-780-7518', address: '2511 Parkers Lane, Alexandria, VA 22306' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Paul Krizek', district: 'District 44', email: 'DelPKrizek@house.virginia.gov', phone: '804-698-1044', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22309': { county: 'Fairfax', supervisor: { name: 'Daniel G. Storck', district: 'Mount Vernon District', email: 'mtvernon@fairfaxcounty.gov', phone: '703-780-7518', address: '2511 Parkers Lane, Alexandria, VA 22306' }, senator: { name: 'Scott Surovell', district: 'District 34', email: 'district34@senate.virginia.gov', phone: '804-698-7534', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Paul Krizek', district: 'District 44', email: 'DelPKrizek@house.virginia.gov', phone: '804-698-1044', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22310': { county: 'Fairfax', supervisor: { name: 'Rodney L. Lusk', district: 'Franconia District', email: 'franconia@fairfaxcounty.gov', phone: '703-971-6262', address: '6121 Franconia Rd, Alexandria, VA 22310' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Mark Sickles', district: 'District 43', email: 'DelMSickles@house.virginia.gov', phone: '804-698-1043', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22311': { county: 'Fairfax', supervisor: { name: 'Rodney L. Lusk', district: 'Franconia District', email: 'franconia@fairfaxcounty.gov', phone: '703-971-6262', address: '6121 Franconia Rd, Alexandria, VA 22310' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22312': { county: 'Fairfax', supervisor: { name: 'Andres F. Jimenez', district: 'Mason District', email: 'mason@fairfaxcounty.gov', phone: '703-256-7717', address: '6507 Columbia Pike, Annandale, VA 22003' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Mark Sickles', district: 'District 43', email: 'DelMSickles@house.virginia.gov', phone: '804-698-1043', address: 'P.O. Box 406, Richmond, VA 23218' }},
+
+            // Arlington County ZIP codes
+            '22201': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Alfonso Lopez', district: 'District 49', email: 'DelALopez@house.virginia.gov', phone: '804-698-1049', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22202': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22203': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Alfonso Lopez', district: 'District 49', email: 'DelALopez@house.virginia.gov', phone: '804-698-1049', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22204': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Alfonso Lopez', district: 'District 49', email: 'DelALopez@house.virginia.gov', phone: '804-698-1049', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22205': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Patrick Hope', district: 'District 47', email: 'DelPHope@house.virginia.gov', phone: '804-698-1047', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22206': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22207': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Patrick Hope', district: 'District 47', email: 'DelPHope@house.virginia.gov', phone: '804-698-1047', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22209': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Alfonso Lopez', district: 'District 49', email: 'DelALopez@house.virginia.gov', phone: '804-698-1049', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22213': { county: 'Arlington', supervisor: { name: 'Arlington County Board', district: 'At-Large', email: 'Countyboard@arlingtonva.us', phone: '703-228-3130', address: '2100 Clarendon Blvd #300, Arlington, VA 22201' }, senator: { name: 'Barbara Favola', district: 'District 31', email: 'district31@senate.virginia.gov', phone: '804-698-7531', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Patrick Hope', district: 'District 47', email: 'DelPHope@house.virginia.gov', phone: '804-698-1047', address: 'P.O. Box 406, Richmond, VA 23218' }},
+
+            // Alexandria City ZIP codes
+            '22301': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22302': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22304': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22305': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22314': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Charniele Herring', district: 'District 46', email: 'DelCHerring@house.virginia.gov', phone: '804-698-1046', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '22315': { county: 'Alexandria', supervisor: { name: 'Alexandria City Council', district: 'At-Large', email: 'council@alexandriava.gov', phone: '703-746-4500', address: '301 King St, Alexandria, VA 22314' }, senator: { name: 'Adam Ebbin', district: 'District 30', email: 'district30@senate.virginia.gov', phone: '804-698-7530', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Mark Sickles', district: 'District 43', email: 'DelMSickles@house.virginia.gov', phone: '804-698-1043', address: 'P.O. Box 406, Richmond, VA 23218' }},
+
+            // Loudoun County ZIP codes
+            '20105': { county: 'Loudoun', supervisor: { name: 'Phyllis J. Randall', district: 'Chair (At-Large)', email: 'Phyllis.Randall@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'David Reid', district: 'District 32', email: 'DelDReid@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20120': { county: 'Loudoun', supervisor: { name: 'Kathy L. Smith', district: 'Sully District', email: 'sully@fairfaxcounty.gov', phone: '703-814-7100', address: '4900 Stonecroft Blvd, Chantilly, VA 20151' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Irene Shin', district: 'District 37', email: 'DelIShin@house.virginia.gov', phone: '804-698-1037', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20129': { county: 'Loudoun', supervisor: { name: 'Caleb A. Kershner', district: 'Catoctin District', email: 'Caleb.Kershner@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'John McGuire', district: 'District 10', email: 'district10@senate.virginia.gov', phone: '804-698-7510', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dave LaRock', district: 'District 30', email: 'DelDLaRock@house.virginia.gov', phone: '804-698-1030', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20132': { county: 'Loudoun', supervisor: { name: 'Caleb A. Kershner', district: 'Catoctin District', email: 'Caleb.Kershner@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'John McGuire', district: 'District 10', email: 'district10@senate.virginia.gov', phone: '804-698-7510', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dave LaRock', district: 'District 30', email: 'DelDLaRock@house.virginia.gov', phone: '804-698-1030', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20147': { county: 'Loudoun', supervisor: { name: 'Juli E. Briskman', district: 'Algonkian District', email: 'Juli.Briskman@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20148': { county: 'Loudoun', supervisor: { name: 'Michael R. Turner', district: 'Ashburn District', email: 'Mike.Turner@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20151': { county: 'Fairfax', supervisor: { name: 'Kathy L. Smith', district: 'Sully District', email: 'sully@fairfaxcounty.gov', phone: '703-814-7100', address: '4900 Stonecroft Blvd, Chantilly, VA 20151' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Irene Shin', district: 'District 37', email: 'DelIShin@house.virginia.gov', phone: '804-698-1037', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20152': { county: 'Loudoun', supervisor: { name: 'Matthew F. Letourneau', district: 'Dulles District', email: 'Matt.Letourneau@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20164': { county: 'Loudoun', supervisor: { name: 'Koran T. Saines', district: 'Sterling District', email: 'Koran.Saines@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20165': { county: 'Loudoun', supervisor: { name: 'Koran T. Saines', district: 'Sterling District', email: 'Koran.Saines@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20166': { county: 'Loudoun', supervisor: { name: 'Koran T. Saines', district: 'Sterling District', email: 'Koran.Saines@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20170': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kenneth Plum', district: 'District 36', email: 'DelKPlum@house.virginia.gov', phone: '804-698-1036', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20171': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kenneth Plum', district: 'District 36', email: 'DelKPlum@house.virginia.gov', phone: '804-698-1036', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20175': { county: 'Loudoun', supervisor: { name: 'Kristen C. Umstattd', district: 'Leesburg District', email: 'Kristen.Umstattd@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20176': { county: 'Loudoun', supervisor: { name: 'Kristen C. Umstattd', district: 'Leesburg District', email: 'Kristen.Umstattd@loudoun.gov', phone: '703-777-0204', address: '1 Harrison St SE, 5th Floor, Leesburg, VA 20175' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Suhas Subramanyam', district: 'District 32', email: 'DelSSubramanyam@house.virginia.gov', phone: '804-698-1032', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20190': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kenneth Plum', district: 'District 36', email: 'DelKPlum@house.virginia.gov', phone: '804-698-1036', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20191': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kenneth Plum', district: 'District 36', email: 'DelKPlum@house.virginia.gov', phone: '804-698-1036', address: 'P.O. Box 406, Richmond, VA 23218' }},
+            '20194': { county: 'Fairfax', supervisor: { name: 'Walter L. Alcorn', district: 'Hunter Mill District', email: 'huntermill@fairfaxcounty.gov', phone: '703-478-0283', address: '12000 Bowman Towne Dr, Reston, VA 20190' }, senator: { name: 'Jennifer Boysko', district: 'District 33', email: 'district33@senate.virginia.gov', phone: '804-698-7533', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Kenneth Plum', district: 'District 36', email: 'DelKPlum@house.virginia.gov', phone: '804-698-1036', address: 'P.O. Box 406, Richmond, VA 23218' }},
+
+            // Warren County (Front Royal area)
+            '22630': { county: 'Warren', supervisor: { name: 'Warren County Board of Supervisors', district: 'At-Large', email: 'bos@warrencountyva.net', phone: '540-636-4600', address: '220 N Commerce Ave #100, Front Royal, VA 22630' }, senator: { name: 'Mark Obenshain', district: 'District 26', email: 'district26@senate.virginia.gov', phone: '804-698-7526', address: 'P.O. Box 396, Richmond, VA 23218' }, delegate: { name: 'Dave LaRock', district: 'District 30', email: 'DelDLaRock@house.virginia.gov', phone: '804-698-1030', address: 'P.O. Box 406, Richmond, VA 23218' }}
+        };
+
+        // ZIP lookup function
+        function lookupZip() {
+            const zipInput = document.getElementById('zipInput').value.trim();
+            const resultsDiv = document.getElementById('zipResults');
+
+            // Validate ZIP
+            if (!/^\d{5}$/.test(zipInput)) {
+                resultsDiv.innerHTML = '<div class="zip-error">Please enter a valid 5-digit ZIP code.</div>';
+                resultsDiv.classList.add('active');
+                return;
+            }
+
+            const data = legislatorData[zipInput];
+
+            if (data) {
+                // Track the lookup in GA
+                gtag('event', 'zip_lookup', {'event_category': 'advocacy', 'event_label': zipInput});
+
+                let html = `
+                    <div class="zip-results-header">
+                        <h4>Representatives for ${zipInput} (${data.county} County)</h4>
+                    </div>
+                    <div class="zip-results-body">
+                        <div class="legislator-result">
+                            <h5>State Senator</h5>
+                            <div class="name">${data.senator.name}</div>
+                            <div class="contact-details">
+                                <p><strong>${data.senator.district}</strong></p>
+                                <p><strong>Email:</strong> <a href="mailto:${data.senator.email}">${data.senator.email}</a></p>
+                                <p><strong>Phone:</strong> ${data.senator.phone}</p>
+                                <p><strong>Address:</strong> ${data.senator.address}</p>
+                            </div>
+                        </div>
+                        <div class="legislator-result">
+                            <h5>Delegate</h5>
+                            <div class="name">${data.delegate.name}</div>
+                            <div class="contact-details">
+                                <p><strong>${data.delegate.district}</strong></p>
+                                <p><strong>Email:</strong> <a href="mailto:${data.delegate.email}">${data.delegate.email}</a></p>
+                                <p><strong>Phone:</strong> ${data.delegate.phone}</p>
+                                <p><strong>Address:</strong> ${data.delegate.address}</p>
+                            </div>
+                        </div>
+                        <div class="legislator-result">
+                            <h5>${data.county === 'Alexandria' ? 'City Council' : 'County Supervisor'}</h5>
+                            <div class="name">${data.supervisor.name}</div>
+                            <div class="contact-details">
+                                <p><strong>${data.supervisor.district}</strong></p>
+                                <p><strong>Email:</strong> <a href="mailto:${data.supervisor.email}">${data.supervisor.email}</a></p>
+                                <p><strong>Phone:</strong> ${data.supervisor.phone}</p>
+                                <p><strong>Address:</strong> ${data.supervisor.address}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultsDiv.innerHTML = html;
+                resultsDiv.classList.add('active');
+            } else {
+                resultsDiv.innerHTML = `
+                    <div class="zip-error">
+                        <p>ZIP code ${zipInput} is not in our Northern Virginia database.</p>
+                        <p style="margin-top: 15px;">Use Virginia's official lookup tool: <a href="https://whosmy.virginiageneralassembly.gov/" target="_blank">Who's My Legislator?</a></p>
+                    </div>
+                `;
+                resultsDiv.classList.add('active');
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('zipInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                lookupZip();
+            }
+        });
     </script>
 
 </body>
