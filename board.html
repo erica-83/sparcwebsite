@@ -296,6 +296,79 @@
             flex-wrap: wrap;
         }
 
+        /* Login Styles */
+        .login-container {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: var(--sparc-soft-gray);
+        }
+        .login-box {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-box h2 {
+            color: var(--sparc-dark-navy);
+            margin-bottom: 10px;
+        }
+        .login-box p {
+            color: var(--sparc-charcoal);
+            margin-bottom: 30px;
+        }
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--sparc-dark-navy);
+        }
+        .login-form input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--sparc-royal-blue);
+        }
+        .login-form button {
+            width: 100%;
+            padding: 14px;
+            background: var(--sparc-royal-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-form button:hover {
+            background: var(--sparc-dark-navy);
+        }
+        .login-error {
+            color: #d32f2f;
+            margin-top: 15px;
+            display: none;
+        }
+        .protected-content {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .executive-grid {
@@ -393,6 +466,27 @@
     </header>
 
     <main id="main-content">
+        <!-- Login Section -->
+        <section class="login-container" id="login-section">
+            <div class="login-box">
+                <h2>Board Portal Login</h2>
+                <p>This area is for SPARC Board Members only.</p>
+                <form class="login-form" id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit">Log In</button>
+                    <p class="login-error" id="login-error">Invalid username or password. Please try again.</p>
+                </form>
+            </div>
+        </section>
+
+        <div id="protected-content" class="protected-content">
         <!-- Hero Section -->
         <section class="board-hero">
             <div class="container">
@@ -601,6 +695,7 @@
                 </div>
             </div>
         </section>
+        </div><!-- End protected-content -->
     </main>
 
     <!-- Footer -->
@@ -677,6 +772,41 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        (function() {
+            const validCredentials = {
+                username: 'SPARCboard',
+                password: 'SPARCboard2026!@'
+            };
+
+            const loginSection = document.getElementById('login-section');
+            const protectedContent = document.getElementById('protected-content');
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+
+            // Check if already logged in this session
+            if (sessionStorage.getItem('sparc_board_authenticated') === 'true') {
+                loginSection.style.display = 'none';
+                protectedContent.style.display = 'block';
+            }
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === validCredentials.username && password === validCredentials.password) {
+                    sessionStorage.setItem('sparc_board_authenticated', 'true');
+                    loginSection.style.display = 'none';
+                    protectedContent.style.display = 'block';
+                    loginError.style.display = 'none';
+                } else {
+                    loginError.style.display = 'block';
+                }
+            });
+        })();
+    </script>
 
 <!-- Mailing List Modal -->
 <div class="mailing-list-modal-overlay" id="mailingListModal">
