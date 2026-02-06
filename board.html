@@ -466,27 +466,6 @@
     </header>
 
     <main id="main-content">
-        <!-- Login Section -->
-        <section class="login-container" id="login-section">
-            <div class="login-box">
-                <h2>Board Portal Login</h2>
-                <p>This area is for SPARC Board Members only.</p>
-                <form class="login-form" id="login-form">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" required placeholder="Enter your username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required placeholder="Enter your password">
-                    </div>
-                    <button type="submit">Log In</button>
-                    <p class="login-error" id="login-error">Invalid username or password. Please try again.</p>
-                </form>
-            </div>
-        </section>
-
-        <div id="protected-content" class="protected-content">
         <!-- Hero Section -->
         <section class="board-hero">
             <div class="container">
@@ -501,17 +480,6 @@
                 <div class="board-intro-content">
                     <h2>Leadership That Makes a Difference</h2>
                     <p>Our Board of Directors brings together experienced professionals from diverse backgrounds who share a common passion: creating opportunities for adults with severe and multiple disabilities to thrive in their communities. Their guidance, expertise, and dedication help ensure SPARC continues to grow and serve Northern Virginia effectively.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Board Calendar -->
-        <section style="padding: 60px 0; background: white;">
-            <div class="container">
-                <p class="section-label">Schedule</p>
-                <h2 class="section-title">Board Calendar</h2>
-                <div style="display: flex; justify-content: center;">
-                    <iframe src="https://calendar.google.com/calendar/embed?src=c_e95f9ddb4970bbe83f8d31c7ab6cc84b9edd6228cbcf11e40cfd7a908739f332%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
         </section>
@@ -706,7 +674,43 @@
                 </div>
             </div>
         </section>
-        </div><!-- End protected-content -->
+
+        <!-- Board Portal -->
+        <section style="padding: 80px 0; background: linear-gradient(135deg, var(--sparc-dark-navy) 0%, var(--sparc-royal-blue) 100%);">
+            <div class="container">
+                <div style="text-align: center; color: white; margin-bottom: 40px;">
+                    <p class="section-label" style="color: var(--sparc-kelly-green);">Board Members</p>
+                    <h2 style="color: white; font-size: 2.25rem; margin-bottom: 15px;">Board Portal</h2>
+                    <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Access the board calendar, meeting materials, and resources.</p>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-section" style="max-width: 450px; margin: 0 auto;">
+                    <div class="login-box">
+                        <form class="login-form" id="login-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required placeholder="Enter your username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                            </div>
+                            <button type="submit">Log In</button>
+                            <p class="login-error" id="login-error">Invalid username or password. Please try again.</p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Protected Content (Calendar) -->
+                <div id="protected-content" class="protected-content">
+                    <div style="background: white; border-radius: 16px; padding: 40px; margin-top: 20px;">
+                        <h3 style="text-align: center; color: var(--sparc-dark-navy); margin-bottom: 30px;">Board Calendar</h3>
+                        <iframe src="https://calendar.google.com/calendar/embed?src=c_e95f9ddb4970bbe83f8d31c7ab6cc84b9edd6228cbcf11e40cfd7a908739f332%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
