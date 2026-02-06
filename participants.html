@@ -189,15 +189,15 @@
                 <p>Please enter your credentials to access this page</p>
                 <form class="login-form" id="login-form">
                     <div class="form-group">
-                        <label for="username">Email</label>
-                        <input type="email" id="username" name="username" required placeholder="Enter your email">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" required placeholder="Enter your password">
                     </div>
                     <button type="submit">Log In</button>
-                    <p class="login-error" id="login-error">Invalid email or password. Please try again.</p>
+                    <p class="login-error" id="login-error">Invalid username or password. Please try again.</p>
                     <p class="forgot-password" style="margin-top: 20px;">
                         <a href="#" id="forgot-password-link" style="color: var(--sparc-royal-blue, #2196F3); text-decoration: none;">Forgot your password?</a>
                     </p>
@@ -342,7 +342,7 @@
     <script>
         (function() {
             const validCredentials = {
-                username: 'erica@sparcsolutions.org',
+                username: 'SPARCfamily',
                 password: 'SPARC2026!@'
             };
 
