@@ -12,9 +12,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SPARC - Specially Adapted Resource Centers. Where adults with disabilities thrive. Community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia.">
-    <meta name="keywords" content="SPARC, disability services, Northern Virginia, community integration, adults with disabilities, day programs">
-    <title>SPARC - Specially Adapted Resource Centers | Where Adults with Disabilities Thrive</title>
+    <meta name="description" content="Support SPARC's mission to provide community-integrated day programs for adults with severe and multiple disabilities. Your donation makes a difference.">
+    <title>Donate | SPARC - Specially Adapted Resource Centers</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,90 +23,132 @@
     <!-- Styles -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        .footer a { color: white; }
 
-        /* Sponsor Carousel Styles */
-        .sponsor-carousel-section {
-            padding: 60px 0;
-            background: white;
-        }
-        .sponsor-carousel-section .section-header {
+    <style>
+        .impact-highlight {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            padding: 80px 0;
+            color: white;
             text-align: center;
-            margin-bottom: 40px;
         }
-        .sponsor-carousel-section .section-header h2 {
-            color: var(--sparc-dark-navy);
-            margin-bottom: 0.5rem;
+        .impact-highlight h2 {
+            color: white;
+            margin-bottom: 1rem;
         }
-        .sponsor-carousel-section .section-header p {
-            color: var(--sparc-dark-navy);
+        .impact-highlight p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
-        .sponsor-carousel-wrapper {
-            overflow: hidden;
-            position: relative;
+        .impact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
         }
-        .sponsor-carousel-wrapper::before,
-        .sponsor-carousel-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100px;
-            z-index: 2;
-            pointer-events: none;
+        .impact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
         }
-        .sponsor-carousel-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, white, transparent);
+        .impact-card .amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
         }
-        .sponsor-carousel-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, white, transparent);
+        .impact-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
         }
-        .sponsor-carousel {
-            overflow: hidden;
+        a.impact-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.18);
         }
-        .sponsor-track {
-            display: flex;
-            width: max-content;
-        }
-        .sponsor-slide {
-            flex-shrink: 0;
-            width: 280px;
-            height: 140px;
-            margin: 0 20px;
+        .donate-amounts .amount-btn {
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
+            color: var(--dark-gray);
         }
-        .sponsor-slide img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            transition: all 0.3s ease;
+        .ways-to-give {
+            padding: 80px 0;
         }
-        .sponsor-slide:hover img {
-            transform: scale(1.05);
+        .give-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .give-card {
+            background: var(--off-white);
+            padding: 35px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-orange);
+        }
+        .give-card h3 {
+            margin-bottom: 15px;
+        }
+        .give-card p {
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+        }
+        .recognition-section {
+            background: var(--off-white);
+            padding: 80px 0;
+        }
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .recognition-level {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .recognition-level h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        .recognition-level .level-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+        }
+        .recognition-level ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            text-align: left;
+        }
+        .recognition-level li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .recognition-level li:last-child {
+            border-bottom: none;
         }
         @media (max-width: 768px) {
-            .sponsor-slide {
-                width: 200px;
-                height: 100px;
-                margin: 0 25px;
+            .impact-cards {
+                grid-template-columns: 1fr;
             }
-            .sponsor-slide img {
-                max-height: 80px;
+            .give-options {
+                grid-template-columns: 1fr;
             }
-            .sponsor-carousel-wrapper::before,
-            .sponsor-carousel-wrapper::after {
-                width: 50px;
+            .recognition-grid {
+                grid-template-columns: 1fr;
             }
         }
-    </style>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    </style>
 </head>
 <body>
     <!-- Skip to Content Link -->
@@ -121,7 +162,7 @@
             </a>
 
             <ul class="nav-menu">
-                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-item-dropdown">
                     <a href="/about/" class="nav-link">About</a>
                     <div class="dropdown-menu">
@@ -160,7 +201,7 @@
                         <a href="https://teamlocker.squadlocker.com/#/lockers/specially-adapted-resource-centers" target="_blank" rel="noopener noreferrer">Purchase SPARC Swag</a>
                     </div>
                 </li>
-                <li><a href="/donate-checkout/" class="nav-link nav-donate">Donate</a></li>
+                <li><a href="/donate-checkout/" class="nav-link nav-donate active">Donate</a></li>
             </ul>
 
             <div class="mobile-toggle">
@@ -171,201 +212,225 @@
         </nav>
     </header>
 
-    <!-- Hero Section with YouTube Video -->
-    <section class="hero">
-        <div class="hero-video-container">
-            <iframe
-                src="https://www.youtube.com/embed/vziM6GpFYpo?autoplay=1&mute=1&loop=1&playlist=vziM6GpFYpo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="hero-video-iframe">
-            </iframe>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Where Adults with Disabilities Thrive</h1>
-            <p class="hero-subtitle">Providing community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia since 2006</p>
-            <div class="hero-buttons">
-                <a href="/programs/" class="btn btn-primary btn-lg">Explore Our Programs</a>
-                <a href="/donate-checkout/" class="btn btn-secondary btn-lg">Support Our Mission</a>
-            </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Support Our Mission</h1>
+            <p>Your generosity helps adults with disabilities access the community-based programs they deserve</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Mission Section -->
-        <section class="mission-section">
+        <!-- Donate Section -->
+        <section class="donate-section">
             <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-content fade-in">
-                        <h2>Filling the Gap in Virginia's Safety Net</h2>
-                        <p>SPARC is the only nonprofit in Virginia organized to provide community-integrated day programs for adults with severe and multiple disabilities who require 1:1 support for all daily activities and are not able to work. We exist because families in need created us when there was no other option.</p>
-                        <p>Our participants have aged out of the K-12 special education system, lost access to school-based supports, and require direct support every hour of every day. SPARC delivers community-integrated day services that directly advance Virginia's obligations under <em>United States v. Virginia</em> and the ADA's integration mandate.</p>
-                        <a href="/about/" class="btn btn-outline">Learn More About Us</a>
+                <div class="donate-grid">
+                    <div class="donate-info fade-in">
+                        <h2>Why Your Gift Matters</h2>
+                        <p>SPARC is the only nonprofit in Virginia providing community-integrated day programs specifically designed for adults with severe and multiple disabilities. We exist because families created us when there was no other option.</p>
+                        <p>Since 2006, SPARC has survived on an unstable combination of modest participant payments, private donations, and grants. All of our participants live below the federal poverty line. Your donation directly supports:</p>
+
+                        <ul class="impact-list">
+                            <li>
+                                <span class="check">&#10003;</span>
+                                <span>Daily programming for adults who have nowhere else to turn</span>
+                            </li>
+                            <li>
+                                <span class="check">&#10003;</span>
+                                <span>Need-based scholarships ensuring access regardless of ability to pay</span>
+                            </li>
+                            <li>
+                                <span class="check">&#10003;</span>
+                                <span>Expansion to serve more adults across Virginia</span>
+                            </li>
+                            <li>
+                                <span class="check">&#10003;</span>
+                                <span>Specialized staff trained in supporting complex needs</span>
+                            </li>
+                            <li>
+                                <span class="check">&#10003;</span>
+                                <span>Community integration activities that build belonging</span>
+                            </li>
+                        </ul>
+
+                        <p><strong>SPARC is a 501(c)(3) nonprofit organization.</strong> Your donation is tax-deductible to the fullest extent allowed by law.</p>
                     </div>
-                    <div class="mission-image fade-in">
-                        <img src="/images/Augie and his mom Kathy.jpg" alt="SPARC participant with family member">
+
+                    <div class="donate-form-container fade-in" id="donate-form">
+                        <h3 style="font-family: var(--font-heading); color: var(--sparc-dark-navy); font-size: 1.3rem; margin-bottom: 8px;">Make a Donation</h3>
+                        <p style="color: var(--medium-gray); margin-bottom: 25px;">Choose a giving level to get started. Secure processing via Stripe, PayPal, or Venmo.</p>
+
+                        <div class="donate-amounts">
+                            <a href="donate-checkout.html?level=4948992" class="amount-btn">$10</a>
+                            <a href="donate-checkout.html?level=4948993" class="amount-btn">$50</a>
+                            <a href="donate-checkout.html?level=4948994" class="amount-btn">$100</a>
+                            <a href="donate-checkout.html?level=4948995" class="amount-btn">$250</a>
+                            <a href="donate-checkout.html?level=4948997" class="amount-btn">$750</a>
+                            <a href="donate-checkout.html?level=4948999" class="amount-btn">$9,000</a>
+                        </div>
+
+                        <a href="/donate-checkout/" class="btn btn-primary btn-lg" style="width: 100%; display: block; text-align: center; margin-top: 10px;">Donate Now</a>
+
+                        <p style="font-size: 0.85rem; color: var(--medium-gray); margin-top: 15px; text-align: center;">
+                            Or <a href="donate-checkout.html?level=other-option" style="color: var(--primary-blue); text-decoration: underline;">enter a custom amount</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Impact Stats -->
-        <section class="stats-section">
+        <!-- Impact Section -->
+        <section class="impact-highlight">
             <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="5">5</div>
-                        <div class="stat-label">Centers in Northern Virginia</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="20">20</div>
-                        <div class="stat-label">Years of Service</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="65">65</div>
-                        <div class="stat-label">Current Participants</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">$21.5k</div>
-                        <div class="stat-label">Cost Per Participant (vs. $58,264 for Medicaid)</div>
-                    </div>
+                <h2 class="fade-in">Your Impact</h2>
+                <p class="fade-in">Every dollar you give goes directly to supporting adults with disabilities. Here's what your gift can do:</p>
+
+                <div class="impact-cards">
+                    <a href="donate-checkout.html?level=4948992" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$10</div>
+                        <p>Stock a day of materials that make learning, creating, and practicing skills possible</p>
+                    </a>
+                    <a href="donate-checkout.html?level=4948993" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$50</div>
+                        <p>Power a structured life skills class that builds real-world confidence</p>
+                    </a>
+                    <a href="donate-checkout.html?level=4948994" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$100</div>
+                        <p>Make an inclusive community outing possible for 10 people, creating connection and belonging</p>
+                    </a>
+                    <a href="donate-checkout.html?level=4948995" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$250</div>
+                        <p>Sponsor a month of Zumba for 30 participants</p>
+                    </a>
+                    <a href="donate-checkout.html?level=4948997" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$750</div>
+                        <p>Cover one month of SPARC attendance, ensuring structure, support, and growth</p>
+                    </a>
+                    <a href="donate-checkout.html?level=4948999" class="impact-card fade-in" style="text-decoration: none; color: white; cursor: pointer; transition: transform 0.2s ease;">
+                        <div class="amount">$9,000</div>
+                        <p>Sponsor a full year of daily SPARC attendance, delivering consistent support and life-changing momentum</p>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Programs Section -->
-        <section class="programs-section">
+        <!-- Ways to Give -->
+        <section class="ways-to-give">
             <div class="container">
                 <div class="section-header fade-in">
-                    <h2 style="font-size: 200%;">Our Programs</h2>
-                    <p>SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities.</p>
+                    <h2>Ways to Give</h2>
+                    <p>There are many ways to support SPARC's mission</p>
                 </div>
-                <div class="programs-grid">
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Food Pantry.png" alt="Community integration activities" style="object-position: center 20%;">
-                        </div>
-                        <div class="program-content">
-                            <h3>Community Integration</h3>
-                            <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging and independence.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
+
+                <div class="give-options">
+                    <div class="give-card fade-in">
+                        <h3>One-Time Gift</h3>
+                        <p>Make an immediate impact with a single donation of any amount. Your gift will directly support programming for adults with disabilities.</p>
+                        <a href="/donate-checkout/" class="btn btn-outline">Give Once</a>
                     </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/art therapy.jpg" alt="Art therapy program" style="object-position: center 20%;">
-                        </div>
-                        <div class="program-content">
-                            <h3>Art Therapy</h3>
-                            <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
+                    <div class="give-card fade-in">
+                        <h3>Monthly Giving</h3>
+                        <p>Join our community of monthly supporters. Recurring gifts provide sustainable funding that allows us to plan for the future.</p>
+                        <a href="donate-checkout.html?recurring=true" class="btn btn-outline">Give Monthly</a>
                     </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Regatta SPARC friends.jpg" alt="Social engagement activities">
-                        </div>
-                        <div class="program-content">
-                            <h3>Social Engagement</h3>
-                            <p>Building meaningful friendships and connections through group activities, recreational programs, and community events.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
+                    <div class="give-card fade-in">
+                        <h3>Corporate Sponsorship</h3>
+                        <p>Partner with SPARC through event sponsorship, matching gifts, or corporate giving programs. Contact us to discuss partnership opportunities.</p>
+                        <a href="/contact/" class="btn btn-outline">Contact Us</a>
+                    </div>
+                    <div class="give-card fade-in">
+                        <h3>Planned Giving</h3>
+                        <p>Include SPARC in your estate plans through bequests, charitable trusts, or beneficiary designations to create a lasting legacy.</p>
+                        <a href="/contact/" class="btn btn-outline">Learn More</a>
+                    </div>
+                    <div class="give-card fade-in">
+                        <h3>In-Kind Donations</h3>
+                        <p>Donate goods, services, or expertise. We regularly need art supplies, office equipment, event support, and professional services.</p>
+                        <a href="/contact/" class="btn btn-outline">See What's Needed</a>
+                    </div>
+                    <div class="give-card fade-in">
+                        <h3>Host a Fundraiser</h3>
+                        <p>Rally your community to support SPARC. We'll provide materials and support for your birthday fundraiser, athletic challenge, or creative event.</p>
+                        <a href="/contact/" class="btn btn-outline">Start a Fundraiser</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonial Section -->
+        <!-- Recognition Section -->
+        <section class="recognition-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Donor Recognition</h2>
+                    <p>We're grateful for supporters at every level</p>
+                </div>
+
+                <div class="recognition-grid">
+                    <div class="recognition-level fade-in">
+                        <h4>Friend</h4>
+                        <div class="level-amount">$1 - $249</div>
+                        <ul>
+                            <li>Newsletter subscription</li>
+                            <li>Recognition in annual report</li>
+                        </ul>
+                    </div>
+                    <div class="recognition-level fade-in">
+                        <h4>Supporter</h4>
+                        <div class="level-amount">$250 - $999</div>
+                        <ul>
+                            <li>All Friend benefits</li>
+                            <li>Invitation to donor events</li>
+                            <li>Center tour invitation</li>
+                        </ul>
+                    </div>
+                    <div class="recognition-level fade-in">
+                        <h4>Champion</h4>
+                        <div class="level-amount">$1,000 - $4,999</div>
+                        <ul>
+                            <li>All Supporter benefits</li>
+                            <li>Recognition at events</li>
+                            <li>Personal update from staff</li>
+                        </ul>
+                    </div>
+                    <div class="recognition-level fade-in">
+                        <h4>Visionary</h4>
+                        <div class="level-amount">$5,000+</div>
+                        <ul>
+                            <li>All Champion benefits</li>
+                            <li>Named recognition opportunity</li>
+                            <li>Annual meeting with leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
         <section class="testimonial-section">
             <div class="container">
                 <div class="testimonial-content fade-in">
-                    <p class="testimonial-quote">"SPARC is filling a hole in our safety net. I view it as a kind of pilot for the state."</p>
-                    <p class="testimonial-author">Senator Janet Howell</p>
-                    <p class="testimonial-role">Virginia State Senator</p>
+                    <p class="testimonial-quote">Virginia, not indigent families and private donors, is responsible for ensuring and funding integrated day services for people with significant disabilities. SPARC is now carrying a state obligation on the backs of families least able to bear it.</p>
+                    <p class="testimonial-author">From SPARC's State Funding Request</p>
+                    <p class="testimonial-role">2025</p>
                 </div>
             </div>
         </section>
 
-        <!-- Why SPARC Section -->
-        <section class="mission-section bg-light">
+        <!-- Events -->
+        <section class="about-content bg-light">
             <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-image fade-in">
-                        <img src="/images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC community event">
+                <div class="about-grid">
+                    <div class="about-image fade-in">
+                        <img src="/images/SPARC-Gala 2025-Photo-402.jpg" alt="An Evening to SPARCle">
                     </div>
-                    <div class="mission-content fade-in">
-                        <h2>Why SPARC Matters</h2>
-                        <p>Federal civil rights law requires Virginia to provide services to people with disabilities in community-based settings. Despite nearly two decades of efforts, Virginia remains under a permanent injunction for failing to meet these obligations.</p>
-                        <p>SPARC's innovative participant-directed model is both cost-effective and person-centered. By enabling individuals to bring their own Direct Support Professional, we ensure continuity of care while keeping costs at just over $21,000 per participant annually - compared to $58,264 through traditional Medicaid services.</p>
-                        <p>Leaders across Virginia - from U.S. Senators Tim Kaine and Mark Warner to local county supervisors - recognize SPARC's value and have championed our growth.</p>
-                        <a href="/donate-checkout/" class="btn btn-primary">Support Our Work</a>
+                    <div class="about-text fade-in">
+                        <h2>An Evening to SPARCle</h2>
+                        <p>Join us each year for our signature fundraising event - An Evening to SPARCle. This elegant evening brings together participants, families, staff, donors, and community leaders to celebrate our impact and raise funds for the year ahead.</p>
+                        <p>The event features raffles, entertainment, and heartfelt stories from the SPARC community. It's our largest fundraising event of the year.</p>
+                        <p><strong>Interested in attending or sponsoring?</strong></p>
+                        <a href="/gala/" class="btn btn-primary">Register Now</a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Events Gallery -->
-        <section class="gallery-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Our Community in Action</h2>
-                    <p>From galas to a national policy summit, our community comes together to build momentum for lasting change.</p>
-                </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item fade-in">
-                        <img src="/images/SPARC-Gala 2025-Photo-1633.jpg" alt="An Evening to SPARCle 2025">
-                        <div class="gallery-overlay">
-                            <h4>An Evening to SPARCle 2025</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/advocacy.jpg" alt="SPARC advocacy" style="transform: scale(1.2); object-position: center center;">
-                        <div class="gallery-overlay">
-                            <h4>Community Celebration</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/IMG_6084.JPG" alt="SPARC program activity">
-                        <div class="gallery-overlay">
-                            <h4>Program Activities</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Participant Testimonials Section -->
-        <section class="testimonials-section" aria-labelledby="testimonials-heading">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="testimonials-heading">What Our Participants Say</h2>
-                    <p>Hear from the adults whose lives have been transformed by SPARC's programs</p>
-                </div>
-                <div class="testimonials-grid">
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"When I graduated from high school I felt like I aged out of life…until I found SPARC."</p>
-                        <footer>
-                            <cite>— Justin</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"Before SPARC, I just sat in my room and listened to shows."</p>
-                        <footer>
-                            <cite>— Maureen</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"At SPARC, I find peace."</p>
-                        <footer>
-                            <cite>— Kaitlyn</cite>
-                                                    </footer>
-                    </blockquote>
-                </div>
-                <div class="text-center" style="margin-top: 40px;">
-                    <a href="/stories/" class="btn btn-outline">Read More Stories</a>
                 </div>
             </div>
         </section>
@@ -374,91 +439,11 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content fade-in">
-                    <h2>Help Us Expand Our Impact</h2>
-                    <p>With your support, SPARC can continue to provide essential services to adults with severe and multiple disabilities across Virginia.</p>
+                    <h2>Every Gift Makes a Difference</h2>
+                    <p>Your support enables SPARC to continue providing essential services to adults who have nowhere else to turn.</p>
                     <div class="cta-buttons">
                         <a href="/donate-checkout/" class="btn btn-white btn-lg">Donate Now</a>
-                        <a href="/get-involved/" class="btn btn-secondary btn-lg">Get Involved</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sponsor Carousel -->
-        <section class="sponsor-carousel-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Our Generous Sponsors</h2>
-                    <p>Thank you to our partners who support our mission</p>
-                </div>
-                <div class="sponsor-carousel-wrapper">
-                    <div class="sponsor-carousel" id="sponsorCarousel">
-                        <div class="sponsor-track">
-                            <!-- Sponsor logos -->
-                            <div class="sponsor-slide"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/micron-logo-black.png" alt="Micron"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/HCA.jpg" alt="HCA"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/next-day-access.png" alt="Next Day Access"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/nwfc.jpg" alt="NWFC"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/TF_KS.jpg" alt="TF KS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/fairfax county.png" alt="Fairfax County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/arlington county logo.png" alt="Arlington County"></div>
-                            <!-- Duplicates for seamless loop -->
-                            <div class="sponsor-slide"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/micron-logo-black.png" alt="Micron"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/HCA.jpg" alt="HCA"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/next-day-access.png" alt="Next Day Access"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/nwfc.jpg" alt="NWFC"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/TF_KS.jpg" alt="TF KS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/fairfax county.png" alt="Fairfax County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/arlington county logo.png" alt="Arlington County"></div>
-                        </div>
+                        <a href="/contact/" class="btn btn-secondary btn-lg">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -495,9 +480,9 @@
                     <ul>
                         <li><a href="/about/">About Us</a></li>
                         <li><a href="/programs/">Programs</a></li>
-                        <li><a href="/locations/">Locations & Pricing</a></li>
+                        <li><a href="/locations/">Locations &amp; Pricing</a></li>
                         <li><a href="/events/">Events</a></li>
-                        <li><a href="/stories/">Stories & Impact</a></li>
+                        <li><a href="/stories/">Stories &amp; Impact</a></li>
                         <li><a href="/donate-checkout/">Donate</a></li>
                     </ul>
                 </div>
@@ -506,7 +491,7 @@
                     <ul>
                         <li><a href="/financials/">Annual Reports</a></li>
                         <li><a href="/board/">Board of Directors</a></li>
-                        <li><a href="/news/">News & Press</a></li>
+                        <li><a href="/news/">News &amp; Press</a></li>
                         <li><a href="/get-involved/">Get Involved</a></li>
                         <li><a href="/contact/">Contact Us</a></li>
                     </ul>
@@ -538,40 +523,8 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="/js/main.js"></script>
-    <script>
-        // Sponsor Carousel Animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.querySelector('.sponsor-track');
-            if (track) {
-                const slides = track.querySelectorAll('.sponsor-slide');
-                const totalSlides = slides.length / 2; // Half are duplicates
-                const slideWidth = 320; // 280px width + 40px margin
-                const totalWidth = totalSlides * slideWidth;
 
-                let position = 0;
-                const speed = 1; // pixels per frame
-                let isPaused = false;
-
-                track.addEventListener('mouseenter', () => isPaused = true);
-                track.addEventListener('mouseleave', () => isPaused = false);
-
-                function animate() {
-                    if (!isPaused) {
-                        position -= speed;
-                        if (Math.abs(position) >= totalWidth) {
-                            position = 0;
-                        }
-                        track.style.transform = `translateX(${position}px)`;
-                    }
-                    requestAnimationFrame(animate);
-                }
-
-                animate();
-            }
-        });
-    </script>
 
 <!-- Mailing List Modal -->
 <div class="mailing-list-modal-overlay" id="mailingListModal">

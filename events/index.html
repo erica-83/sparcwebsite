@@ -12,9 +12,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SPARC - Specially Adapted Resource Centers. Where adults with disabilities thrive. Community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia.">
-    <meta name="keywords" content="SPARC, disability services, Northern Virginia, community integration, adults with disabilities, day programs">
-    <title>SPARC - Specially Adapted Resource Centers | Where Adults with Disabilities Thrive</title>
+    <meta name="description" content="Join SPARC events including our annual An Evening to SPARCle, pancake breakfasts, and community gatherings. Support adults with disabilities.">
+    <title>Events | SPARC - Specially Adapted Resource Centers</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,13 +23,12 @@
     <!-- Styles -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        .footer a { color: white; }
 
+    <style>
         /* Sponsor Carousel Styles */
         .sponsor-carousel-section {
             padding: 60px 0;
-            background: white;
+            background: var(--sparc-soft-gray);
         }
         .sponsor-carousel-section .section-header {
             text-align: center;
@@ -41,7 +39,7 @@
             margin-bottom: 0.5rem;
         }
         .sponsor-carousel-section .section-header p {
-            color: var(--sparc-dark-navy);
+            color: var(--sparc-charcoal);
         }
         .sponsor-carousel-wrapper {
             overflow: hidden;
@@ -59,11 +57,11 @@
         }
         .sponsor-carousel-wrapper::before {
             left: 0;
-            background: linear-gradient(to right, white, transparent);
+            background: linear-gradient(to right, var(--sparc-soft-gray), transparent);
         }
         .sponsor-carousel-wrapper::after {
             right: 0;
-            background: linear-gradient(to left, white, transparent);
+            background: linear-gradient(to left, var(--sparc-soft-gray), transparent);
         }
         .sponsor-carousel {
             overflow: hidden;
@@ -74,30 +72,29 @@
         }
         .sponsor-slide {
             flex-shrink: 0;
-            width: 280px;
-            height: 140px;
-            margin: 0 20px;
+            width: 200px;
+            height: 100px;
+            margin: 0 30px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .sponsor-slide img {
             max-width: 100%;
-            max-height: 120px;
+            max-height: 80px;
             object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
             transition: all 0.3s ease;
         }
         .sponsor-slide:hover img {
-            transform: scale(1.05);
+            filter: grayscale(0%);
+            opacity: 1;
         }
         @media (max-width: 768px) {
             .sponsor-slide {
-                width: 200px;
-                height: 100px;
-                margin: 0 25px;
-            }
-            .sponsor-slide img {
-                max-height: 80px;
+                width: 150px;
+                margin: 0 20px;
             }
             .sponsor-carousel-wrapper::before,
             .sponsor-carousel-wrapper::after {
@@ -105,9 +102,6 @@
             }
         }
     </style>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
     <!-- Skip to Content Link -->
@@ -121,7 +115,7 @@
             </a>
 
             <ul class="nav-menu">
-                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-item-dropdown">
                     <a href="/about/" class="nav-link">About</a>
                     <div class="dropdown-menu">
@@ -143,7 +137,7 @@
                     </div>
                 </li>
                 <li class="nav-item-dropdown">
-                    <a href="/events/" class="nav-link">Events</a>
+                    <a href="/events/" class="nav-link active">Events</a>
                     <div class="dropdown-menu">
                         <a href="/gala/">An Evening to SPARCle</a>
                         <a href="/summit/">A Call to Conscience</a>
@@ -171,214 +165,30 @@
         </nav>
     </header>
 
-    <!-- Hero Section with YouTube Video -->
-    <section class="hero">
-        <div class="hero-video-container">
-            <iframe
-                src="https://www.youtube.com/embed/vziM6GpFYpo?autoplay=1&mute=1&loop=1&playlist=vziM6GpFYpo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="hero-video-iframe">
-            </iframe>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Where Adults with Disabilities Thrive</h1>
-            <p class="hero-subtitle">Providing community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia since 2006</p>
-            <div class="hero-buttons">
-                <a href="/programs/" class="btn btn-primary btn-lg">Explore Our Programs</a>
-                <a href="/donate-checkout/" class="btn btn-secondary btn-lg">Support Our Mission</a>
-            </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Events</h1>
+            <p>Join us at community events, fundraisers, and celebrations throughout the year</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Mission Section -->
-        <section class="mission-section">
+        <!-- Featured Event: An Evening to SPARCle -->
+        <section class="about-content">
             <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-content fade-in">
-                        <h2>Filling the Gap in Virginia's Safety Net</h2>
-                        <p>SPARC is the only nonprofit in Virginia organized to provide community-integrated day programs for adults with severe and multiple disabilities who require 1:1 support for all daily activities and are not able to work. We exist because families in need created us when there was no other option.</p>
-                        <p>Our participants have aged out of the K-12 special education system, lost access to school-based supports, and require direct support every hour of every day. SPARC delivers community-integrated day services that directly advance Virginia's obligations under <em>United States v. Virginia</em> and the ADA's integration mandate.</p>
-                        <a href="/about/" class="btn btn-outline">Learn More About Us</a>
+                <div class="about-grid">
+                    <div class="about-image fade-in">
+                        <img src="/images/SPARC-Gala 2025-Photo-402.jpg" alt="An Evening to SPARCle celebration">
                     </div>
-                    <div class="mission-image fade-in">
-                        <img src="/images/Augie and his mom Kathy.jpg" alt="SPARC participant with family member">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Impact Stats -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="5">5</div>
-                        <div class="stat-label">Centers in Northern Virginia</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="20">20</div>
-                        <div class="stat-label">Years of Service</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="65">65</div>
-                        <div class="stat-label">Current Participants</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">$21.5k</div>
-                        <div class="stat-label">Cost Per Participant (vs. $58,264 for Medicaid)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programs Section -->
-        <section class="programs-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 style="font-size: 200%;">Our Programs</h2>
-                    <p>SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities.</p>
-                </div>
-                <div class="programs-grid">
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Food Pantry.png" alt="Community integration activities" style="object-position: center 20%;">
-                        </div>
-                        <div class="program-content">
-                            <h3>Community Integration</h3>
-                            <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging and independence.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/art therapy.jpg" alt="Art therapy program" style="object-position: center 20%;">
-                        </div>
-                        <div class="program-content">
-                            <h3>Art Therapy</h3>
-                            <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Regatta SPARC friends.jpg" alt="Social engagement activities">
-                        </div>
-                        <div class="program-content">
-                            <h3>Social Engagement</h3>
-                            <p>Building meaningful friendships and connections through group activities, recreational programs, and community events.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonial Section -->
-        <section class="testimonial-section">
-            <div class="container">
-                <div class="testimonial-content fade-in">
-                    <p class="testimonial-quote">"SPARC is filling a hole in our safety net. I view it as a kind of pilot for the state."</p>
-                    <p class="testimonial-author">Senator Janet Howell</p>
-                    <p class="testimonial-role">Virginia State Senator</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why SPARC Section -->
-        <section class="mission-section bg-light">
-            <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-image fade-in">
-                        <img src="/images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC community event">
-                    </div>
-                    <div class="mission-content fade-in">
-                        <h2>Why SPARC Matters</h2>
-                        <p>Federal civil rights law requires Virginia to provide services to people with disabilities in community-based settings. Despite nearly two decades of efforts, Virginia remains under a permanent injunction for failing to meet these obligations.</p>
-                        <p>SPARC's innovative participant-directed model is both cost-effective and person-centered. By enabling individuals to bring their own Direct Support Professional, we ensure continuity of care while keeping costs at just over $21,000 per participant annually - compared to $58,264 through traditional Medicaid services.</p>
-                        <p>Leaders across Virginia - from U.S. Senators Tim Kaine and Mark Warner to local county supervisors - recognize SPARC's value and have championed our growth.</p>
-                        <a href="/donate-checkout/" class="btn btn-primary">Support Our Work</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Events Gallery -->
-        <section class="gallery-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Our Community in Action</h2>
-                    <p>From galas to a national policy summit, our community comes together to build momentum for lasting change.</p>
-                </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item fade-in">
-                        <img src="/images/SPARC-Gala 2025-Photo-1633.jpg" alt="An Evening to SPARCle 2025">
-                        <div class="gallery-overlay">
-                            <h4>An Evening to SPARCle 2025</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/advocacy.jpg" alt="SPARC advocacy" style="transform: scale(1.2); object-position: center center;">
-                        <div class="gallery-overlay">
-                            <h4>Community Celebration</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/IMG_6084.JPG" alt="SPARC program activity">
-                        <div class="gallery-overlay">
-                            <h4>Program Activities</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Participant Testimonials Section -->
-        <section class="testimonials-section" aria-labelledby="testimonials-heading">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="testimonials-heading">What Our Participants Say</h2>
-                    <p>Hear from the adults whose lives have been transformed by SPARC's programs</p>
-                </div>
-                <div class="testimonials-grid">
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"When I graduated from high school I felt like I aged out of life…until I found SPARC."</p>
-                        <footer>
-                            <cite>— Justin</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"Before SPARC, I just sat in my room and listened to shows."</p>
-                        <footer>
-                            <cite>— Maureen</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"At SPARC, I find peace."</p>
-                        <footer>
-                            <cite>— Kaitlyn</cite>
-                                                    </footer>
-                    </blockquote>
-                </div>
-                <div class="text-center" style="margin-top: 40px;">
-                    <a href="/stories/" class="btn btn-outline">Read More Stories</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content fade-in">
-                    <h2>Help Us Expand Our Impact</h2>
-                    <p>With your support, SPARC can continue to provide essential services to adults with severe and multiple disabilities across Virginia.</p>
-                    <div class="cta-buttons">
-                        <a href="/donate-checkout/" class="btn btn-white btn-lg">Donate Now</a>
-                        <a href="/get-involved/" class="btn btn-secondary btn-lg">Get Involved</a>
+                    <div class="about-text fade-in">
+                        <span class="location-badge" style="margin-bottom: 15px; display: inline-block;">Featured Event</span>
+                        <h2>An Evening to SPARCle</h2>
+                        <p>Our signature fundraising event brings together participants, families, staff, donors, and community leaders to celebrate our impact and raise funds for the year ahead.</p>
+                        <p>The event features raffles, entertainment, and heartfelt stories from the SPARC community. It's our largest fundraising event of the year.</p>
+                        <p><strong>2025 Gala:</strong> Thank you to everyone who attended our 2025 An Evening to SPARCle! Watch the highlights and learn about next year's event.</p>
+                        <a href="/gala/" class="btn btn-primary">Learn More About An Evening to SPARCle</a>
                     </div>
                 </div>
             </div>
@@ -389,7 +199,7 @@
             <div class="container">
                 <div class="section-header fade-in">
                     <h2>Our Generous Sponsors</h2>
-                    <p>Thank you to our partners who support our mission</p>
+                    <p>Thank you to our partners who make our events possible</p>
                 </div>
                 <div class="sponsor-carousel-wrapper">
                     <div class="sponsor-carousel" id="sponsorCarousel">
@@ -402,7 +212,7 @@
                             <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
@@ -434,7 +244,7 @@
                             <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
@@ -459,6 +269,105 @@
                             <div class="sponsor-slide"><img src="/images/sponsors/fairfax county.png" alt="Fairfax County"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/arlington county logo.png" alt="Arlington County"></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Events Gallery -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Past Event Highlights</h2>
+                    <p>Memories from our community gatherings</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in">
+                        <img src="/images/Leadership Fairfax.jpg" alt="Leadership Fairfax">
+                        <div class="gallery-overlay">
+                            <h4>Leadership Fairfax</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/images/Jim Dyke and Arienne Plourde.jpg" alt="Jim Dyke and Arienne Thompson Plourde">
+                        <div class="gallery-overlay">
+                            <h4>Jim Dyke and Arienne Thompson Plourde</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/images/Paddles.jpg" alt="Paddles">
+                        <div class="gallery-overlay">
+                            <h4>Paddles</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Host an Event -->
+        <section class="about-content">
+            <div class="container">
+                <div class="about-grid reverse">
+                    <div class="about-text fade-in">
+                        <h2>Host a Fundraiser for SPARC</h2>
+                        <p>Want to support SPARC through your own event? We welcome community-led fundraisers including:</p>
+                        <ul style="margin-left: 20px; margin-bottom: 20px;">
+                            <li>Birthday fundraisers</li>
+                            <li>Athletic challenges (5Ks, bike rides, etc.)</li>
+                            <li>Workplace giving campaigns</li>
+                            <li>Social gatherings</li>
+                            <li>Holiday events</li>
+                        </ul>
+                        <p>We'll provide materials, support, and recognition for your efforts. Contact us to get started!</p>
+                        <a href="/contact/" class="btn btn-primary">Start a Fundraiser</a>
+                    </div>
+                    <div class="about-image fade-in">
+                        <img src="/images/Group shot at christmas tea.jpg" alt="SPARC group shot at Christmas tea">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsor an Event -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="section-header fade-in" style="margin-bottom: 40px;">
+                    <h2 class="text-white">Become an Event Sponsor</h2>
+                    <p style="color: rgba(255,255,255,0.9);">Support SPARC through event sponsorship and gain visibility with our community</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Gala Attendees</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">19,000</div>
+                        <div class="stat-label">WBJ Subscribers Reach</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Community Impact</div>
+                    </div>
+                </div>
+                <div class="text-center fade-in" style="margin-top: 40px;">
+                    <a href="/contact/" class="btn btn-white btn-lg">Sponsorship Inquiries</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content fade-in">
+                    <h2>Stay Updated on Events</h2>
+                    <p>Follow us on social media or sign up for our mailing list to hear about upcoming events.</p>
+                    <div class="cta-buttons">
+                        <a href="javascript:void(0)" onclick="openMailingListModal()" class="btn btn-white btn-lg">Join Our Mailing List</a>
+                        <a href="https://www.facebook.com/profile.php?id=100064372517571" target="_blank" class="btn btn-white btn-lg">Follow on Facebook</a>
+                        <a href="https://www.instagram.com/sparc.solutions/" target="_blank" class="btn btn-white btn-lg">Follow on Instagram</a>
+                        <a href="https://www.youtube.com/@SPARC_VA" target="_blank" class="btn btn-white btn-lg">Follow on YouTube</a>
+                        <a href="https://www.linkedin.com/company/specially-adapted-resource-centers" target="_blank" class="btn btn-white btn-lg">Follow on LinkedIn</a>
+                        <a href="/contact/" class="btn btn-secondary btn-lg">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -495,9 +404,9 @@
                     <ul>
                         <li><a href="/about/">About Us</a></li>
                         <li><a href="/programs/">Programs</a></li>
-                        <li><a href="/locations/">Locations & Pricing</a></li>
+                        <li><a href="/locations/">Locations &amp; Pricing</a></li>
                         <li><a href="/events/">Events</a></li>
-                        <li><a href="/stories/">Stories & Impact</a></li>
+                        <li><a href="/stories/">Stories &amp; Impact</a></li>
                         <li><a href="/donate-checkout/">Donate</a></li>
                     </ul>
                 </div>
@@ -506,7 +415,7 @@
                     <ul>
                         <li><a href="/financials/">Annual Reports</a></li>
                         <li><a href="/board/">Board of Directors</a></li>
-                        <li><a href="/news/">News & Press</a></li>
+                        <li><a href="/news/">News &amp; Press</a></li>
                         <li><a href="/get-involved/">Get Involved</a></li>
                         <li><a href="/contact/">Contact Us</a></li>
                     </ul>
@@ -538,7 +447,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="/js/main.js"></script>
     <script>
         // Sponsor Carousel Animation
@@ -547,7 +455,7 @@
             if (track) {
                 const slides = track.querySelectorAll('.sponsor-slide');
                 const totalSlides = slides.length / 2; // Half are duplicates
-                const slideWidth = 320; // 280px width + 40px margin
+                const slideWidth = 260; // 200px width + 60px margin
                 const totalWidth = totalSlides * slideWidth;
 
                 let position = 0;

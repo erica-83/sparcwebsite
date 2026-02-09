@@ -12,9 +12,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SPARC - Specially Adapted Resource Centers. Where adults with disabilities thrive. Community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia.">
-    <meta name="keywords" content="SPARC, disability services, Northern Virginia, community integration, adults with disabilities, day programs">
-    <title>SPARC - Specially Adapted Resource Centers | Where Adults with Disabilities Thrive</title>
+    <meta name="description" content="Find SPARC center locations across Northern Virginia - McLean, Arlington, Alexandria, and Leesburg serving adults with disabilities.">
+    <title>Our Locations | SPARC - Specially Adapted Resource Centers</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,90 +23,97 @@
     <!-- Styles -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        .footer a { color: white; }
 
-        /* Sponsor Carousel Styles */
-        .sponsor-carousel-section {
-            padding: 60px 0;
-            background: white;
+    <style>
+        .locations-intro {
+            padding: 80px 0;
+            background-color: var(--white);
         }
-        .sponsor-carousel-section .section-header {
+        .locations-intro-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            margin-bottom: 40px;
         }
-        .sponsor-carousel-section .section-header h2 {
-            color: var(--sparc-dark-navy);
-            margin-bottom: 0.5rem;
+        .locations-intro-content p {
+            font-size: 1.15rem;
+            color: var(--medium-gray);
         }
-        .sponsor-carousel-section .section-header p {
-            color: var(--sparc-dark-navy);
-        }
-        .sponsor-carousel-wrapper {
+        .location-card-enhanced {
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            position: relative;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
         }
-        .sponsor-carousel-wrapper::before,
-        .sponsor-carousel-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100px;
-            z-index: 2;
-            pointer-events: none;
+        .location-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
-        .sponsor-carousel-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, white, transparent);
+        .location-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            padding: 25px;
+            color: white;
         }
-        .sponsor-carousel-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, white, transparent);
+        .location-header h3 {
+            color: white;
+            margin-bottom: 5px;
         }
-        .sponsor-carousel {
-            overflow: hidden;
+        .location-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 10px;
         }
-        .sponsor-track {
+        .location-badge.closed {
+            background: var(--medium-gray);
+        }
+        .location-body {
+            padding: 25px;
+        }
+        .location-detail {
             display: flex;
-            width: max-content;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
         }
-        .sponsor-slide {
+        .location-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-orange);
             flex-shrink: 0;
-            width: 280px;
-            height: 140px;
-            margin: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .sponsor-slide img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            transition: all 0.3s ease;
+        .location-detail p {
+            margin: 0;
+            color: var(--dark-gray);
         }
-        .sponsor-slide:hover img {
-            transform: scale(1.05);
+        .location-detail small {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
         }
-        @media (max-width: 768px) {
-            .sponsor-slide {
-                width: 200px;
-                height: 100px;
-                margin: 0 25px;
-            }
-            .sponsor-slide img {
-                max-height: 80px;
-            }
-            .sponsor-carousel-wrapper::before,
-            .sponsor-carousel-wrapper::after {
-                width: 50px;
-            }
+        .expansion-section {
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-blue) 100%);
+            padding: 80px 0;
+        }
+        .expansion-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+        .expansion-content h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .expansion-content p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
         }
     </style>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
     <!-- Skip to Content Link -->
@@ -121,7 +127,7 @@
             </a>
 
             <ul class="nav-menu">
-                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-item-dropdown">
                     <a href="/about/" class="nav-link">About</a>
                     <div class="dropdown-menu">
@@ -134,7 +140,7 @@
                     </div>
                 </li>
                 <li><a href="/programs/" class="nav-link">Programs</a></li>
-                <li><a href="/locations/" class="nav-link">Locations</a></li>
+                <li><a href="/locations/" class="nav-link active">Locations</a></li>
                 <li class="nav-item-dropdown">
                     <a href="/stories/" class="nav-link">Stories</a>
                     <div class="dropdown-menu">
@@ -171,201 +177,266 @@
         </nav>
     </header>
 
-    <!-- Hero Section with YouTube Video -->
-    <section class="hero">
-        <div class="hero-video-container">
-            <iframe
-                src="https://www.youtube.com/embed/vziM6GpFYpo?autoplay=1&mute=1&loop=1&playlist=vziM6GpFYpo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="hero-video-iframe">
-            </iframe>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Where Adults with Disabilities Thrive</h1>
-            <p class="hero-subtitle">Providing community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia since 2006</p>
-            <div class="hero-buttons">
-                <a href="/programs/" class="btn btn-primary btn-lg">Explore Our Programs</a>
-                <a href="/donate-checkout/" class="btn btn-secondary btn-lg">Support Our Mission</a>
-            </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Locations & Pricing</h1>
+            <p>Four centers across Northern Virginia serving adults with severe and multiple disabilities</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Mission Section -->
-        <section class="mission-section">
+        <!-- Contact Information -->
+        <section class="about-content" style="padding: 40px 0; background: var(--primary-blue);">
             <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-content fade-in">
-                        <h2>Filling the Gap in Virginia's Safety Net</h2>
-                        <p>SPARC is the only nonprofit in Virginia organized to provide community-integrated day programs for adults with severe and multiple disabilities who require 1:1 support for all daily activities and are not able to work. We exist because families in need created us when there was no other option.</p>
-                        <p>Our participants have aged out of the K-12 special education system, lost access to school-based supports, and require direct support every hour of every day. SPARC delivers community-integrated day services that directly advance Virginia's obligations under <em>United States v. Virginia</em> and the ADA's integration mandate.</p>
-                        <a href="/about/" class="btn btn-outline">Learn More About Us</a>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; color: white; text-align: center;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span><strong>Phone:</strong> <a href="tel:571-407-1807" style="color: white;">(571) 407-1807</a></span>
                     </div>
-                    <div class="mission-image fade-in">
-                        <img src="/images/Augie and his mom Kathy.jpg" alt="SPARC participant with family member">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                        <span><strong>Email:</strong> <a href="mailto:debi@sparcsolutions.org" style="color: white;">debi@sparcsolutions.org</a></span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Impact Stats -->
-        <section class="stats-section">
+        <!-- Fees & Pricing Section -->
+        <section class="fees-section" id="pricing">
             <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="5">5</div>
-                        <div class="stat-label">Centers in Northern Virginia</div>
+                <div class="fees-grid">
+                    <div class="fees-info fade-in">
+                        <h2>Program Fees & Pricing</h2>
+                        <p>SPARC is committed to ensuring that cost is never a barrier to participation. Our fee structure is designed to be accessible while supporting the sustainability of our programs. SPARC operates on an equity-centered model in which every participant receives a substantial subsidy, with families paying approximately one-third of the actual cost of services.</p>
+                        <p>All of SPARC's participants live below the federal poverty line. Those who can pay tuition do so, and those who cannot do not — <strong>access is guaranteed regardless of ability to pay</strong>.</p>
+                        <p>Our flat-rate structure, supported by need-based scholarships, ensures that every adult who needs our services can access them. The current total annual per-participant operating cost is just over <strong>$21,000</strong> — compared to <strong>$58,264</strong> through traditional Medicaid services.</p>
                     </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="20">20</div>
-                        <div class="stat-label">Years of Service</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number" data-target="65">65</div>
-                        <div class="stat-label">Current Participants</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-number">$21.5k</div>
-                        <div class="stat-label">Cost Per Participant (vs. $58,264 for Medicaid)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programs Section -->
-        <section class="programs-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 style="font-size: 200%;">Our Programs</h2>
-                    <p>SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities.</p>
-                </div>
-                <div class="programs-grid">
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Food Pantry.png" alt="Community integration activities" style="object-position: center 20%;">
+                    <div class="fees-table fade-in">
+                        <div class="fees-table-header">
+                            <h3>Monthly Participation Rates</h3>
                         </div>
-                        <div class="program-content">
-                            <h3>Community Integration</h3>
-                            <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging and independence.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
+                        <div class="fees-table-body">
+                            <div class="fee-item">
+                                <span>1 Day per Week</span>
+                                <span>$250/month</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>2 Days per Week</span>
+                                <span>$375/month</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>3 Days per Week</span>
+                                <span>$475/month</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>4 Days per Week</span>
+                                <span>$600/month</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>5 Days per Week (Full-Time)</span>
+                                <span>$750/month</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Social Group</span>
+                                <span>$195/month</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/art therapy.jpg" alt="Art therapy program" style="object-position: center 20%;">
-                        </div>
-                        <div class="program-content">
-                            <h3>Art Therapy</h3>
-                            <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="program-card fade-in">
-                        <div class="program-image">
-                            <img src="/images/Regatta SPARC friends.jpg" alt="Social engagement activities">
-                        </div>
-                        <div class="program-content">
-                            <h3>Social Engagement</h3>
-                            <p>Building meaningful friendships and connections through group activities, recreational programs, and community events.</p>
-                            <a href="/programs/" class="program-link">Learn More &rarr;</a>
+                        <div class="fees-note">
+                            <p><strong>Need-Based Scholarships Available:</strong> No one is turned away due to inability to pay. Contact us to discuss your situation.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonial Section -->
-        <section class="testimonial-section">
+        <!-- Intro -->
+        <section class="locations-intro">
             <div class="container">
-                <div class="testimonial-content fade-in">
-                    <p class="testimonial-quote">"SPARC is filling a hole in our safety net. I view it as a kind of pilot for the state."</p>
-                    <p class="testimonial-author">Senator Janet Howell</p>
-                    <p class="testimonial-role">Virginia State Senator</p>
+                <div class="locations-intro-content fade-in">
+                    <h2>Serving Northern Virginia</h2>
+                    <p>SPARC currently operates four centers in Northern Virginia, providing community-integrated day programs in convenient locations across the region. Our centers are located in community spaces, often in partnership with local governments who recognize the value of our programs.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Why SPARC Section -->
-        <section class="mission-section bg-light">
+        <!-- Locations Grid -->
+        <section class="locations-section bg-light" id="centers">
             <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-image fade-in">
-                        <img src="/images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC community event">
+
+                <!-- SPARC - McLean -->
+                <div class="location-card-full fade-in">
+                    <div class="location-card-header">
+                        <h3>SPARC - McLean</h3>
+                        <span class="location-badge">Active</span>
                     </div>
-                    <div class="mission-content fade-in">
-                        <h2>Why SPARC Matters</h2>
-                        <p>Federal civil rights law requires Virginia to provide services to people with disabilities in community-based settings. Despite nearly two decades of efforts, Virginia remains under a permanent injunction for failing to meet these obligations.</p>
-                        <p>SPARC's innovative participant-directed model is both cost-effective and person-centered. By enabling individuals to bring their own Direct Support Professional, we ensure continuity of care while keeping costs at just over $21,000 per participant annually - compared to $58,264 through traditional Medicaid services.</p>
-                        <p>Leaders across Virginia - from U.S. Senators Tim Kaine and Mark Warner to local county supervisors - recognize SPARC's value and have championed our growth.</p>
-                        <a href="/donate-checkout/" class="btn btn-primary">Support Our Work</a>
+                    <div class="location-card-body">
+                        <div class="location-details-grid">
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p><a href="https://www.google.com/maps/dir/?api=1&destination=1440+Chain+Bridge+Road+McLean+VA+22101" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Old Firehouse Teen Center<br>1440 Chain Bridge Road<br>McLean, VA 22101</a></p>
+                                </div>
+                            </div>
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Program Hours</h4>
+                                    <p>Monday - Friday<br>10:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accessibility-features">
+                            <h4><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 100 4 2 2 0 000-4zm7 7h-4v13h-2v-6h-2v6H9V9H5V7h14v2z"/></svg> Accessibility Features</h4>
+                            <ul class="accessibility-list">
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Wheelchair Accessible</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Parking</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Restrooms</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Single-Level Access</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+                <!-- SPARC - Arlington -->
+                <div class="location-card-full fade-in">
+                    <div class="location-card-header">
+                        <h3>SPARC - Arlington</h3>
+                        <span class="location-badge">Active</span>
+                    </div>
+                    <div class="location-card-body">
+                        <div class="location-details-grid">
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p><a href="https://www.google.com/maps/dir/?api=1&destination=909+South+Dinwiddie+Street+Arlington+VA+22204" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Arlington Mill Community Center<br>909 South Dinwiddie Street<br>Arlington, VA 22204</a></p>
+                                </div>
+                            </div>
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Program Hours</h4>
+                                    <p>Tuesday & Thursday<br>10:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accessibility-features">
+                            <h4><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 100 4 2 2 0 000-4zm7 7h-4v13h-2v-6h-2v6H9V9H5V7h14v2z"/></svg> Accessibility Features</h4>
+                            <ul class="accessibility-list">
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Wheelchair Accessible</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Parking</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Restrooms</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Single-Level Access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPARC - Alexandria -->
+                <div class="location-card-full fade-in">
+                    <div class="location-card-header">
+                        <h3>SPARC - Alexandria</h3>
+                        <span class="location-badge">Active</span>
+                    </div>
+                    <div class="location-card-body">
+                        <div class="location-details-grid">
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p><a href="https://www.google.com/maps/dir/?api=1&destination=7950+Audubon+Avenue+Alexandria+VA+22306" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Hybla Valley Community Center<br>7950 Audubon Avenue<br>Alexandria, VA 22306</a></p>
+                                </div>
+                            </div>
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Program Hours</h4>
+                                    <p>Monday - Friday<br>10:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accessibility-features">
+                            <h4><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 100 4 2 2 0 000-4zm7 7h-4v13h-2v-6h-2v6H9V9H5V7h14v2z"/></svg> Accessibility Features</h4>
+                            <ul class="accessibility-list">
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Wheelchair Accessible</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Parking</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Restrooms</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Single-Level Access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPARC - Leesburg -->
+                <div class="location-card-full fade-in">
+                    <div class="location-card-header">
+                        <h3>SPARC - Leesburg</h3>
+                        <span class="location-badge">Active</span>
+                    </div>
+                    <div class="location-card-body">
+                        <div class="location-details-grid">
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p><a href="https://www.google.com/maps/dir/?api=1&destination=19357+Evergreen+Mills+Road+Leesburg+VA+20176" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">Congregation Sha'are Shalom<br>19357 Evergreen Mills Road<br>Leesburg, VA 20176</a></p>
+                                </div>
+                            </div>
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Program Hours</h4>
+                                    <p>Monday - Friday<br>10:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accessibility-features">
+                            <h4><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 100 4 2 2 0 000-4zm7 7h-4v13h-2v-6h-2v6H9V9H5V7h14v2z"/></svg> Accessibility Features</h4>
+                            <ul class="accessibility-list">
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Wheelchair Accessible</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Parking</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accessible Restrooms</li>
+                                <li><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Single-Level Access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Events Gallery -->
-        <section class="gallery-section">
+        <!-- Visit Us Section -->
+        <section class="about-content">
             <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Our Community in Action</h2>
-                    <p>From galas to a national policy summit, our community comes together to build momentum for lasting change.</p>
-                </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item fade-in">
-                        <img src="/images/SPARC-Gala 2025-Photo-1633.jpg" alt="An Evening to SPARCle 2025">
-                        <div class="gallery-overlay">
-                            <h4>An Evening to SPARCle 2025</h4>
-                        </div>
+                <div class="about-grid">
+                    <div class="about-text fade-in">
+                        <h2>Schedule a Visit</h2>
+                        <p>Interested families are welcome to visit any of our centers to learn more about our programs and meet our team. We'll discuss your loved one's needs, goals, and how SPARC can support their growth and community participation.</p>
+                        <p>All of SPARC's participants live below the federal poverty line. Those that can pay tuition do so, and those who cannot do not. Access is guaranteed regardless of ability to pay.</p>
+                        <a href="/contact/" class="btn btn-primary">Contact Us to Schedule</a>
                     </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/advocacy.jpg" alt="SPARC advocacy" style="transform: scale(1.2); object-position: center center;">
-                        <div class="gallery-overlay">
-                            <h4>Community Celebration</h4>
-                        </div>
+                    <div class="about-image fade-in">
+                        <img src="/images/Our Community in Action 2.jpg" alt="Our community in action">
                     </div>
-                    <div class="gallery-item fade-in">
-                        <img src="/images/IMG_6084.JPG" alt="SPARC program activity">
-                        <div class="gallery-overlay">
-                            <h4>Program Activities</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Participant Testimonials Section -->
-        <section class="testimonials-section" aria-labelledby="testimonials-heading">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="testimonials-heading">What Our Participants Say</h2>
-                    <p>Hear from the adults whose lives have been transformed by SPARC's programs</p>
-                </div>
-                <div class="testimonials-grid">
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"When I graduated from high school I felt like I aged out of life…until I found SPARC."</p>
-                        <footer>
-                            <cite>— Justin</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"Before SPARC, I just sat in my room and listened to shows."</p>
-                        <footer>
-                            <cite>— Maureen</cite>
-                                                    </footer>
-                    </blockquote>
-                    <blockquote class="testimonial-card fade-in">
-                        <p class="testimonial-quote">"At SPARC, I find peace."</p>
-                        <footer>
-                            <cite>— Kaitlyn</cite>
-                                                    </footer>
-                    </blockquote>
-                </div>
-                <div class="text-center" style="margin-top: 40px;">
-                    <a href="/stories/" class="btn btn-outline">Read More Stories</a>
                 </div>
             </div>
         </section>
@@ -374,97 +445,16 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content fade-in">
-                    <h2>Help Us Expand Our Impact</h2>
-                    <p>With your support, SPARC can continue to provide essential services to adults with severe and multiple disabilities across Virginia.</p>
+                    <h2>Help Us Grow</h2>
+                    <p>Your support enables SPARC to maintain current operations and expand to serve more adults across Virginia.</p>
                     <div class="cta-buttons">
                         <a href="/donate-checkout/" class="btn btn-white btn-lg">Donate Now</a>
-                        <a href="/get-involved/" class="btn btn-secondary btn-lg">Get Involved</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sponsor Carousel -->
-        <section class="sponsor-carousel-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Our Generous Sponsors</h2>
-                    <p>Thank you to our partners who support our mission</p>
-                </div>
-                <div class="sponsor-carousel-wrapper">
-                    <div class="sponsor-carousel" id="sponsorCarousel">
-                        <div class="sponsor-track">
-                            <!-- Sponsor logos -->
-                            <div class="sponsor-slide"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/micron-logo-black.png" alt="Micron"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/HCA.jpg" alt="HCA"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/next-day-access.png" alt="Next Day Access"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/nwfc.jpg" alt="NWFC"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/TF_KS.jpg" alt="TF KS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/fairfax county.png" alt="Fairfax County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/arlington county logo.png" alt="Arlington County"></div>
-                            <!-- Duplicates for seamless loop -->
-                            <div class="sponsor-slide"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/micron-logo-black.png" alt="Micron"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/HCA.jpg" alt="HCA"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 240px; max-width: 200%;"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/GS.jpg" alt="GS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Blueberry shoes.png" alt="Blueberry Shoes"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Silverado Printing.png" alt="Silverado Printing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/logo-maid-brigade.jpg" alt="Maid Brigade"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/next-day-access.png" alt="Next Day Access"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/nwfc.jpg" alt="NWFC"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/silverbeaconmarketing (1) (1).png" alt="Silver Beacon Marketing"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/TF_KS.jpg" alt="TF KS"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Carol and Glen Davidson.jpg" alt="Carol and Glen Davidson"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave and Joanne Adams"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Nancy Lu"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/alex alexander.jpg" alt="Alex Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill and Debi Alexander"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ceo woman.jpg" alt="CEO Woman"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/ellen and jim dyke.jpg" alt="Ellen and Jim Dyke"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Loudoun County Logo.jpeg" alt="Loudoun County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/fairfax county.png" alt="Fairfax County"></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/arlington county logo.png" alt="Arlington County"></div>
-                        </div>
+                        <a href="/contact/" class="btn btn-secondary btn-lg">Contact Us</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <footer class="footer" style="color: white;">
         <div class="container">
@@ -495,9 +485,9 @@
                     <ul>
                         <li><a href="/about/">About Us</a></li>
                         <li><a href="/programs/">Programs</a></li>
-                        <li><a href="/locations/">Locations & Pricing</a></li>
+                        <li><a href="/locations/">Locations &amp; Pricing</a></li>
                         <li><a href="/events/">Events</a></li>
-                        <li><a href="/stories/">Stories & Impact</a></li>
+                        <li><a href="/stories/">Stories &amp; Impact</a></li>
                         <li><a href="/donate-checkout/">Donate</a></li>
                     </ul>
                 </div>
@@ -506,7 +496,7 @@
                     <ul>
                         <li><a href="/financials/">Annual Reports</a></li>
                         <li><a href="/board/">Board of Directors</a></li>
-                        <li><a href="/news/">News & Press</a></li>
+                        <li><a href="/news/">News &amp; Press</a></li>
                         <li><a href="/get-involved/">Get Involved</a></li>
                         <li><a href="/contact/">Contact Us</a></li>
                     </ul>
@@ -538,40 +528,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="/js/main.js"></script>
-    <script>
-        // Sponsor Carousel Animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.querySelector('.sponsor-track');
-            if (track) {
-                const slides = track.querySelectorAll('.sponsor-slide');
-                const totalSlides = slides.length / 2; // Half are duplicates
-                const slideWidth = 320; // 280px width + 40px margin
-                const totalWidth = totalSlides * slideWidth;
-
-                let position = 0;
-                const speed = 1; // pixels per frame
-                let isPaused = false;
-
-                track.addEventListener('mouseenter', () => isPaused = true);
-                track.addEventListener('mouseleave', () => isPaused = false);
-
-                function animate() {
-                    if (!isPaused) {
-                        position -= speed;
-                        if (Math.abs(position) >= totalWidth) {
-                            position = 0;
-                        }
-                        track.style.transform = `translateX(${position}px)`;
-                    }
-                    requestAnimationFrame(animate);
-                }
-
-                animate();
-            }
-        });
-    </script>
 
 <!-- Mailing List Modal -->
 <div class="mailing-list-modal-overlay" id="mailingListModal">
