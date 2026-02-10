@@ -1329,18 +1329,210 @@
 
         /* Print Styles */
         @media print {
-            .section {
-                padding: 40px 0;
+            /* Page setup */
+            @page {
+                size: letter;
+                margin: 0.5in;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+
+            /* Hide download section and buttons when printing */
+            .btn,
+            section[style*="text-align: center"]:last-of-type {
+                display: none !important;
+            }
+
+            /* Cover page - full page */
+            .report-cover {
+                min-height: 100vh;
+                page-break-after: always;
+                background: #00539B !important;
+            }
+
+            /* Each major section starts on new page */
+            .letter-section {
+                page-break-before: always;
+            }
+
+            .letter-card {
+                page-break-inside: avoid;
+                margin-bottom: 40px;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .letter-card:first-child {
+                page-break-before: avoid;
+            }
+
+            .letter-card + .letter-card {
+                page-break-before: always;
+            }
+
+            /* Stats section */
+            .stats-section {
+                page-break-before: always;
+                page-break-after: always;
+                background: #00539B !important;
+            }
+
+            .stat-card {
                 page-break-inside: avoid;
             }
 
-            .report-cover {
-                min-height: auto;
-                padding: 60px 24px;
+            /* Programs section */
+            .section:has(.program-grid) {
+                page-break-before: always;
             }
 
-            .btn {
-                display: none;
+            .program-card {
+                page-break-inside: avoid;
+            }
+
+            /* Gala section */
+            .gala-section {
+                page-break-before: always;
+                page-break-after: always;
+                background: #002B50 !important;
+            }
+
+            /* Sponsors section */
+            .sponsors-section {
+                page-break-before: always;
+            }
+
+            .sponsor-tier {
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .thanks-card {
+                page-break-inside: avoid;
+                page-break-before: auto;
+            }
+
+            /* Spotlight section */
+            .spotlight-section {
+                page-break-before: always;
+            }
+
+            .spotlight-card {
+                page-break-inside: avoid;
+                display: block;
+            }
+
+            .spotlight-image-side {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .spotlight-content-side {
+                width: 100%;
+                padding: 30px;
+            }
+
+            /* Gallery section */
+            .gallery-section {
+                page-break-before: always;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .gallery-item.large,
+            .gallery-item.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            /* Story section */
+            .story-section {
+                page-break-before: always;
+            }
+
+            .story-card {
+                page-break-inside: avoid;
+                display: block;
+            }
+
+            .story-image,
+            .story-content {
+                width: 100%;
+            }
+
+            .story-image img {
+                height: 300px;
+            }
+
+            /* Financials section */
+            .financials-section {
+                page-break-before: always;
+            }
+
+            .financial-card {
+                page-break-inside: avoid;
+            }
+
+            .financials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Events section */
+            .events-section {
+                page-break-before: always;
+                background: #00539B !important;
+            }
+
+            .event-card {
+                page-break-inside: avoid;
+            }
+
+            /* Thank you section */
+            .thank-you-section {
+                page-break-before: always;
+                background: #4CBB17 !important;
+            }
+
+            /* Footer */
+            .report-footer {
+                page-break-before: always;
+                background: #002B50 !important;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            /* Remove shadows and hover effects */
+            * {
+                box-shadow: none !important;
+            }
+
+            /* Ensure images print */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            /* Links show URL */
+            a[href^="http"]:after {
+                content: none;
             }
         }
     </style>
