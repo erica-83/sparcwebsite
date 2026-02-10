@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARC 2025 Annual Report - Print Version</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: #00539B;
+        }
+
+        /* Each page is exactly one printed page */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            padding: 0.5in;
+            page-break-after: always;
+            page-break-inside: avoid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1in;
+        }
+
+        .cover-logo img {
+            height: 80px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 40px;
+        }
+
+        .cover-badge {
+            background: rgba(76, 187, 23, 0.2);
+            border: 1px solid rgba(76, 187, 23, 0.4);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #4CBB17;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-size: 48pt;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cover-subtitle {
+            font-size: 16pt;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 15px;
+        }
+
+        .cover-tagline {
+            font-size: 11pt;
+            color: rgba(255,255,255,0.7);
+            max-width: 400px;
+        }
+
+        .cover-url {
+            position: absolute;
+            bottom: 60px;
+            background: #4CBB17;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 11pt;
+        }
+
+        /* Letter Pages */
+        .letter-page {
+            padding: 0.6in;
+        }
+
+        .letter-header {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            padding: 25px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .letter-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            flex-shrink: 0;
+        }
+
+        .letter-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .letter-author h3 {
+            color: white;
+            font-size: 16pt;
+            margin-bottom: 2px;
+        }
+
+        .letter-author p {
+            color: #4CBB17;
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .letter-body {
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            padding: 25px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .letter-greeting {
+            font-size: 12pt;
+            color: #00539B;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .letter-body p {
+            font-size: 10pt;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .letter-signature {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .letter-signature p {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .signature-name {
+            font-weight: 700;
+            color: #00539B;
+            font-style: normal;
+        }
+
+        /* Stats Page */
+        .stats-page {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            padding: 0.6in;
+        }
+
+        .stats-page h2 {
+            color: white;
+            text-align: center;
+            font-size: 28pt;
+            margin-bottom: 5px;
+        }
+
+        .stats-page .subtitle {
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 12pt;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32pt;
+            font-weight: 800;
+            color: #4CBB17;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 10pt;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Programs Page */
+        .programs-page {
+            padding: 0.5in;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 24pt;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #4CBB17, #00539B);
+            margin: 10px auto 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 11pt;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .program-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .program-card h3 {
+            font-size: 12pt;
+            padding: 12px 12px 5px;
+        }
+
+        .program-card p {
+            font-size: 9pt;
+            padding: 0 12px 12px;
+            color: #666;
+        }
+
+        /* Gala Page */
+        .gala-page {
+            background: #002B50;
+            padding: 0.6in;
+            text-align: center;
+        }
+
+        .gala-badge {
+            display: inline-block;
+            background: #4CBB17;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 9pt;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .gala-page h2 {
+            color: white;
+            font-size: 32pt;
+            margin-bottom: 15px;
+        }
+
+        .gala-page > p {
+            color: rgba(255,255,255,0.9);
+            font-size: 11pt;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .gala-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .gala-stat-number {
+            font-size: 36pt;
+            font-weight: 800;
+            color: #4CBB17;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gala-stat-label {
+            font-size: 10pt;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sponsors Page */
+        .sponsors-page {
+            padding: 0.4in;
+            background: #f5f5f5;
+        }
+
+        .sponsor-section {
+            margin-bottom: 15px;
+        }
+
+        .tier-title {
+            text-align: center;
+            font-size: 9pt;
+            font-weight: 700;
+            color: #4CBB17;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sponsor-logos img {
+            max-height: 40px;
+            max-width: 120px;
+        }
+
+        .sponsor-names {
+            text-align: center;
+            font-size: 9pt;
+            color: #666;
+        }
+
+        .thanks-card {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .thanks-card h3 {
+            color: white;
+            font-size: 14pt;
+            margin-bottom: 8px;
+        }
+
+        .thanks-card p {
+            font-size: 10pt;
+            opacity: 0.9;
+        }
+
+        .thanks-card img {
+            max-height: 50px;
+            margin: 15px auto 0;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Spotlight Page */
+        .spotlight-page {
+            padding: 0.5in;
+        }
+
+        .spotlight-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .spotlight-left {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .spotlight-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            margin: 0 auto 15px;
+        }
+
+        .spotlight-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .spotlight-name {
+            color: white;
+            font-size: 14pt;
+            margin-bottom: 3px;
+        }
+
+        .spotlight-role {
+            color: #4CBB17;
+            font-weight: 600;
+            font-size: 10pt;
+        }
+
+        .spotlight-right {
+            padding: 25px;
+        }
+
+        .spotlight-badge {
+            display: inline-block;
+            background: #4CBB17;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .spotlight-right h3 {
+            font-size: 14pt;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .spotlight-right p {
+            font-size: 9pt;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .spotlight-quote {
+            background: #f5f5f5;
+            border-left: 3px solid #4CBB17;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .spotlight-quote p {
+            font-style: italic;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Gallery Page */
+        .gallery-page {
+            padding: 0.5in;
+            background: #f5f5f5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 12px;
+            height: calc(100% - 80px);
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Story Page */
+        .story-page {
+            padding: 0.5in;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .story-image {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .story-content h2 {
+            font-size: 24pt;
+            margin-bottom: 15px;
+        }
+
+        .story-content p {
+            font-size: 10pt;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .story-highlight {
+            background: linear-gradient(135deg, rgba(76, 187, 23, 0.1), rgba(0, 83, 155, 0.1));
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .story-highlight p {
+            font-size: 11pt;
+            font-weight: 500;
+            color: #00539B;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Financials Page */
+        .financials-page {
+            padding: 0.5in;
+            background: #f5f5f5;
+        }
+
+        .financials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .financial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .financial-card h3 {
+            font-size: 14pt;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .pie-chart {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+
+        .revenue-chart {
+            background: conic-gradient(
+                #4CBB17 0% 35%,
+                #00539B 35% 55%,
+                #0066bf 55% 75%,
+                #00a8e8 75% 90%,
+                #666 90% 100%
+            );
+        }
+
+        .expenses-chart {
+            background: conic-gradient(
+                #00539B 0% 65%,
+                #4CBB17 65% 80%,
+                #0066bf 80% 92%,
+                #666 92% 100%
+            );
+        }
+
+        .pie-chart::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .legend {
+            font-size: 9pt;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .legend-value {
+            margin-left: auto;
+            font-weight: 600;
+            color: #00539B;
+        }
+
+        .cost-highlight {
+            background: linear-gradient(135deg, #4CBB17 0%, #3a9212 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cost-highlight h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .cost-highlight > p {
+            font-size: 10pt;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .cost-comparison {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .cost-amount {
+            font-size: 28pt;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cost-label {
+            font-size: 9pt;
+            opacity: 0.9;
+        }
+
+        /* Events Page */
+        .events-page {
+            background: linear-gradient(135deg, #00539B 0%, #002B50 100%);
+            padding: 0.6in;
+        }
+
+        .events-page h2 {
+            color: white;
+            text-align: center;
+            font-size: 28pt;
+            margin-bottom: 5px;
+        }
+
+        .events-page .subtitle {
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .event-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .event-icon {
+            width: 70px;
+            height: 70px;
+            background: #4CBB17;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .event-icon svg {
+            width: 35px;
+            height: 35px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .event-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .event-name {
+            font-size: 14pt;
+            color: #4CBB17;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        /* Thank You Page */
+        .thankyou-page {
+            background: linear-gradient(135deg, #4CBB17 0%, #3a9212 100%);
+            padding: 0.6in;
+            text-align: center;
+        }
+
+        .thankyou-page h2 {
+            color: white;
+            font-size: 36pt;
+            margin-bottom: 15px;
+        }
+
+        .thankyou-page > p {
+            color: rgba(255,255,255,0.95);
+            font-size: 12pt;
+            max-width: 450px;
+            margin: 0 auto 30px;
+        }
+
+        .thankyou-image {
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .thankyou-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Footer Page */
+        .footer-page {
+            background: #002B50;
+            padding: 0.6in;
+            color: white;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-about {
+            font-size: 10pt;
+            color: rgba(255,255,255,0.8);
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 11pt;
+            margin-bottom: 12px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            font-size: 9pt;
+            display: block;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 9pt;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Cover -->
+    <div class="page cover-page">
+        <div class="cover-logo">
+            <img src="/images/logo.png" alt="SPARC">
+        </div>
+        <div class="cover-badge">Fiscal Year 2025</div>
+        <h1 class="cover-title">Annual Report</h1>
+        <p class="cover-subtitle">Fearless Compassion Builds Fearless Futures</p>
+        <p class="cover-tagline">Serving adults with severe and multiple disabilities across Northern Virginia since 2006</p>
+        <div class="cover-url">sparcsolutions.org</div>
+    </div>
+
+    <!-- Page 2: Letter from Executive Director -->
+    <div class="page letter-page">
+        <div class="letter-header">
+            <div class="letter-photo">
+                <img src="/images/staff/debi-alexander.jpg" alt="Debi Alexander">
+            </div>
+            <div class="letter-author">
+                <h3>Debi Alexander</h3>
+                <p>Executive Director</p>
+            </div>
+        </div>
+        <div class="letter-body">
+            <p class="letter-greeting">Dear SPARC Friends,</p>
+            <p>This past year marked a turning point for SPARC—not only in what we delivered in our centers, but in how we engaged with the Commonwealth on behalf of the adults and families we serve.</p>
+            <p>Throughout much of the year, SPARC undertook an intensive legal review of Virginia's obligations under the Americans with Disabilities Act and the long-running case <em>United States v. Virginia</em>. That research was led by our Board Vice Chair, Hannah Irsfeld, whose work helped us fully understand the scope, rarity, and consequences of the Permanent Injunction now governing Virginia's disability service system.</p>
+            <p>What we learned was sobering and clarifying: Virginia remains under permanent federal court supervision because it has failed, for decades, to provide adults with disabilities access to services in the most integrated settings appropriate to their needs. Permanent injunctions are extraordinarily rare.</p>
+            <p>For SPARC, this legal reality confirmed what families have been telling us for years. Adults with severe and multiple disabilities—especially those who cannot work and require continuous one-to-one support—have been effectively left out of Virginia's service system.</p>
+            <p>This is why SPARC's legislative work matters so deeply. Our advocacy is not about expanding one organization for its own sake. It is about helping Virginia meet its civil-rights obligations and ensure that adults with the most significant disabilities are no longer invisible in public policy.</p>
+            <div class="letter-signature">
+                <p>With gratitude and resolve,</p>
+                <p class="signature-name">Debi Alexander</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Letter from Board Chair -->
+    <div class="page letter-page">
+        <div class="letter-header">
+            <div class="letter-photo">
+                <img src="/images/board/ellen-dyke.jpg" alt="Ellen Dyke">
+            </div>
+            <div class="letter-author">
+                <h3>Ellen Dyke</h3>
+                <p>Board Chair</p>
+            </div>
+        </div>
+        <div class="letter-body">
+            <p class="letter-greeting">Dear Friends and Supporters,</p>
+            <p>In 2025, SPARC began shaping a national summit, <em>A Call to Conscience: Advancing Dignity for Adults with Severe and Multiple Disabilities</em>. It marked a significant step beyond our long-familiar Northern Virginia roots and into the national arena.</p>
+            <p>At the summit, leaders, innovators, adults with complex needs and their families will: imagine systems that honor interdependence as a source of strength; center the voices of families whose lives are shaped by love, advocacy, and the daily realities of supporting adults with complex needs; challenge narratives that diminish potential, like ableism and implicit bias; illuminate systemic barriers that isolate; and design a future where purpose, dignity, and joy are not luxuries, but rights.</p>
+            <p>Together, we hope to move our country closer to the promise made thirty years ago by the Americans with Disabilities Act—a reminder that civil rights are not self-executing. They require vigilance, courage, and our collective effort.</p>
+            <p>We hope to see you at the summit on Monday, July 27, 2026, at the Jack Morton Auditorium on George Washington University's Foggy Bottom campus, when SPARC, in partnership with GW, calls the nation to reckon with its unfinished promises and to build systems worthy of every person's inherent dignity.</p>
+            <div class="letter-signature">
+                <p>With hope and determination,</p>
+                <p class="signature-name">Ellen Dyke</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Stats -->
+    <div class="page stats-page">
+        <h2>SPARC by the Numbers</h2>
+        <p class="subtitle">Our impact in Fiscal Year 2025</p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">65+</div>
+                <div class="stat-label">Adults Served Daily</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Years of Service</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$15.9K</div>
+                <div class="stat-label">Annual Cost Per Participant</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">73%</div>
+                <div class="stat-label">Savings vs. Medicaid</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Participants on Scholarship</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Commitment to Every Family</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5: Programs -->
+    <div class="page programs-page">
+        <h2 class="section-title">Our Programs</h2>
+        <p class="section-subtitle">SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities</p>
+        <div class="programs-grid">
+            <div class="program-card">
+                <img src="art therapy.jpg" alt="Art Therapy">
+                <h3>Art Therapy</h3>
+                <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
+            </div>
+            <div class="program-card">
+                <img src="music therapy joy use this one.jpg" alt="Music Therapy">
+                <h3>Music Therapy</h3>
+                <p>Evidence-based musical interventions that promote communication, motor skills, and emotional well-being for participants of all ability levels.</p>
+            </div>
+            <div class="program-card">
+                <img src="Field trip.jpg" alt="Community Integration">
+                <h3>Community Integration</h3>
+                <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Gala -->
+    <div class="page gala-page">
+        <span class="gala-badge">November 2025</span>
+        <h2>An Evening to SPARCle</h2>
+        <p>Our 3rd Annual Gala brought together over 300 community members, sponsors, and advocates to celebrate the power of inclusion and raise critical funds for adults with severe and multiple disabilities.</p>
+        <div class="gala-stats">
+            <div>
+                <div class="gala-stat-number">300+</div>
+                <div class="gala-stat-label">Guests Attended</div>
+            </div>
+            <div>
+                <div class="gala-stat-number">$250K+</div>
+                <div class="gala-stat-label">Raised for SPARC</div>
+            </div>
+            <div>
+                <div class="gala-stat-number">50+</div>
+                <div class="gala-stat-label">Sponsors & Partners</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 7: Sponsors -->
+    <div class="page sponsors-page">
+        <h2 class="section-title">With Fearless Gratitude</h2>
+        <p class="section-subtitle">Thank you to our 2025 Gala Sponsors and Partners</p>
+
+        <div class="thanks-card">
+            <h3>Special Thanks to Our Presenting Sponsor</h3>
+            <p>Marriott Washington Dulles Airport</p>
+            <img src="/images/sponsors/Marriott logo.png" alt="Marriott">
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Event Sponsor</div>
+            <p class="sponsor-names">Anonymous | Burmester Family Endowment for People with Developmental Disabilities</p>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Champion</div>
+            <div class="sponsor-logos">
+                <img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group">
+            </div>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Hero</div>
+            <div class="sponsor-logos">
+                <img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS">
+            </div>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Leader</div>
+            <div class="sponsor-logos">
+                <img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa">
+                <img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway">
+                <img src="/images/sponsors/HCA.jpg" alt="HCA">
+                <img src="/images/sponsors/micron-logo-black.png" alt="Micron">
+            </div>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Partner</div>
+            <p class="sponsor-names">Thompson Hospitality Virginia | Geoffrey & John Andelin | Dominion Energy</p>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Advocate</div>
+            <p class="sponsor-names">Brand Mirror | Veatch Commercial Real Estate | Jim & Ellen Dyke | INOVA | Backflow Technologies | Bank of Clarke | Carol & Glenn Davidson | Law Offices of Michael Toobin Law, LLC | Northwest Federal Credit Union</p>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="tier-title">Friend</div>
+            <p class="sponsor-names">The Honorable John Foust, Esq. | Goldman Sachs | The Goldbranson Family | Wegmans | The CEO Woman | Maid Brigade | Dave & JoAnne Adams / Coldwell Banker | Varol Okun & Nancy Lu | Bill & Debi Alexander | Alex Alexander & Angelica Borja Londono</p>
+        </div>
+    </div>
+
+    <!-- Page 8: Spotlight -->
+    <div class="page spotlight-page">
+        <h2 class="section-title">Spotlight</h2>
+        <p class="section-subtitle">Recognizing the dedicated individuals who make our mission possible</p>
+
+        <div class="spotlight-card">
+            <div class="spotlight-left">
+                <div class="spotlight-photo">
+                    <img src="/images/board/hannah-irsfeld.jpg" alt="Hannah Irsfeld">
+                </div>
+                <h3 class="spotlight-name">Hannah Irsfeld</h3>
+                <p class="spotlight-role">Board Vice Chair</p>
+            </div>
+            <div class="spotlight-right">
+                <span class="spotlight-badge">Legal Analysis</span>
+                <h3>Reframing the Question — A Legal Analysis That Changed the Conversation</h3>
+                <p>For nearly twenty years, families caring for adults with severe and multiple disabilities were given the same answer: "Medicaid doesn't cover it."</p>
+                <p>In late 2025, SPARC's Board Vice Chair, Hannah Irsfeld, was asked: <strong>Is that actually true?</strong></p>
+                <div class="spotlight-quote">
+                    <p>"How a service is funded is not the same as whether the service must be provided."</p>
+                </div>
+                <p>Hannah's analysis uncovered a critical distinction: Virginia's obligation to provide community-integrated services arises independently under federal civil rights law—including Title II of the ADA and the Supreme Court's Olmstead decision.</p>
+                <p>Her conclusion: the right to services in the most integrated setting appropriate does not depend on whether Medicaid happens to fund a particular service configuration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 9: Gallery -->
+    <div class="page gallery-page">
+        <h2 class="section-title">The Year in Pictures</h2>
+        <p class="section-subtitle">Moments of joy, growth, and connection from our centers and community</p>
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <img src="SPARC team.jpeg" alt="SPARC Team">
+            </div>
+            <div class="gallery-item">
+                <img src="Four Corners game at Leesburg .PNG" alt="Four Corners">
+            </div>
+            <div class="gallery-item">
+                <img src="/images/Regatta SPARC friends.jpg" alt="Regatta">
+            </div>
+            <div class="gallery-item">
+                <img src="Chair Randall.jpeg" alt="Recognition">
+            </div>
+            <div class="gallery-item">
+                <img src="music therapy joy use this one.jpg" alt="Music Therapy">
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 10: Connor's Story -->
+    <div class="page story-page">
+        <div class="story-grid">
+            <div class="story-image">
+                <img src="Christiana.jpg" alt="SPARC participant">
+            </div>
+            <div class="story-content">
+                <h2>Connor's Story</h2>
+                <p>Before finding SPARC, Connor spent years aging out of the school system and being turned away from program after program because his needs were deemed "too complex." Without access to a suitable day program, his world grew smaller and more isolated.</p>
+                <p>His family rearranged their lives to fill a gap that should never have existed. This is what happens in communities without SPARC: adults are excluded, families are stretched to the breaking point, and isolation replaces opportunity.</p>
+                <p>When Connor finally walked through SPARC's doors, the outcome was profoundly different. With skilled, patient, credentialed professionals and a model designed specifically for complex needs, Connor found belonging, learned boundaries, built friendships, and began to thrive.</p>
+                <div class="story-highlight">
+                    <p>"His story is not exceptional—it is replicable. But only if systems choose to recognize and serve this population."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 11: Financials -->
+    <div class="page financials-page">
+        <h2 class="section-title">Financial Overview</h2>
+        <p class="section-subtitle">FY 2025 Revenue and Expenses</p>
+
+        <div class="financials-grid">
+            <div class="financial-card">
+                <h3>Revenue Sources</h3>
+                <div class="pie-chart revenue-chart"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #4CBB17;"></span>
+                        <span>Individual Donations & Events</span>
+                        <span class="legend-value">35%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #00539B;"></span>
+                        <span>Government Grants</span>
+                        <span class="legend-value">20%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #0066bf;"></span>
+                        <span>Foundation Grants</span>
+                        <span class="legend-value">20%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #00a8e8;"></span>
+                        <span>Participant Fees</span>
+                        <span class="legend-value">15%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #666;"></span>
+                        <span>Corporate Sponsorships</span>
+                        <span class="legend-value">10%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="financial-card">
+                <h3>Program Expenses</h3>
+                <div class="pie-chart expenses-chart"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #00539B;"></span>
+                        <span>Program Services</span>
+                        <span class="legend-value">65%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #4CBB17;"></span>
+                        <span>Scholarships & Financial Aid</span>
+                        <span class="legend-value">15%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #0066bf;"></span>
+                        <span>Administration</span>
+                        <span class="legend-value">12%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #666;"></span>
+                        <span>Fundraising</span>
+                        <span class="legend-value">8%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cost-highlight">
+            <h3>Cost-Effective Care</h3>
+            <p>SPARC's innovative participant-directed model delivers exceptional outcomes at a fraction of traditional costs</p>
+            <div class="cost-comparison">
+                <div>
+                    <div class="cost-amount">$15,896</div>
+                    <div class="cost-label">SPARC Annual Cost Per Participant</div>
+                </div>
+                <div>
+                    <div class="cost-amount">$58,264</div>
+                    <div class="cost-label">Medicaid Waiver Alternative</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 12: Events -->
+    <div class="page events-page">
+        <h2>Save the Dates</h2>
+        <p class="subtitle">Join us for these upcoming events</p>
+
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="event-date">July 27, 2026</div>
+                <div class="event-name">A Call to Conscience</div>
+                <p class="event-description">National Policy Summit at George Washington University. Join leaders, innovators, and advocates to advance dignity for adults with severe and multiple disabilities.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="event-date">November 14, 2026</div>
+                <div class="event-name">4th Annual Gala</div>
+                <p class="event-description">An Evening to SPARCle returns! Join us for an unforgettable night of celebration, connection, and support for adults with disabilities.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 13: Thank You -->
+    <div class="page thankyou-page">
+        <h2>Thank You</h2>
+        <p>Your support makes it possible for adults with severe and multiple disabilities to find belonging, purpose, and joy. Together, we are building fearless futures.</p>
+        <div class="thankyou-image">
+            <img src="SPARC team.jpeg" alt="SPARC Community">
+        </div>
+    </div>
+
+    <!-- Page 14: Footer/Contact -->
+    <div class="page footer-page">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <img src="/images/SPARC_logo_white.png" alt="SPARC">
+                </div>
+                <p class="footer-about">Specially Adapted Resource Centers provides community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia. We believe every adult deserves a meaningful life filled with connection, purpose, and belonging.</p>
+                <div class="social-links">
+                    <a class="social-link"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                    <a class="social-link"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg></a>
+                    <a class="social-link"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                    <a class="social-link"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a>About Us</a>
+                <a>Programs</a>
+                <a>Locations</a>
+                <a>Events</a>
+                <a>Stories</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a>Annual Reports</a>
+                <a>Board of Directors</a>
+                <a>News & Press</a>
+                <a>Get Involved</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><strong>Mailing Address:</strong></p>
+                <p>1775 Tysons Blvd., Fifth Floor<br>Tysons, VA 22102</p>
+                <p><strong>Phone:</strong> (571) 407-1807</p>
+                <p>debi@sparcsolutions.org</p>
+                <p style="color: #4CBB17; font-weight: 600; margin-top: 10px;">sparcsolutions.org</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SPARC - Specially Adapted Resource Centers. All rights reserved.</p>
+            <p>501(c)(3) Nonprofit Organization | EIN: 20-5513060</p>
+        </div>
+    </div>
+
+</body>
+</html>
