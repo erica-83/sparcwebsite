@@ -876,6 +876,157 @@
             height: 16px;
             fill: white;
         }
+
+        /* Spread layout - two pages on one printed sheet */
+        .spread {
+            width: 8.5in;
+            height: 11in;
+            page-break-after: always;
+            page-break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spread:last-child {
+            page-break-after: auto;
+        }
+
+        .spread .page {
+            height: 5.5in;
+            page-break-after: auto;
+            page-break-inside: avoid;
+        }
+
+        /* Adjust stats page for half-height */
+        .spread .stats-page {
+            padding: 0.3in;
+        }
+
+        .spread .stats-page h2 {
+            font-size: 22pt;
+            margin-bottom: 3px;
+        }
+
+        .spread .stats-page .subtitle {
+            margin-bottom: 15px;
+            font-size: 10pt;
+        }
+
+        .spread .stats-grid {
+            gap: 12px;
+        }
+
+        .spread .stat-card {
+            padding: 15px 10px;
+        }
+
+        .spread .stat-number {
+            font-size: 24pt;
+            margin-bottom: 5px;
+        }
+
+        .spread .stat-label {
+            font-size: 9pt;
+        }
+
+        /* Adjust programs page for half-height */
+        .spread .programs-page {
+            padding: 0.3in;
+        }
+
+        .spread .programs-page .section-title {
+            font-size: 18pt;
+            margin-bottom: 5px;
+        }
+
+        .spread .programs-page .section-subtitle {
+            margin-bottom: 15px;
+            font-size: 10pt;
+        }
+
+        .spread .programs-grid {
+            gap: 12px;
+        }
+
+        .spread .program-card img {
+            height: 100px;
+        }
+
+        .spread .program-card h3 {
+            font-size: 10pt;
+            padding: 8px 10px 3px;
+        }
+
+        .spread .program-card p {
+            font-size: 8pt;
+            padding: 0 10px 10px;
+        }
+
+        /* Adjust events page for half-height */
+        .spread .events-page {
+            padding: 0.3in;
+        }
+
+        .spread .events-page h2 {
+            font-size: 22pt;
+            margin-bottom: 3px;
+        }
+
+        .spread .events-page .subtitle {
+            margin-bottom: 20px;
+        }
+
+        .spread .events-grid {
+            gap: 15px;
+        }
+
+        .spread .event-card {
+            padding: 15px;
+        }
+
+        .spread .event-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 12px;
+        }
+
+        .spread .event-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .spread .event-date {
+            font-size: 16pt;
+            margin-bottom: 5px;
+        }
+
+        .spread .event-name {
+            font-size: 12pt;
+            margin-bottom: 8px;
+        }
+
+        .spread .event-description {
+            font-size: 9pt;
+        }
+
+        /* Adjust thank you page for half-height */
+        .spread .thankyou-page {
+            padding: 0.3in;
+        }
+
+        .spread .thankyou-page h2 {
+            font-size: 28pt;
+            margin-bottom: 10px;
+        }
+
+        .spread .thankyou-page > p {
+            font-size: 11pt;
+            margin-bottom: 15px;
+        }
+
+        .spread .thankyou-image {
+            max-width: 400px;
+        }
     </style>
 </head>
 <body>
@@ -941,57 +1092,60 @@
         </div>
     </div>
 
-    <!-- Page 4: Stats -->
-    <div class="page stats-page">
-        <h2>SPARC by the Numbers</h2>
-        <p class="subtitle">Our impact in Fiscal Year 2025</p>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">65+</div>
-                <div class="stat-label">Adults Served Daily</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">20</div>
-                <div class="stat-label">Years of Service</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">$15.9K</div>
-                <div class="stat-label">Annual Cost Per Participant</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">73%</div>
-                <div class="stat-label">Savings vs. Medicaid</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">40%</div>
-                <div class="stat-label">Participants on Scholarship</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Commitment to Every Family</div>
+    <!-- Pages 4-5: Stats + Programs (combined on one printed sheet) -->
+    <div class="spread">
+        <!-- Page 4: Stats -->
+        <div class="page stats-page">
+            <h2>SPARC by the Numbers</h2>
+            <p class="subtitle">Our impact in Fiscal Year 2025</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">65+</div>
+                    <div class="stat-label">Adults Served Daily</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$15.9K</div>
+                    <div class="stat-label">Annual Cost Per Participant</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">73%</div>
+                    <div class="stat-label">Savings vs. Medicaid</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Participants on Scholarship</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Commitment to Every Family</div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Page 5: Programs -->
-    <div class="page programs-page">
-        <h2 class="section-title">Our Programs</h2>
-        <p class="section-subtitle">SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities</p>
-        <div class="programs-grid">
-            <div class="program-card">
-                <img src="art therapy.jpg" alt="Art Therapy">
-                <h3>Art Therapy</h3>
-                <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
-            </div>
-            <div class="program-card">
-                <img src="music therapy joy use this one.jpg" alt="Music Therapy">
-                <h3>Music Therapy</h3>
-                <p>Evidence-based musical interventions that promote communication, motor skills, and emotional well-being for participants of all ability levels.</p>
-            </div>
-            <div class="program-card">
-                <img src="Field trip.jpg" alt="Community Integration">
-                <h3>Community Integration</h3>
-                <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging.</p>
+        <!-- Page 5: Programs -->
+        <div class="page programs-page">
+            <h2 class="section-title">Our Programs</h2>
+            <p class="section-subtitle">SPARC provides meaningful learning experiences, social connection, and a rightful place in the community for adults with severe and multiple disabilities</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <img src="art therapy.jpg" alt="Art Therapy">
+                    <h3>Art Therapy</h3>
+                    <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
+                </div>
+                <div class="program-card">
+                    <img src="music therapy joy use this one.jpg" alt="Music Therapy">
+                    <h3>Music Therapy</h3>
+                    <p>Evidence-based musical interventions that promote communication, motor skills, and emotional well-being for participants of all ability levels.</p>
+                </div>
+                <div class="program-card">
+                    <img src="Field trip.jpg" alt="Community Integration">
+                    <h3>Community Integration</h3>
+                    <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1222,37 +1376,40 @@
         </div>
     </div>
 
-    <!-- Page 12: Events -->
-    <div class="page events-page">
-        <h2>Save the Dates</h2>
-        <p class="subtitle">Join us for these upcoming events</p>
+    <!-- Pages 12-13: Events + Thank You (combined on one printed sheet) -->
+    <div class="spread">
+        <!-- Page 12: Events -->
+        <div class="page events-page">
+            <h2>Save the Dates</h2>
+            <p class="subtitle">Join us for these upcoming events</p>
 
-        <div class="events-grid">
-            <div class="event-card">
-                <div class="event-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="event-date">July 27, 2026</div>
+                    <div class="event-name">A Call to Conscience</div>
+                    <p class="event-description">National Policy Summit at George Washington University. Join leaders, innovators, and advocates to advance dignity for adults with severe and multiple disabilities.</p>
                 </div>
-                <div class="event-date">July 27, 2026</div>
-                <div class="event-name">A Call to Conscience</div>
-                <p class="event-description">National Policy Summit at George Washington University. Join leaders, innovators, and advocates to advance dignity for adults with severe and multiple disabilities.</p>
-            </div>
-            <div class="event-card">
-                <div class="event-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <div class="event-card">
+                    <div class="event-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="event-date">November 14, 2026</div>
+                    <div class="event-name">4th Annual Gala</div>
+                    <p class="event-description">An Evening to SPARCle returns! Join us for an unforgettable night of celebration, connection, and support for adults with disabilities.</p>
                 </div>
-                <div class="event-date">November 14, 2026</div>
-                <div class="event-name">4th Annual Gala</div>
-                <p class="event-description">An Evening to SPARCle returns! Join us for an unforgettable night of celebration, connection, and support for adults with disabilities.</p>
             </div>
         </div>
-    </div>
 
-    <!-- Page 13: Thank You -->
-    <div class="page thankyou-page">
-        <h2>Thank You</h2>
-        <p>Your support makes it possible for adults with severe and multiple disabilities to find belonging, purpose, and joy. Together, we are building fearless futures.</p>
-        <div class="thankyou-image">
-            <img src="SPARC team.jpeg" alt="SPARC Community">
+        <!-- Page 13: Thank You -->
+        <div class="page thankyou-page">
+            <h2>Thank You</h2>
+            <p>Your support makes it possible for adults with severe and multiple disabilities to find belonging, purpose, and joy. Together, we are building fearless futures.</p>
+            <div class="thankyou-image">
+                <img src="SPARC team.jpeg" alt="SPARC Community">
+            </div>
         </div>
     </div>
 
