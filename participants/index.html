@@ -110,6 +110,46 @@
         .newsletter-wrapper {
             text-align: center;
         }
+
+        /* Bulletin Styles */
+        .bulletin-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--sparc-kelly-green, #4CAF50);
+        }
+        .bulletin-date {
+            font-size: 0.85rem;
+            color: var(--sparc-kelly-green, #4CAF50);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .bulletin-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--sparc-dark-navy, #1a1a2e);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .bulletin-content {
+            color: #555;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+        .bulletin-content p {
+            margin-bottom: 10px;
+        }
+        .no-bulletins {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -243,16 +283,12 @@
                     </div>
                 </div>
 
-                <!-- Daily Bulletins Section -->
+                <!-- Weekly Bulletins Section -->
                 <div class="newsletter-section">
-                    <h3>Daily Bulletins</h3>
+                    <h3>📬 Weekly Bulletins</h3>
                     <p>Latest updates and announcements for SPARC families</p>
-                    <div class="bulletin-wrapper" style="background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto;">
-                        <iframe
-                            src="https://docs.google.com/document/d/1bPVy-x9LFm-hHENR0f9AeMnbXC38Jsze4sEbyB8KrqA/preview"
-                            style="width: 100%; height: 600px; border: none; border-radius: 8px;"
-                            title="SPARC Daily Bulletins">
-                        </iframe>
+                    <div id="bulletins-container" style="max-width: 900px; margin: 0 auto;">
+                        <p style="text-align: center; color: #888; font-style: italic;">Loading bulletins...</p>
                     </div>
                 </div>
 
@@ -801,6 +837,76 @@
                 };
 
                 startBloomerangLoadEmail();
+</script>
+
+<!-- Fetch Bulletins from Google Sheet -->
+<script>
+    // Google Sheet ID: 1LpUc10rinpXBI_Z_KrUpo4Z_lt2uDgoJE6o1hJ8EKqU
+    // Sheet must be published to web: File > Share > Publish to web
+    const SHEET_ID = '1LpUc10rinpXBI_Z_KrUpo4Z_lt2uDgoJE6o1hJ8EKqU';
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+    async function fetchBulletins() {
+        const container = document.getElementById('bulletins-container');
+        if (!container) return;
+
+        try {
+            const response = await fetch(SHEET_URL);
+            const text = await response.text();
+
+            // Parse the JSONP response (remove prefix and suffix)
+            const jsonStart = text.indexOf('{');
+            const jsonEnd = text.lastIndexOf('}') + 1;
+            const jsonString = text.substring(jsonStart, jsonEnd);
+            const data = JSON.parse(jsonString);
+
+            if (!data.table || !data.table.rows || data.table.rows.length === 0) {
+                container.innerHTML = '<div class="no-bulletins"><p>No bulletins available at this time.</p></div>';
+                return;
+            }
+
+            // Get column headers (first row)
+            const cols = data.table.cols;
+
+            // Build bulletins HTML
+            let html = '';
+
+            // Process each row (skip header if present)
+            data.table.rows.forEach((row, index) => {
+                if (!row.c || row.c.length === 0) return;
+
+                // Extract values - expecting: Date (A), Title (B), Content (C)
+                const date = row.c[0] && row.c[0].v ? row.c[0].v : '';
+                const title = row.c[1] && row.c[1].v ? row.c[1].v : '';
+                const content = row.c[2] && row.c[2].v ? row.c[2].v : '';
+
+                // Skip empty rows or header row
+                if (!title && !content) return;
+                if (title.toLowerCase() === 'title' || title.toLowerCase() === 'date') return;
+
+                html += `
+                    <div class="bulletin-item">
+                        ${date ? `<div class="bulletin-date">${date}</div>` : ''}
+                        ${title ? `<div class="bulletin-title">${title}</div>` : ''}
+                        ${content ? `<div class="bulletin-content">${content.replace(/\n/g, '<br>')}</div>` : ''}
+                    </div>
+                `;
+            });
+
+            if (html) {
+                container.innerHTML = html;
+            } else {
+                container.innerHTML = '<div class="no-bulletins"><p>No bulletins available at this time.</p></div>';
+            }
+
+        } catch (error) {
+            console.error('Error fetching bulletins:', error);
+            container.innerHTML = '<div class="no-bulletins"><p>Unable to load bulletins. Please try again later.</p></div>';
+        }
+    }
+
+    // Fetch bulletins when page loads
+    document.addEventListener('DOMContentLoaded', fetchBulletins);
 </script>
 
 </body>
