@@ -536,10 +536,11 @@
         /* ========== PAGE 5-8: SPONSORS & DONORS ========== */
         .sponsors-section {
             padding: 100px 0;
+            background: white;
         }
 
         .sponsor-tier {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .tier-header {
@@ -548,7 +549,7 @@
         }
 
         .tier-title {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -583,26 +584,32 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
         }
 
         .sponsor-logo {
-            max-height: 70px;
-            max-width: 180px;
-            opacity: 0.85;
+            max-height: 90px;
+            max-width: 200px;
+            opacity: 1;
             transition: all var(--transition-normal);
-            filter: grayscale(20%);
+            filter: none;
             object-fit: contain;
         }
 
         .sponsor-logo:hover {
             opacity: 1;
-            filter: grayscale(0%);
+            filter: none;
+            transform: scale(1.05);
         }
 
         .sponsor-logo.large {
-            max-height: 90px;
-            max-width: 220px;
+            max-height: 110px;
+            max-width: 260px;
+        }
+
+        .sponsor-logo.xlarge {
+            max-height: 140px;
+            max-width: 350px;
         }
 
         .donor-names {
@@ -1724,7 +1731,7 @@
     </section>
 
     <!-- ========== PAGE 5: THANK YOU TO SPONSORS ========== -->
-    <section class="sponsors-section bg-light">
+    <section class="sponsors-section">
         <div class="container">
             <div class="section-header">
                 <h2>With Fearless Gratitude</h2>
@@ -1743,7 +1750,7 @@
                     <span class="tier-title">Event Sponsor</span>
                 </div>
                 <div class="sponsor-logos">
-                    <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="sponsor-logo">
+                    <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="sponsor-logo xlarge">
                 </div>
                 <div class="donor-names">
                     <span>Anonymous</span>

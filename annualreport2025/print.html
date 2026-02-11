@@ -348,11 +348,11 @@
         /* Sponsors Page */
         .sponsors-page {
             padding: 0.4in;
-            background: #f5f5f5;
+            background: white;
         }
 
         .sponsor-section {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .tier-title {
@@ -362,7 +362,7 @@
             color: #4CBB17;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .sponsor-logos {
@@ -370,13 +370,18 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .sponsor-logos img {
-            max-height: 45px;
-            max-width: 110px;
+            max-height: 55px;
+            max-width: 130px;
             object-fit: contain;
+        }
+
+        .sponsor-logos img.xlarge {
+            max-height: 80px;
+            max-width: 200px;
         }
 
         .sponsor-names {
@@ -1186,7 +1191,7 @@
         <div class="sponsor-section">
             <div class="tier-title">Event Sponsor</div>
             <div class="sponsor-logos">
-                <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment">
+                <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="xlarge">
             </div>
             <p class="sponsor-names">Anonymous</p>
         </div>
