@@ -74,30 +74,47 @@
         }
         .sponsor-slide {
             flex-shrink: 0;
-            width: 280px;
+            width: 200px;
             height: 140px;
-            margin: 0 20px;
+            margin: 0 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .sponsor-slide a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
         }
         .sponsor-slide img {
             max-width: 100%;
-            max-height: 120px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
             object-fit: contain;
             transition: all 0.3s ease;
+        }
+        .sponsor-slide:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .sponsor-slide:hover img {
             transform: scale(1.05);
         }
         @media (max-width: 768px) {
             .sponsor-slide {
-                width: 200px;
+                width: 150px;
                 height: 100px;
-                margin: 0 25px;
+                margin: 0 10px;
+                padding: 15px;
             }
             .sponsor-slide img {
-                max-height: 80px;
+                max-height: 70px;
             }
             .sponsor-carousel-wrapper::before,
             .sponsor-carousel-wrapper::after {
@@ -395,11 +412,11 @@
                     <div class="sponsor-carousel" id="sponsorCarousel">
                         <div class="sponsor-track">
                             <!-- Sponsor logos -->
-                            <div class="sponsor-slide"><a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></a></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" style="max-height: 180px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener"><img src="/images/sponsors/Marriott logo.png" alt="Marriott"></a></div>
+                            <div class="sponsor-slide"><img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment"></div>
                             <div class="sponsor-slide"><a href="https://claudemoorefoundation.org/" target="_blank" rel="noopener"><img src="/images/sponsors/Claude Moore Charitable Foundation.jpg" alt="Claude Moore Charitable Foundation"></a></div>
-                            <div class="sponsor-slide"><a href="https://thegroupdc.com/" target="_blank" rel="noopener"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></a></div>
-                            <div class="sponsor-slide"><a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 480px; max-width: 400%;"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.thewashingtongroupllc.org/" target="_blank" rel="noopener"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS"></a></div>
                             <div class="sponsor-slide"><a href="https://www.visa.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></a></div>
                             <div class="sponsor-slide"><a href="https://www.dullesgreenway.com/" target="_blank" rel="noopener"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></a></div>
                             <div class="sponsor-slide"><a href="https://www.hcahealthcare.com/" target="_blank" rel="noopener"><img src="/images/sponsors/HCA.jpg" alt="HCA"></a></div>
@@ -423,7 +440,7 @@
                             <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson Family"></div>
                             <div class="sponsor-slide"><a href="https://www.wegmans.com/" target="_blank" rel="noopener"><img src="/images/sponsors/wegamans.webp" alt="Wegmans"></a></div>
                             <div class="sponsor-slide"><a href="https://theceowoman.com/" target="_blank" rel="noopener"><img src="/images/sponsors/ceo woman.jpg" alt="The CEO Woman"></a></div>
-                            <div class="sponsor-slide"><a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade" style="max-height: 160px; max-width: 200%;"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade"></a></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave & JoAnne Adams"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Varol Okun & Nancy Lu"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill & Debi Alexander"></div>
@@ -434,11 +451,11 @@
                             <div class="sponsor-slide"><a href="https://www.501st.com/" target="_blank" rel="noopener"><img src="/images/sponsors/501st Legion.png" alt="501st Legion"></a></div>
                             <div class="sponsor-slide"><a href="https://rebellegion.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Rebel Legion logo.webp" alt="Rebel Legion"></a></div>
                             <!-- Duplicates for seamless loop -->
-                            <div class="sponsor-slide"><a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener"><img src="/images/sponsors/Marriott logo.png" alt="Marriott" style="max-height: 160px; max-width: 200%;"></a></div>
-                            <div class="sponsor-slide"><img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" style="max-height: 180px; max-width: 200%;"></div>
+                            <div class="sponsor-slide"><a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener"><img src="/images/sponsors/Marriott logo.png" alt="Marriott"></a></div>
+                            <div class="sponsor-slide"><img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment"></div>
                             <div class="sponsor-slide"><a href="https://claudemoorefoundation.org/" target="_blank" rel="noopener"><img src="/images/sponsors/Claude Moore Charitable Foundation.jpg" alt="Claude Moore Charitable Foundation"></a></div>
-                            <div class="sponsor-slide"><a href="https://thegroupdc.com/" target="_blank" rel="noopener"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></a></div>
-                            <div class="sponsor-slide"><a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" style="max-height: 480px; max-width: 400%;"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.thewashingtongroupllc.org/" target="_blank" rel="noopener"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS"></a></div>
                             <div class="sponsor-slide"><a href="https://www.visa.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa"></a></div>
                             <div class="sponsor-slide"><a href="https://www.dullesgreenway.com/" target="_blank" rel="noopener"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway"></a></div>
                             <div class="sponsor-slide"><a href="https://www.hcahealthcare.com/" target="_blank" rel="noopener"><img src="/images/sponsors/HCA.jpg" alt="HCA"></a></div>
@@ -462,7 +479,7 @@
                             <div class="sponsor-slide"><img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson Family"></div>
                             <div class="sponsor-slide"><a href="https://www.wegmans.com/" target="_blank" rel="noopener"><img src="/images/sponsors/wegamans.webp" alt="Wegmans"></a></div>
                             <div class="sponsor-slide"><a href="https://theceowoman.com/" target="_blank" rel="noopener"><img src="/images/sponsors/ceo woman.jpg" alt="The CEO Woman"></a></div>
-                            <div class="sponsor-slide"><a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade" style="max-height: 160px; max-width: 200%;"></a></div>
+                            <div class="sponsor-slide"><a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade"></a></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave & JoAnne Adams"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/Nancy Lu.jpg" alt="Varol Okun & Nancy Lu"></div>
                             <div class="sponsor-slide"><img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill & Debi Alexander"></div>
@@ -561,7 +578,7 @@
             if (track) {
                 const slides = track.querySelectorAll('.sponsor-slide');
                 const totalSlides = slides.length / 2; // Half are duplicates
-                const slideWidth = 320; // 280px width + 40px margin
+                const slideWidth = 230; // 200px width + 30px margin
                 const totalWidth = totalSlides * slideWidth;
 
                 let position = 0;
