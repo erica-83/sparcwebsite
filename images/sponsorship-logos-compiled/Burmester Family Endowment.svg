@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80">
+  <style>
+    .name { font-family: 'Montserrat', Arial, sans-serif; font-size: 18px; font-weight: 600; fill: #002B50; }
+    .subtitle { font-family: 'Montserrat', Arial, sans-serif; font-size: 12px; font-weight: 400; fill: #666666; }
+  </style>
+  <text x="200" y="35" text-anchor="middle" class="name">Burmester Family Endowment</text>
+  <text x="200" y="55" text-anchor="middle" class="subtitle">for People with Developmental Disabilities</text>
+</svg>

@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta property="og:url" content="http://www.501st.com/" />
+	<meta property="og:type" content="website" />
+	<meta property='og:site_name' value='The 501st Legion'/>
+	<meta property="og:title" content="The 501st Legion" />
+	<meta property="og:description" content="Star Wars Costuming Group" />
+	<meta property="og:image" content="https://www.501st.com/include/images/oglogo.jpg" />
+	<meta property='og:image:url' content="https://www.501st.com/include/images/oglogo.jpg" />
+	
+	<title>501st Legion - Vader's Fist</title>
+	
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-P8ZM6V');</script>
+	<!-- End Google Tag Manager -->
+	
+	<!-- CSS -->
+	<link href="/assets/bootstrap/css/bootstrap.min.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/simpletextrotator.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/font-awesome.min.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/et-line-font.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/magnific-popup.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/flexslider.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/owl.carousel.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/animate.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/style.css?cacheVersion=1.0.4" rel="stylesheet">
+	<link href="/assets/css/501st.css?cacheVersion=1.0.4" rel="stylesheet">
+	<!– To support Apple Shortcuts–>
+	<link rel="apple-touch-icon-precomposed" type="image/png" href="https://www.501st.com/501st_Icon_iOS.png" sizes="180×180">
+	<!– To support Android Shortcuts–>
+	<link rel="icon" type="image/png" href="https://www.501st.com/501st_Icon_Android.png" sizes="192x192">
+
+       <!-- Javascript files -->
+        <script src="/assets/js/jquery-2.1.3.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/bootstrap/js/bootstrap.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jquery.mb.YTPlayer.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/appear.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jquery.simple-text-rotator.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jqBootstrapValidation.js?cacheVersion=1.0.4"></script>
+        <script src="//maps.google.com/maps/api/js?sensor=true&cacheVersion=1.0.4"></script>
+        <script src="/assets/js/gmaps.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/isotope.pkgd.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/imagesloaded.pkgd.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jquery.flexslider-min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jquery.magnific-popup.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/jquery.fitvids.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/smoothscroll.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/wow.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/owl.carousel.min.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/contact.js?cacheVersion=1.0.4"></script>
+		<script src="/assets/js/js.cookie.js?cacheVersion=1.0.4"></script>
+        <script src="/assets/js/custom.js?cacheVersion=1.0.4"></script>
+		
+		
+		
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8ZM6V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- Preloader -->
+	<div class="page-loader">
+		<div class="loader">Loading...</div>
+	</div>
+
+
+	<!-- Wrapper start -->
+	<div class="wrap" >
+	<div class="home-section home-full-height">
+
+        <!-- Navigation Menu start -->
+ 	<nav class="navbar navbar-custom navbar-transparent navbar-fixed-top" role="navigation">
+
+		<div class="container">
+		
+			<!-- Cookie consent -->
+			<div class="cookie-consent-wrapper">
+				<div class="cookie-consent-close"><i class="fa fa-close" aria-hidden="true"></i></div>
+				<div class="cookie-consent-content font-alt">This website is using cookies. <a href="/cookiepolicy.php" target="_blank">More info</a>. <a class="cookie-consent-confirm">Accept</a></div>
+			</div>
+	
+			<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+			<a href="/"><img id="nav-logo" class="navbar-brand" alt="banner logo" src="/assets/images/logos/logobanner1.png" /></a>
+			</div>
+	
+			<div class="collapse navbar-collapse" id="custom-collapse">
+	
+				<ul class="nav navbar-nav navbar-right">
+	
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+						<ul class="dropdown-menu">
+						<li><a href="/mission.php">Our Mission</a></li>
+						<li><a href="/origin.php">Origin of the 501st Name</a></li>
+						<li><a href="/faqs.php">FAQ</a></li>
+						<li><a href="/testimonial.php">Testimonials</a></li>
+						<li><a href="//tinyurl.com/3eetmuvu" class="link" target="_blank">Legion Charter</a></li>
+						<li><a href="//tinyurl.com/2pd42p6s" class="link" target="_blank">Operations Protocol</a></li>
+						</ul>					
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Community</a>
+						<ul class="dropdown-menu">
+									<li><a href="/ourmembers.php">Members</a></li>
+									<li><a href="/members/LegionOfficers.php">Legion Officers</a></li>
+									<li><a href="/members/displayUnits.php">Unit Listings</a></li>
+									<li><a href="/maps/">Unit Map</a></li>
+									<li><a href="/join/">How to Join</a></li>
+									<!-- <li><a href="/members/join_form.php">Join the Legion</a></li>-->
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Costuming</a>
+						<ul class="dropdown-menu">
+						<li><a href="/members/members.php">Costume Gallery</a></li>
+						<li><a href="//crls.501st.com" target="_blank">Costume Reference Library</a></li>
+						<li><a href="/detachments.php">Costume Detachments</a></li>
+						</ul>
+					</li>	
+					<li class=""><a href="/charity/">Charity</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Appearances</a>
+						<ul class="dropdown-menu">
+									<li><a href="/appearances.php">Events We Do</a></li>
+									<li><a href="/request.php">Request an Event</a></li>
+						</ul>
+					</li>
+<!--
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Media Center</a>
+						<ul class="dropdown-menu">
+									<li><a href="/downloads/501actbook.pdf">Imperial Cadet Activity Book</a></li>
+									<li><a href="downloads/BHGactbook.pdf">Bounty Hunter's Activity Book</a></li>
+									<li><a href="/news.php">Archived News</a></li>
+						</ul>
+					</li>
+-->
+
+                                        <li class=""><a href="/forum/ucp.php?mode=login">Log in</a></li>
+
+
+
+					<li class=""><a href="/contactus.php">Contact Us</a></li>
+                                        <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="translate" src="/include/images/world-tiny.png" /></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                                <a href="?mdb_lang_iso=en" title="English">English</a>
+                                        </li>
+
+                                        <li>
+						<a href="?mdb_lang_iso=de"  title="auf Deutsch anzeigen">Deutsch</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=es"  title="Ver en español">Español</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=fr"  title="Afficher le site en français">Français </a>
+                                        </li>
+<!--
+                                        <li>
+						<a href="?mdb_lang_iso=it"  title="Visualizza in italiano">Italiano</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=pt"  title="Portugu&ecirc;s">Portugu&ecirc;s</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=ja"  title="を日本語で表示">日本語</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=ko"  title="을 한국어로 보기">한국어</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=sv"   title="Visa på svenska">Svenska</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=tl-PH"   title="Tagalog">Tagalog</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=zh-CN"  title="以简体中文查看 ">简体中文</a>
+                                        </li>
+                                        <li>
+						<a href="?mdb_lang_iso=zh-TW"  title="以繁體中文檢視 ">繁體中文</a><p>
+                                        </li>
+-->
+                                                </ul>
+                                        </li>
+				</ul>
+			</div>
+	
+		</div>
+
+	</nav>
+	<!-- Navigation end -->
+
+		<!-- Header section start -->
+		<section class="module bg-dark bg-dark-60 header-height" data-background="/assets/images/header-bg1.jpg">
+		    &nbsp;
+		</section>
+		<!-- Header section end -->
+<title>404 Page Not Found</title>
+		<!-- Content start -->
+		<section id="about" class="module">
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-sm-12">
+
+						<center><p><img src="/include/images/404trooper.gif" alt="Move Along"></p></center>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+        <div class="footer-padding">
+        &nbsp;
+        </div>
+
+<!-- This section is needed for the footer to FLOAT down
+	</div> <!-- Home-Section end (Floating Footer) -->
+
+
+             <!-- Footer start -->
+
+                <footer class="footer bg-dark">
+                        <div class="container">
+                                <div class="row">
+								<div >
+                                     <a href="https://www.facebook.com/The501stLegion"><i class="fa fa-facebook"></i></a>&nbsp&nbsp&nbsp
+                                     <a href="https://twitter.com/501stLegion"><i class="fa fa-twitter"></i></a>&nbsp&nbsp&nbsp
+                                     <a href="https://www.501st.com/podcast"><i class="fa fa-empire"></i></a>&nbsp&nbsp&nbsp
+                                     <a href="https://www.youtube.com/user/Official501stLegion"><i class="fa fa-youtube"></i></a>
+                                 </div>
+
+                                 <div class="copyright font-alt">&copy;2026 <a href="https://www.501st.com">501st Legion</a>, All Rights Reserved.                                 </div>                              
+
+				<div class="disclaimer">The 501st Legion is a worldwide Star Wars costuming organization comprised of and operated by Star Wars fans. While it is not sponsored by Lucasfilm Ltd., it follows generally accepted ground rules for Star Wars fan groups.<br />Star Wars, its characters, costumes, and all associated items are the intellectual property of Lucasfilm. © & ™ Lucasfilm Ltd. All rights reserved. Used under authorization.</div>
+				<div class="disclaimer"><a href="https://www.501st.com/privacypolicy.php" target="_blank"><b><h6>Privacy Policy</b></a>&nbsp&nbsp&nbsp&nbsp&nbsp <a href="https://www.501st.com/cookiepolicy.php" target="_blank"><b>Cookie Policy</b></h6></a></div>
+
+                                </div><!-- .row -->
+                        </div> <!-- container -->
+                </footer>
+                <!-- Footer end -->
+
+        <!-- Scroll-up -->
+        <div class="scroll-up">
+                <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+        </div>
+
+        </div><!-- Home-Section end -->
+	</div><!-- Wrapper end -->
+</body>
+</html>
