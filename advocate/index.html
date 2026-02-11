@@ -810,7 +810,7 @@
 
                         <p>SPARC provides integrated, community-based day services for adults with complex disabilities who are unable to work and require continuous one-to-one personal care support. This is the exact population Virginia has struggled - over decades - to serve in compliance with the Americans with Disabilities Act and the Permanent Injunction issued against Virginia in <em>United States v. Virginia</em>.</p>
 
-                        <p><span class="fill-in" contenteditable="true" data-placeholder="Add a personal sentence about why SPARC matters to you (optional)" style="min-width: 100%; display: block; min-height: 50px;"></span></p>
+                        <p id="personal-sentence-paragraph"><span class="fill-in" id="personal-sentence" contenteditable="true" data-placeholder="Add a personal sentence about why SPARC matters to you (optional)" style="min-width: 100%; display: block; min-height: 50px;"></span></p>
 
                         <p>SPARC is not a pilot or a proposal. It is an established, fully operating program already delivering the integrated services the Commonwealth is legally required to provide - at substantially lower cost than Medicaid-funded day programs and with a significantly higher level of programming, including richer community integration, individualized engagement, and meaningful daily activities that far exceed the programs currently serving adults with complex needs.</p>
 
@@ -1254,10 +1254,12 @@
             // Track in GA
             gtag('event', 'download', {'event_category': 'advocacy', 'event_label': 'letter_template'});
 
-            // Check if any fields are still placeholders and warn
+            // Check if any required fields are still placeholders and warn (excluding optional personal sentence)
             let hasUnfilled = false;
             document.querySelectorAll('.letter-body .fill-in').forEach(field => {
                 const placeholder = field.getAttribute('data-placeholder');
+                // Skip the optional personal sentence field
+                if (field.id === 'personal-sentence') return;
                 if (field.textContent === placeholder) {
                     hasUnfilled = true;
                 }
@@ -1269,7 +1271,22 @@
                 }
             }
 
+            // Hide personal sentence paragraph if it's still placeholder or empty
+            const personalParagraph = document.getElementById('personal-sentence-paragraph');
+            const personalSentence = document.getElementById('personal-sentence');
+            const placeholder = personalSentence.getAttribute('data-placeholder');
+            const hidePersonal = !personalSentence.textContent.trim() || personalSentence.textContent === placeholder;
+
+            if (hidePersonal) {
+                personalParagraph.style.display = 'none';
+            }
+
             window.print();
+
+            // Restore personal sentence paragraph after printing
+            if (hidePersonal) {
+                personalParagraph.style.display = '';
+            }
         }
 
         // County panel toggle functionality
