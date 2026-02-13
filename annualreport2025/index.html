@@ -1282,89 +1282,378 @@
 
         /* ========== PRINT STYLES ========== */
         @media print {
-            body {
-                font-size: 11pt;
-                line-height: 1.5;
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
 
-            .btn, .cover-scroll, .social-links {
+            body {
+                font-size: 10pt;
+                line-height: 1.4;
+                color: #333;
+            }
+
+            .btn, .cover-scroll, .social-links, .report-footer, .footer-bottom-bar {
                 display: none !important;
             }
 
+            /* Cover Page */
             .report-cover {
-                min-height: auto;
-                padding: 60px 40px;
+                min-height: 100vh;
+                padding: 0;
                 page-break-after: always;
+                background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .cover-image {
-                display: none;
-            }
-
-            .report-cover {
-                background: var(--sparc-dark-navy) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            section {
-                page-break-inside: avoid;
-            }
-
-            .split-section {
                 display: block;
+                opacity: 0.2;
+            }
+
+            .cover-overlay {
+                display: block;
+            }
+
+            .cover-content {
+                padding: 40px;
+            }
+
+            .cover-title {
+                font-size: 4rem;
+                color: white !important;
+            }
+
+            .cover-tagline {
+                color: #4CBB17 !important;
+            }
+
+            .cover-year {
+                background: #4CBB17 !important;
+                color: white !important;
+            }
+
+            /* Photo Dividers */
+            .photo-divider {
+                height: 280px;
                 page-break-inside: avoid;
+                margin: 0;
+            }
+
+            .photo-divider.pancake {
+                page-break-after: always;
+            }
+
+            /* Letters Section */
+            .letters-section {
+                padding: 40px 0;
+                background: #f8f9fa !important;
+                page-break-after: always;
+            }
+
+            .letters-grid {
+                display: block;
+            }
+
+            .letter-card {
+                page-break-inside: avoid;
+                margin-bottom: 30px;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .letter-header {
+                background: linear-gradient(135deg, #002B50, #00539B) !important;
+            }
+
+            .letter-author h3 {
+                color: white !important;
+            }
+
+            .letter-author p {
+                color: #4CBB17 !important;
+            }
+
+            /* Stats Section */
+            .stats-section {
+                background: #002B50 !important;
+                padding: 50px 0;
+                page-break-after: always;
+            }
+
+            .stats-section::before {
+                background: #4CBB17 !important;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+
+            .stat-card {
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 25px 15px;
+            }
+
+            .stat-number {
+                color: #4CBB17 !important;
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                color: white !important;
+                font-size: 0.75rem;
+            }
+
+            /* Hero Photos */
+            .hero-photo {
+                height: 350px;
+                page-break-inside: avoid;
+            }
+
+            .hero-photo-overlay {
+                background: linear-gradient(to top, rgba(0,43,80,0.95), transparent) !important;
+            }
+
+            .hero-photo-overlay h2 {
+                color: white !important;
+                font-size: 2rem;
+            }
+
+            /* Programs Section */
+            .programs-section {
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            .programs-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+
+            .program-card {
+                aspect-ratio: 3/4;
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .program-overlay {
+                background: linear-gradient(to top, rgba(0,43,80,0.95) 0%, transparent 100%) !important;
+            }
+
+            .program-overlay h3 {
+                color: white !important;
+                font-size: 1rem;
+            }
+
+            .program-overlay p {
+                font-size: 0.75rem;
+            }
+
+            /* Split Sections (Stories) */
+            .split-section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                min-height: auto;
+                page-break-inside: avoid;
+            }
+
+            .split-section.large {
+                min-height: auto;
             }
 
             .split-image {
-                height: 250px;
-                page-break-inside: avoid;
+                height: 350px;
             }
 
             .split-content {
                 padding: 30px;
             }
 
-            .letters-section {
-                page-break-after: always;
+            .split-content.bg-navy {
+                background: #002B50 !important;
             }
 
-            .letter-card {
-                page-break-inside: avoid;
-                margin-bottom: 30px;
+            .split-content.bg-gray {
+                background: #f8f9fa !important;
             }
 
-            .stats-section {
-                page-break-after: always;
+            .section-badge {
+                background: #4CBB17 !important;
+                color: white !important;
             }
 
-            .programs-section {
-                page-break-after: always;
+            .highlight-box {
+                background: #4CBB17 !important;
+                color: white !important;
+                border-left-color: #002B50 !important;
             }
 
-            .sponsors-section {
-                page-break-before: always;
+            .highlight-box.blue {
+                background: #00539B !important;
+                border-left-color: #4CBB17 !important;
             }
 
-            .financials-section {
-                page-break-before: always;
-                page-break-after: always;
-            }
-
-            .photo-divider {
-                height: 250px;
-                page-break-inside: avoid;
-            }
-
-            .hero-photo {
-                height: 300px;
-                page-break-inside: avoid;
-            }
-
+            /* Gala Section */
             .gala-gallery {
                 display: none;
             }
 
+            .gala-section {
+                background: #002B50 !important;
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            .gala-description {
+                color: white !important;
+            }
+
+            /* Sponsors Section */
+            .sponsors-section {
+                padding: 40px 0;
+                page-break-before: always;
+            }
+
+            .presenting-sponsor {
+                background: #002B50 !important;
+            }
+
+            .presenting-sponsor h3, .presenting-sponsor p {
+                color: white !important;
+            }
+
+            .tier-title {
+                background: #00539B !important;
+                color: white !important;
+            }
+
+            .tier-title.green {
+                background: #4CBB17 !important;
+            }
+
+            .sponsor-logo {
+                max-height: 50px;
+                max-width: 120px;
+            }
+
+            .sponsor-logo.large {
+                max-height: 60px;
+            }
+
+            .sponsor-logo.xlarge {
+                max-height: 100px;
+                max-width: 200px;
+            }
+
+            /* Financials Section */
+            .financials-section {
+                padding: 40px 0;
+                background: #f8f9fa !important;
+                page-break-before: always;
+            }
+
+            .financials-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
+            }
+
+            .financial-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .pie-chart-container {
+                width: 140px;
+                height: 140px;
+            }
+
+            .revenue-chart {
+                background: conic-gradient(
+                    #4CBB17 0% 35%,
+                    #00539B 35% 55%,
+                    #0066bf 55% 75%,
+                    #00a8e8 75% 90%,
+                    #666 90% 100%
+                ) !important;
+            }
+
+            .expenses-chart {
+                background: conic-gradient(
+                    #00539B 0% 65%,
+                    #4CBB17 65% 80%,
+                    #0066bf 80% 92%,
+                    #666 92% 100%
+                ) !important;
+            }
+
+            .cost-highlight {
+                background: #4CBB17 !important;
+                color: white !important;
+            }
+
+            .cost-highlight h3 {
+                color: white !important;
+            }
+
+            /* Events Section */
+            .events-section {
+                background: #00539B !important;
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            .events-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .event-card {
+                background: rgba(255,255,255,0.1) !important;
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .event-icon {
+                background: #4CBB17 !important;
+            }
+
+            .event-date, .event-description {
+                color: white !important;
+            }
+
+            .event-name {
+                color: #4CBB17 !important;
+            }
+
+            /* Thank You Section */
+            .thank-you-section {
+                background: #4CBB17 !important;
+                padding: 50px 0;
+                page-break-inside: avoid;
+            }
+
+            .thank-you-section::before {
+                background: #002B50 !important;
+            }
+
+            .thank-you-content h2, .thank-you-content p {
+                color: white !important;
+            }
+
+            .thank-you-image {
+                max-width: 600px;
+                box-shadow: none;
+                border: 3px solid white;
+            }
+
+            /* General Print Optimizations */
             h2, h3 {
                 page-break-after: avoid;
             }
@@ -1375,11 +1664,6 @@
 
             * {
                 box-shadow: none !important;
-            }
-
-            .highlight-box, .cost-highlight, .presenting-sponsor, .gala-section, .events-section, .thank-you-section, .stats-section {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
             }
         }
     </style>
