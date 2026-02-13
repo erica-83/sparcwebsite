@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120">
-  <rect width="300" height="120" fill="#1a365d" rx="8"/>
-  <text x="150" y="38" font-family="Georgia, serif" font-size="18" fill="white" text-anchor="middle">Law Offices of</text>
-  <text x="150" y="68" font-family="Georgia, serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">Michael Toobin</text>
-  <text x="150" y="92" font-family="Georgia, serif" font-size="14" fill="#90cdf4" text-anchor="middle">LLC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <rect width="500" height="200" fill="#1a365d" rx="10"/>
+  <text x="250" y="65" font-family="Georgia, serif" font-size="34" fill="white" text-anchor="middle">Law Offices of</text>
+  <text x="250" y="115" font-family="Georgia, serif" font-size="42" fill="white" text-anchor="middle" font-weight="bold">Michael Toobin</text>
+  <text x="250" y="160" font-family="Georgia, serif" font-size="28" fill="#90cdf4" text-anchor="middle">LLC</text>
 </svg>
