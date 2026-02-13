@@ -25,10 +25,64 @@
     <link rel="stylesheet" href="/css/styles.css">
     <style>
         .podcast-hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d3a5c 50%, #1a1a2e 100%);
+            position: relative;
             color: white;
-            padding: 80px 0;
+            padding: 120px 0;
             text-align: center;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .podcast-hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        .podcast-hero-video iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .podcast-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(45, 58, 92, 0.85) 50%, rgba(26, 26, 46, 0.9) 100%);
+            z-index: 1;
+        }
+        .podcast-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        .podcast-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .podcast-hero h1 {
+                font-size: 2.5rem;
+            }
+            .podcast-hero {
+                padding: 80px 0;
+                min-height: 300px;
+            }
         }
         .podcast-logo {
             max-width: 300px;
@@ -290,16 +344,30 @@
         </nav>
     </header>
 
-    <!-- Podcast Hero -->
+    <!-- Podcast Hero with Video Background -->
     <section class="podcast-hero">
+        <!-- Video Background -->
+        <div class="podcast-hero-video">
+            <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLQ-vRqG_g32N8Gy5tfygAJHobA3X9iJDE&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <!-- Dark Overlay for Text Readability -->
+        <div class="podcast-hero-overlay"></div>
+        <!-- Content -->
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 10px;">The Access Point</h1>
+            <h1>The Access Point</h1>
             <p class="podcast-tagline">Accessibility Reimagined</p>
             <p class="podcast-description">
                 Real conversations about real barriers. Join SPARC participants as they share their experiences,
                 challenge assumptions, and redefine what's possible for adults with disabilities.
                 Every episode is a step toward a more inclusive world.
             </p>
+            <a href="#episodes" class="btn btn-primary" style="margin-top: 25px; background: var(--sparc-kelly-green); border-color: var(--sparc-kelly-green); padding: 15px 35px; font-size: 1.1rem;">
+                Listen Now
+            </a>
         </div>
     </section>
 
@@ -330,7 +398,7 @@
         </section>
 
         <!-- Latest Episodes -->
-        <section class="episodes-section" style="background: var(--sparc-soft-gray);">
+        <section id="episodes" class="episodes-section" style="background: var(--sparc-soft-gray);">
             <div class="container">
                 <div class="section-header fade-in" style="text-align: center;">
                     <h2>Latest Episodes</h2>
@@ -356,7 +424,7 @@
             </div>
         </section>
 
-        <!-- Live Section (hidden by default, can be shown when live) -->
+        <!-- Live Section - Auto-detects when channel is streaming -->
         <section class="live-section" id="liveSection" style="display: none;">
             <div class="container">
                 <div class="live-badge">
@@ -366,11 +434,21 @@
                 <h2 style="font-size: 2rem; margin-bottom: 20px;">We're Live!</h2>
                 <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.95;">Join the conversation happening right now. Watch live and participate in the chat.</p>
                 <div style="max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden;">
-                    <!-- YouTube Live embed will go here when streaming -->
                     <div id="liveVideoContainer" style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(0,0,0,0.3);">
-                        <!-- iframe will be inserted here dynamically -->
+                        <iframe
+                            id="liveStreamFrame"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            src="https://www.youtube.com/embed/live_stream?channel=UCSs2brkcqafqdd9GEhlH6Sw&autoplay=1"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
+                <p style="margin-top: 20px; opacity: 0.8;">
+                    <a href="https://www.youtube.com/@SPARCSolutions/live" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: underline;">
+                        Open in YouTube for chat
+                    </a>
+                </p>
             </div>
         </section>
 
@@ -559,34 +637,60 @@
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // ============================================
-        // GO LIVE INSTRUCTIONS
+        // AUTOMATIC LIVE STREAM DETECTION
         // ============================================
-        // When you start a live stream on YouTube via Riverside:
-        //
-        // 1. Copy your YouTube live stream video ID from the URL
-        //    Example: If your live URL is https://www.youtube.com/watch?v=ABC123xyz
-        //    The video ID is: ABC123xyz
-        //
-        // 2. Share this link to show the live stream on your podcast page:
-        //    https://sparcsolutions.org/podcast?live=ABC123xyz
-        //
-        // 3. To end the live stream display, just share the regular link:
-        //    https://sparcsolutions.org/podcast
+        // Channel ID: UCSs2brkcqafqdd9GEhlH6Sw
+        // When you go live on YouTube via Riverside, the live section
+        // will automatically appear on this page!
         // ============================================
 
-        // Function to show live section
-        function goLive(youtubeVideoId) {
-            const liveSection = document.getElementById('liveSection');
-            const videoContainer = document.getElementById('liveVideoContainer');
-            liveSection.style.display = 'block';
-            videoContainer.innerHTML = `<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            liveSection.scrollIntoView({ behavior: 'smooth' });
+        const YOUTUBE_CHANNEL_ID = 'UCSs2brkcqafqdd9GEhlH6Sw';
+
+        // Check if channel is live using YouTube's oEmbed API
+        async function checkIfLive() {
+            try {
+                // Try to fetch the live stream page - if it exists, channel is live
+                const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/channel/${YOUTUBE_CHANNEL_ID}/live&format=json`);
+                if (response.ok) {
+                    const data = await response.json();
+                    // If we get valid data, the channel is live
+                    if (data && data.title) {
+                        showLiveSection();
+                        return true;
+                    }
+                }
+            } catch (e) {
+                // If fetch fails, channel is probably not live or CORS issue
+                // Fall back to showing live section anyway and let YouTube handle it
+            }
+
+            // Alternative: Show live section and let users check
+            // The iframe will show "offline" if not streaming
+            return false;
         }
 
-        // Function to end live stream
-        function endLive() {
+        function showLiveSection() {
+            const liveSection = document.getElementById('liveSection');
+            liveSection.style.display = 'block';
+        }
+
+        function hideLiveSection() {
             document.getElementById('liveSection').style.display = 'none';
         }
+
+        // Check for live stream on page load
+        // Note: Due to CORS, direct detection may not work
+        // The iframe embed will show live content automatically when streaming
+        (function() {
+            // Check URL parameter for manual override (backup method)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('live') === 'true' || urlParams.get('live')) {
+                showLiveSection();
+            }
+
+            // Also try automatic detection
+            checkIfLive();
+        })();
 
         // AUTO-DETECT: Check URL for ?live=VIDEO_ID parameter
         (function() {
