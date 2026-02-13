@@ -1563,9 +1563,7 @@
             }
 
             .letters-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                display: block;
             }
 
             .letter-card {
@@ -1573,6 +1571,23 @@
                 border: 1px solid #ddd;
                 border-radius: 6px;
                 overflow: hidden;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            /* First letter (Debi) - takes full width */
+            .letter-card:first-child {
+                page-break-after: always;
+            }
+
+            /* Second letter (Ellen) - centered on its own page */
+            .letter-card:last-child {
+                max-width: 550px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: 80vh;
             }
 
             .letter-header {
@@ -1637,53 +1652,56 @@
             }
 
             /* ===== STATS SECTION ===== */
+            /* ===== STATS + PROGRAMS ON SAME PAGE ===== */
             .stats-section {
-                padding: 25px 20px;
+                padding: 20px 15px;
                 background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
-                margin: 15px 0;
+                margin: 0;
+                page-break-before: always;
+                page-break-after: avoid;
             }
 
             .stats-section::before { display: none; }
 
             .stats-section .section-header {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
 
             .stats-section .section-header h2 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 color: white !important;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
             }
 
             .stats-section .section-header p {
                 color: rgba(255,255,255,0.85) !important;
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .stats-grid {
                 display: grid;
                 grid-template-columns: repeat(6, 1fr);
-                gap: 10px;
+                gap: 8px;
             }
 
             .stat-card {
                 background: rgba(255,255,255,0.1) !important;
                 border: 1px solid rgba(255,255,255,0.2);
-                border-radius: 6px;
-                padding: 12px 8px;
+                border-radius: 4px;
+                padding: 10px 6px;
                 text-align: center;
             }
 
             .stat-number {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 font-weight: 800;
                 color: #4CBB17 !important;
-                margin-bottom: 3px;
+                margin-bottom: 2px;
             }
 
             .stat-label {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
                 color: white !important;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
@@ -1692,28 +1710,30 @@
 
             /* ===== PROGRAMS SECTION ===== */
             .programs-section {
-                padding: 20px 0;
+                padding: 15px 0;
                 background: white !important;
+                page-break-before: avoid;
             }
 
             .programs-section .section-header {
                 text-align: center;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
             }
 
             .programs-section .section-header h2 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 color: #002B50 !important;
             }
 
             .programs-section .section-header p {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
+                display: none;
             }
 
             .programs-grid {
                 display: grid;
                 grid-template-columns: repeat(6, 1fr);
-                gap: 8px;
+                gap: 6px;
             }
 
             .program-card {
