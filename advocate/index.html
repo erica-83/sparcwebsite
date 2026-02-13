@@ -253,6 +253,9 @@
             margin: 0.75in 1in;
         }
         @media print {
+            @page {
+                margin: 0.5in;
+            }
             html, body {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -271,28 +274,35 @@
                 width: 100%;
                 padding: 0;
                 box-shadow: none;
-                font-size: 11pt;
-                line-height: 1.4;
-            }
-            .letter-body p {
-                margin-bottom: 12px;
-            }
-            .letter-body .sender-info {
-                margin-bottom: 20px;
+                font-size: 10pt;
                 line-height: 1.3;
             }
+            .letter-body p {
+                margin-bottom: 8px;
+            }
+            .letter-body ul {
+                margin: 8px 0 8px 20px;
+            }
+            .letter-body li {
+                margin-bottom: 2px;
+            }
+            .letter-body .address-block {
+                margin-bottom: 10px;
+                line-height: 1.2;
+            }
             .letter-body .date-line {
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
             .letter-body .salutation {
-                margin-bottom: 15px;
+                margin-bottom: 8px;
             }
             .letter-body .closing {
-                margin-top: 20px;
+                margin-top: 10px;
+                margin-bottom: 4px;
             }
             .letter-body .signature-block {
-                margin-top: 30px;
-                line-height: 1.5;
+                margin-top: 20px;
+                line-height: 1.3;
             }
             .letter-container {
                 box-shadow: none;
@@ -1350,16 +1360,25 @@
                 <head>
                     <meta charset="utf-8">
                     <title>SPARC Advocacy Letter</title>
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <w:WordDocument>
+                            <w:View>Print</w:View>
+                            <w:Zoom>100</w:Zoom>
+                        </w:WordDocument>
+                    </xml>
+                    <![endif]-->
                     <style>
-                        body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; margin: 1in; }
-                        p { margin: 12pt 0; }
-                        ul { margin: 12pt 0 12pt 24pt; }
-                        li { margin: 6pt 0; }
-                        .address-block { margin-bottom: 24pt; }
-                        .date-line { margin-bottom: 24pt; }
-                        .salutation { margin-bottom: 12pt; }
-                        .closing { margin-top: 24pt; margin-bottom: 6pt; }
-                        .signature-block { margin-top: 36pt; }
+                        @page { margin: 0.5in; }
+                        body { font-family: 'Times New Roman', Times, serif; font-size: 11pt; line-height: 1.25; margin: 0.5in; }
+                        p { margin: 6pt 0; }
+                        ul { margin: 6pt 0 6pt 20pt; }
+                        li { margin: 2pt 0; }
+                        .address-block { margin-bottom: 10pt; line-height: 1.2; }
+                        .date-line { margin-bottom: 10pt; }
+                        .salutation { margin-bottom: 6pt; }
+                        .closing { margin-top: 10pt; margin-bottom: 4pt; }
+                        .signature-block { margin-top: 18pt; }
                     </style>
                 </head>
                 <body>
