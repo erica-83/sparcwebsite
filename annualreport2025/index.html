@@ -730,32 +730,158 @@
 
         /* ========== SPONSORS SECTION ========== */
         .sponsors-section {
-            padding: 80px 0;
+            padding: 0;
             background: var(--white);
+            position: relative;
+        }
+
+        .sponsors-header {
+            background: linear-gradient(135deg, var(--sparc-dark-navy) 0%, var(--sparc-royal-blue) 100%);
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsors-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 1;
+        }
+
+        .sponsors-header h2 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sponsors-header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .presenting-sponsor {
+            background: var(--white);
+            margin: -60px auto 0;
+            max-width: 700px;
+            padding: 50px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-radius: 12px;
+        }
+
+        .presenting-sponsor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--sparc-kelly-green), var(--sparc-royal-blue));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .presenting-badge {
+            display: inline-block;
+            background: var(--sparc-kelly-green);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 8px 25px;
+            margin-bottom: 25px;
+        }
+
+        .presenting-sponsor h3 {
+            color: var(--sparc-dark-navy);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .presenting-sponsor p {
+            color: var(--medium-gray);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .presenting-logo {
+            max-height: 120px;
+            margin: 0 auto;
+        }
+
+        .sponsors-content {
+            padding: 80px 0;
+            background: var(--off-white);
+        }
+
+        .sponsor-tiers {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .sponsor-tier {
-            margin-bottom: 50px;
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .sponsor-tier:nth-child(odd) {
+            background: var(--white);
+        }
+
+        .sponsor-tier:nth-child(even) {
+            background: var(--off-white);
         }
 
         .tier-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .tier-title {
-            display: inline-block;
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--white);
-            background: var(--sparc-royal-blue);
-            padding: 8px 30px;
+            color: var(--sparc-dark-navy);
+            background: transparent;
+            padding: 0;
         }
 
-        .tier-title.green {
+        .tier-title::before,
+        .tier-title::after {
+            content: '';
+            width: 60px;
+            height: 2px;
             background: var(--sparc-kelly-green);
+        }
+
+        .tier-title.featured {
+            font-size: 1.2rem;
+            color: var(--sparc-royal-blue);
+        }
+
+        .tier-title.featured::before,
+        .tier-title.featured::after {
+            width: 80px;
+            height: 3px;
+            background: var(--sparc-royal-blue);
         }
 
         .sponsor-logos {
@@ -763,49 +889,73 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 35px;
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        .sponsor-logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-logo-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .sponsor-tier:nth-child(odd) .sponsor-logo-wrapper {
+            background: var(--off-white);
         }
 
         .sponsor-logo {
-            max-height: 60px;
-            max-width: 150px;
+            max-height: 55px;
+            max-width: 140px;
             object-fit: contain;
+            transition: all 0.3s ease;
         }
 
         .sponsor-logo.large {
-            max-height: 80px;
-            max-width: 180px;
+            max-height: 70px;
+            max-width: 170px;
         }
 
         .sponsor-logo.xlarge {
-            max-height: 200px;
-            max-width: 400px;
+            max-height: 100px;
+            max-width: 300px;
         }
 
-        .presenting-sponsor {
-            background: var(--sparc-dark-navy);
-            padding: 40px;
-            text-align: center;
-            color: var(--white);
-            margin-bottom: 50px;
+        .sponsor-tier.featured {
+            padding: 70px 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
         }
 
-        .presenting-sponsor h3 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
+        .sponsor-tier.featured .sponsor-logo-wrapper {
+            padding: 30px 50px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
 
-        .presenting-sponsor p {
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 20px;
-        }
-
-        .presenting-logo {
-            max-height: 150px;
+        .sponsor-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 900px;
             margin: 0 auto;
-            filter: brightness(0) invert(1);
+            padding: 0 20px;
+        }
+
+        .sponsor-grid-small .sponsor-logo-wrapper {
+            padding: 15px 20px;
+        }
+
+        .sponsor-grid-small .sponsor-logo {
+            max-height: 45px;
+            max-width: 120px;
         }
 
         /* ========== FINANCIALS SECTION ========== */
@@ -1516,39 +1666,98 @@
 
             /* Sponsors Section */
             .sponsors-section {
-                padding: 40px 0;
+                padding: 0;
                 page-break-before: always;
             }
 
-            .presenting-sponsor {
-                background: #002B50 !important;
+            .sponsors-header {
+                background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
+                padding: 40px 0 60px;
             }
 
-            .presenting-sponsor h3, .presenting-sponsor p {
+            .sponsors-header::before {
+                display: none;
+            }
+
+            .sponsors-header h2 {
                 color: white !important;
+                font-size: 2rem;
+            }
+
+            .sponsors-header p {
+                color: rgba(255,255,255,0.9) !important;
+            }
+
+            .presenting-sponsor {
+                margin-top: -30px;
+                padding: 30px;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .presenting-badge {
+                background: #4CBB17 !important;
+                color: white !important;
+            }
+
+            .presenting-sponsor h3 {
+                color: #002B50 !important;
+            }
+
+            .sponsors-content {
+                padding: 30px 0;
+            }
+
+            .sponsor-tier {
+                padding: 25px 0;
+                background: white !important;
             }
 
             .tier-title {
-                background: #00539B !important;
-                color: white !important;
+                font-size: 0.85rem;
+                color: #002B50 !important;
             }
 
-            .tier-title.green {
+            .tier-title::before,
+            .tier-title::after {
                 background: #4CBB17 !important;
             }
 
+            .sponsor-logo-wrapper {
+                padding: 10px 15px;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+
             .sponsor-logo {
-                max-height: 50px;
-                max-width: 120px;
+                max-height: 40px;
+                max-width: 100px;
             }
 
             .sponsor-logo.large {
-                max-height: 60px;
+                max-height: 50px;
+                max-width: 130px;
             }
 
             .sponsor-logo.xlarge {
-                max-height: 100px;
-                max-width: 200px;
+                max-height: 70px;
+                max-width: 180px;
+            }
+
+            .sponsor-grid-small {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .sponsor-grid-small .sponsor-logo-wrapper {
+                padding: 8px 12px;
+            }
+
+            .sponsor-grid-small .sponsor-logo {
+                max-height: 35px;
+                max-width: 90px;
             }
 
             /* Financials Section */
@@ -1975,101 +2184,178 @@
 
     <!-- ========== SPONSORS SECTION ========== -->
     <section class="sponsors-section">
-        <div class="container">
-            <div class="section-header">
+        <div class="sponsors-header">
+            <div class="container">
                 <h2>With Fearless Gratitude</h2>
                 <p>Thank you to our 2025 Gala Sponsors and Partners</p>
             </div>
+        </div>
 
+        <div class="container">
             <div class="presenting-sponsor">
-                <h3>Special Thanks to Our Presenting Sponsor</h3>
-                <p>Marriott Washington Dulles Airport</p>
+                <span class="presenting-badge">Presenting Sponsor</span>
+                <h3>Marriott Washington Dulles Airport</h3>
+                <p>Special thanks for their extraordinary partnership</p>
                 <a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener">
                     <img src="/images/sponsors/Marriott logo.png" alt="Marriott" class="presenting-logo">
                 </a>
             </div>
+        </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title green">Event Sponsor</span>
+        <div class="sponsors-content">
+            <div class="sponsor-tiers">
+                <div class="sponsor-tier featured">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title featured">Event Sponsor</span>
+                        </div>
+                        <div class="sponsor-logos">
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="sponsor-logo xlarge">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="sponsor-logo xlarge">
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title">Champion</span>
+                <div class="sponsor-tier">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title featured">Champion</span>
+                        </div>
+                        <div class="sponsor-logos">
+                            <a href="https://claudemoorefoundation.org/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Claude Moore Charitable Foundation.jpg" alt="Claude Moore Charitable Foundation" class="sponsor-logo large">
+                            </a>
+                            <a href="https://www.thewashingtongroupllc.org/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group" class="sponsor-logo large">
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <a href="https://claudemoorefoundation.org/" target="_blank" rel="noopener"><img src="/images/sponsors/Claude Moore Charitable Foundation.jpg" alt="Claude Moore Charitable Foundation" class="sponsor-logo large"></a>
-                    <a href="https://www.thewashingtongroupllc.org/" target="_blank" rel="noopener"><img src="/images/sponsors/The Washington Group.jpg" alt="The Washington Group" class="sponsor-logo large"></a>
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title green">Hero</span>
+                <div class="sponsor-tier featured">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title featured">Hero</span>
+                        </div>
+                        <div class="sponsor-logos">
+                            <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="sponsor-logo xlarge">
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="sponsor-logo xlarge"></a>
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title">Leader</span>
+                <div class="sponsor-tier">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title">Leader</span>
+                        </div>
+                        <div class="sponsor-logos">
+                            <a href="https://www.visa.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.dullesgreenway.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway" class="sponsor-logo">
+                            </a>
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family" class="sponsor-logo">
+                            </div>
+                            <a href="https://www.hcahealthcare.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/HCA Updated.svg" alt="HCA Virginia" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.micron.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/micron-logo-black.png" alt="Micron" class="sponsor-logo">
+                            </a>
+                            <a href="https://comstock.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Comstock.png" alt="Comstock" class="sponsor-logo">
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <a href="https://www.visa.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Visa_Brandmark_Blue_RGB_72ppi (1).png" alt="Visa" class="sponsor-logo"></a>
-                    <a href="https://www.dullesgreenway.com/" target="_blank" rel="noopener"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family" class="sponsor-logo">
-                    <a href="https://www.hcahealthcare.com/" target="_blank" rel="noopener"><img src="/images/sponsors/HCA Updated.svg" alt="HCA Virginia" class="sponsor-logo"></a>
-                    <a href="https://www.micron.com/" target="_blank" rel="noopener"><img src="/images/sponsors/micron-logo-black.png" alt="Micron" class="sponsor-logo"></a>
-                    <a href="https://comstock.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Comstock.png" alt="Comstock" class="sponsor-logo"></a>
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title green">Partner</span>
+                <div class="sponsor-tier">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title">Partner</span>
+                        </div>
+                        <div class="sponsor-logos">
+                            <a href="https://www.thompsonhospitality.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.dominionenergy.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/dominion.svg" alt="Dominion Energy" class="sponsor-logo">
+                            </a>
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/geoffrey-john-andelin.svg" alt="Geoffrey & John Andelin" class="sponsor-logo">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <a href="https://www.thompsonhospitality.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Thompson Hospitality.png" alt="Thompson Hospitality" class="sponsor-logo"></a>
-                    <a href="https://www.dominionenergy.com/" target="_blank" rel="noopener"><img src="/images/sponsors/dominion.svg" alt="Dominion Energy" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/geoffrey-john-andelin.svg" alt="Geoffrey & John Andelin" class="sponsor-logo">
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title">Advocate</span>
+                <div class="sponsor-tier">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title">Advocate</span>
+                        </div>
+                        <div class="sponsor-grid-small">
+                            <a href="https://brandmirror.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/BrandMirror_RegisteredLogo.webp" alt="Brand Mirror" class="sponsor-logo">
+                            </a>
+                            <a href="https://veatchcommercial.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate" class="sponsor-logo">
+                            </a>
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/ellen and jim dyke.jpg" alt="Jim & Ellen Dyke" class="sponsor-logo">
+                            </div>
+                            <a href="https://www.inova.org/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/inova.svg" alt="INOVA" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.backflowtechnology.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/backflow-technology.png" alt="Backflow Technologies" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.bankofclarke.bank/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/bank-of-clarke.svg" alt="Bank of Clarke" class="sponsor-logo">
+                            </a>
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/davidson-family.svg" alt="Carol & Glenn Davidson" class="sponsor-logo">
+                            </div>
+                            <a href="https://formedfamiliesforward.org/provider/law-office-of-michael-d-toobin-pc/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/toobin-law.svg" alt="Law Offices of Michael Toobin" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.nwfcu.org/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/nwfc.jpg" alt="Northwest Federal Credit Union" class="sponsor-logo">
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-logos">
-                    <a href="https://brandmirror.com/" target="_blank" rel="noopener"><img src="/images/sponsors/BrandMirror_RegisteredLogo.webp" alt="Brand Mirror" class="sponsor-logo"></a>
-                    <a href="https://veatchcommercial.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Veatch commercial RE.jpg" alt="Veatch Commercial Real Estate" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/ellen and jim dyke.jpg" alt="Jim & Ellen Dyke" class="sponsor-logo">
-                    <a href="https://www.inova.org/" target="_blank" rel="noopener"><img src="/images/sponsors/inova.svg" alt="INOVA" class="sponsor-logo"></a>
-                    <a href="https://www.backflowtechnology.com/" target="_blank" rel="noopener"><img src="/images/sponsors/backflow-technology.png" alt="Backflow Technologies" class="sponsor-logo"></a>
-                    <a href="https://www.bankofclarke.bank/" target="_blank" rel="noopener"><img src="/images/sponsors/bank-of-clarke.svg" alt="Bank of Clarke" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/davidson-family.svg" alt="Carol & Glenn Davidson" class="sponsor-logo">
-                    <a href="https://formedfamiliesforward.org/provider/law-office-of-michael-d-toobin-pc/" target="_blank" rel="noopener"><img src="/images/sponsors/toobin-law.svg" alt="Law Offices of Michael Toobin" class="sponsor-logo"></a>
-                    <a href="https://www.nwfcu.org/" target="_blank" rel="noopener"><img src="/images/sponsors/nwfc.jpg" alt="Northwest Federal Credit Union" class="sponsor-logo"></a>
-                </div>
-            </div>
 
-            <div class="sponsor-tier">
-                <div class="tier-header">
-                    <span class="tier-title green">Friend</span>
-                </div>
-                <div class="sponsor-logos">
-                    <img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust" class="sponsor-logo">
-                    <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener"><img src="/images/sponsors/GS.jpg" alt="Goldman Sachs" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson Family" class="sponsor-logo">
-                    <a href="https://www.wegmans.com/" target="_blank" rel="noopener"><img src="/images/sponsors/wegamans.webp" alt="Wegmans" class="sponsor-logo"></a>
-                    <a href="https://theceowoman.com/" target="_blank" rel="noopener"><img src="/images/sponsors/ceo woman.jpg" alt="The CEO Woman" class="sponsor-logo"></a>
-                    <a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade" class="sponsor-logo"></a>
+                <div class="sponsor-tier">
+                    <div class="container">
+                        <div class="tier-header">
+                            <span class="tier-title">Friend</span>
+                        </div>
+                        <div class="sponsor-grid-small">
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/hon john foust.jpg" alt="Hon. John Foust" class="sponsor-logo">
+                            </div>
+                            <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/GS.jpg" alt="Goldman Sachs" class="sponsor-logo">
+                            </a>
+                            <div class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/goldbranson.jpg" alt="Goldbranson Family" class="sponsor-logo">
+                            </div>
+                            <a href="https://www.wegmans.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/wegamans.webp" alt="Wegmans" class="sponsor-logo">
+                            </a>
+                            <a href="https://theceowoman.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/ceo woman.jpg" alt="The CEO Woman" class="sponsor-logo">
+                            </a>
+                            <a href="https://www.maidbrigade.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
+                                <img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade" class="sponsor-logo">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
