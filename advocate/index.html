@@ -779,10 +779,14 @@
                 <div class="letter-container" id="letterContainer">
                     <div class="letter-header">
                         <h3>Letter Template <span class="example-text">- Click fields to edit, then download</span></h3>
-                        <div class="letter-header-buttons">
+                        <div class="letter-header-buttons" style="display: flex; gap: 10px;">
                             <button class="download-btn" onclick="downloadLetter()">
                                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                                 Download PDF
+                            </button>
+                            <button class="download-btn" onclick="downloadLetterWord()" style="background-color: #2b579a;">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Download Word
                             </button>
                         </div>
                     </div>
@@ -1287,6 +1291,93 @@
             if (hidePersonal) {
                 personalParagraph.style.display = '';
             }
+        }
+
+        // Download letter as Word document
+        function downloadLetterWord() {
+            // Track in GA
+            gtag('event', 'download', {'event_category': 'advocacy', 'event_label': 'letter_template_word'});
+
+            // Check if any required fields are still placeholders and warn (excluding optional personal sentence)
+            let hasUnfilled = false;
+            document.querySelectorAll('.letter-body .fill-in').forEach(field => {
+                const placeholder = field.getAttribute('data-placeholder');
+                if (field.id === 'personal-sentence') return;
+                if (field.textContent === placeholder) {
+                    hasUnfilled = true;
+                }
+            });
+
+            if (hasUnfilled) {
+                if (!confirm('Some fields are not filled in. Download anyway?')) {
+                    return;
+                }
+            }
+
+            // Get letter content
+            const letterBody = document.getElementById('letterBody');
+
+            // Check if personal sentence should be hidden
+            const personalParagraph = document.getElementById('personal-sentence-paragraph');
+            const personalSentence = document.getElementById('personal-sentence');
+            const placeholder = personalSentence.getAttribute('data-placeholder');
+            const hidePersonal = !personalSentence.textContent.trim() || personalSentence.textContent === placeholder;
+
+            // Clone the letter body to modify it
+            const clonedLetter = letterBody.cloneNode(true);
+
+            // Remove personal sentence if empty/placeholder
+            if (hidePersonal) {
+                const personalPara = clonedLetter.querySelector('#personal-sentence-paragraph');
+                if (personalPara) personalPara.remove();
+            }
+
+            // Remove example text spans
+            clonedLetter.querySelectorAll('.example-text').forEach(el => el.remove());
+
+            // Replace fill-in placeholders with actual content
+            clonedLetter.querySelectorAll('.fill-in').forEach(field => {
+                const text = field.textContent;
+                const span = document.createElement('span');
+                span.textContent = text;
+                span.style.textDecoration = 'underline';
+                field.parentNode.replaceChild(span, field);
+            });
+
+            // Create Word-compatible HTML
+            const html = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset="utf-8">
+                    <title>SPARC Advocacy Letter</title>
+                    <style>
+                        body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; margin: 1in; }
+                        p { margin: 12pt 0; }
+                        ul { margin: 12pt 0 12pt 24pt; }
+                        li { margin: 6pt 0; }
+                        .address-block { margin-bottom: 24pt; }
+                        .date-line { margin-bottom: 24pt; }
+                        .salutation { margin-bottom: 12pt; }
+                        .closing { margin-top: 24pt; margin-bottom: 6pt; }
+                        .signature-block { margin-top: 36pt; }
+                    </style>
+                </head>
+                <body>
+                    ${clonedLetter.innerHTML}
+                </body>
+                </html>
+            `;
+
+            // Create blob and download
+            const blob = new Blob([html], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'SPARC_Advocacy_Letter.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
 
         // County panel toggle functionality
