@@ -1436,76 +1436,135 @@
 
         /* ========== PRINT STYLES ========== */
         @media print {
+            /* ===== GLOBAL PRINT SETTINGS ===== */
+            @page {
+                size: letter;
+                margin: 0;
+            }
+
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
                 color-adjust: exact !important;
             }
 
-            body {
-                font-size: 10pt;
-                line-height: 1.4;
+            html, body {
+                margin: 0;
+                padding: 0;
+                font-size: 11pt;
+                line-height: 1.5;
                 color: #333;
             }
 
-            .btn, .cover-scroll, .social-links, .report-footer, .footer-bottom-bar {
+            /* Hide non-print elements */
+            .btn, .cover-scroll, .social-links, .report-footer,
+            .footer-bottom-bar, .download-btn, .gala-gallery {
                 display: none !important;
             }
 
-            /* Cover Page */
+            /* ===== PAGE 1: COVER ===== */
             .report-cover {
                 min-height: 100vh;
+                height: 100vh;
                 padding: 0;
                 page-break-after: always;
                 background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                position: relative;
+                overflow: hidden;
             }
 
             .cover-image {
-                display: block;
-                opacity: 0.2;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.15;
+            }
+
+            .cover-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .cover-overlay {
-                display: block;
+                display: none;
             }
 
             .cover-content {
-                padding: 40px;
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                padding: 60px;
             }
 
-            .cover-title {
-                font-size: 4rem;
-                color: white !important;
-            }
-
-            .cover-tagline {
-                color: #4CBB17 !important;
+            .cover-logo img {
+                height: 80px;
+                margin-bottom: 40px;
             }
 
             .cover-year {
+                display: inline-block;
                 background: #4CBB17 !important;
                 color: white !important;
+                padding: 10px 35px;
+                font-size: 1rem;
+                font-weight: 700;
+                letter-spacing: 3px;
+                margin-bottom: 30px;
             }
 
-            /* Photo Dividers */
+            .cover-title {
+                font-size: 4.5rem;
+                color: white !important;
+                margin-bottom: 20px;
+                font-weight: 800;
+            }
+
+            .cover-tagline {
+                font-size: 1.6rem;
+                color: #4CBB17 !important;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .cover-subtitle {
+                font-size: 1rem;
+                color: rgba(255,255,255,0.85) !important;
+            }
+
+            /* ===== HIDE PHOTO DIVIDERS IN PRINT ===== */
             .photo-divider {
-                height: 280px;
-                page-break-inside: avoid;
-                margin: 0;
+                display: none !important;
             }
 
-            .photo-divider.pancake {
-                page-break-after: always;
-            }
-
-            /* Letters Section */
+            /* ===== PAGE 2-3: LETTERS ===== */
             .letters-section {
-                padding: 40px 0;
-                background: #f8f9fa !important;
+                padding: 50px;
+                background: white !important;
                 page-break-after: always;
+            }
+
+            .letters-section .section-header {
+                text-align: center;
+                margin-bottom: 40px;
+                padding-bottom: 20px;
+                border-bottom: 3px solid #4CBB17;
+            }
+
+            .letters-section .section-header h2 {
+                font-size: 2rem;
+                color: #002B50 !important;
+                margin-bottom: 5px;
+            }
+
+            .letters-section .section-header p {
+                color: #666;
+                font-size: 1rem;
             }
 
             .letters-grid {
@@ -1514,138 +1573,284 @@
 
             .letter-card {
                 page-break-inside: avoid;
-                margin-bottom: 30px;
+                margin-bottom: 50px;
+                border: none;
                 box-shadow: none;
-                border: 1px solid #ddd;
+                background: white;
+            }
+
+            .letter-card:last-child {
+                margin-bottom: 0;
             }
 
             .letter-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                padding: 20px 25px;
                 background: linear-gradient(135deg, #002B50, #00539B) !important;
+                border-radius: 8px 8px 0 0;
+            }
+
+            .letter-photo {
+                width: 70px;
+                height: 70px;
+                flex-shrink: 0;
+            }
+
+            .letter-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 3px solid #4CBB17;
             }
 
             .letter-author h3 {
                 color: white !important;
+                font-size: 1.2rem;
+                margin-bottom: 2px;
             }
 
             .letter-author p {
                 color: #4CBB17 !important;
+                font-size: 0.85rem;
             }
 
-            /* Stats Section */
+            .letter-body {
+                padding: 25px 30px;
+                background: #f8f9fa !important;
+                border-radius: 0 0 8px 8px;
+                border: 1px solid #e0e0e0;
+                border-top: none;
+            }
+
+            .letter-body p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
+
+            .letter-greeting {
+                font-weight: 600;
+                color: #002B50 !important;
+            }
+
+            .letter-signature {
+                margin-top: 20px;
+                padding-top: 15px;
+                border-top: 1px solid #ddd;
+            }
+
+            .signature-name {
+                font-weight: 700;
+                color: #002B50 !important;
+            }
+
+            /* ===== PAGE 4: STATS ===== */
             .stats-section {
-                background: #002B50 !important;
-                padding: 50px 0;
+                min-height: 100vh;
+                padding: 60px 50px;
+                background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
                 page-break-after: always;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .stats-section::before {
-                background: #4CBB17 !important;
+                display: none;
+            }
+
+            .stats-section .section-header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            .stats-section .section-header h2 {
+                font-size: 2.5rem;
+                color: white !important;
+                margin-bottom: 10px;
+            }
+
+            .stats-section .section-header p {
+                color: rgba(255,255,255,0.85) !important;
+                font-size: 1.1rem;
             }
 
             .stats-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                gap: 25px;
+                max-width: 900px;
+                margin: 0 auto;
             }
 
             .stat-card {
-                border: 1px solid rgba(255,255,255,0.2);
-                padding: 25px 15px;
+                background: rgba(255,255,255,0.1) !important;
+                border: 2px solid rgba(255,255,255,0.2);
+                border-radius: 12px;
+                padding: 30px 20px;
+                text-align: center;
             }
 
             .stat-number {
+                font-size: 3rem;
+                font-weight: 800;
                 color: #4CBB17 !important;
-                font-size: 2.5rem;
+                margin-bottom: 8px;
             }
 
             .stat-label {
+                font-size: 0.85rem;
                 color: white !important;
-                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
             }
 
-            /* Hero Photos */
+            /* ===== HIDE HERO PHOTOS ===== */
             .hero-photo {
-                height: 350px;
-                page-break-inside: avoid;
+                display: none !important;
             }
 
-            .hero-photo-overlay {
-                background: linear-gradient(to top, rgba(0,43,80,0.95), transparent) !important;
-            }
-
-            .hero-photo-overlay h2 {
-                color: white !important;
-                font-size: 2rem;
-            }
-
-            /* Programs Section */
+            /* ===== PAGE 5: PROGRAMS ===== */
             .programs-section {
-                padding: 40px 0;
-                page-break-inside: avoid;
+                padding: 50px;
+                background: white !important;
+                page-break-after: always;
+            }
+
+            .programs-section .section-header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .programs-section .section-header h2 {
+                font-size: 2rem;
+                color: #002B50 !important;
             }
 
             .programs-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                gap: 20px;
             }
 
             .program-card {
-                aspect-ratio: 3/4;
-                border-radius: 6px;
+                aspect-ratio: 1;
+                border-radius: 8px;
                 overflow: hidden;
+                position: relative;
+            }
+
+            .program-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .program-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 15px;
                 background: linear-gradient(to top, rgba(0,43,80,0.95) 0%, transparent 100%) !important;
             }
 
             .program-overlay h3 {
                 color: white !important;
-                font-size: 1rem;
+                font-size: 0.95rem;
+                margin-bottom: 3px;
             }
 
             .program-overlay p {
+                color: rgba(255,255,255,0.85) !important;
                 font-size: 0.75rem;
+                display: none;
             }
 
-            /* Split Sections (Stories) */
+            /* ===== PAGES 6-7: PARTICIPANT STORIES ===== */
             .split-section {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                min-height: auto;
+                display: flex;
+                min-height: 50vh;
                 page-break-inside: avoid;
+                page-break-after: always;
             }
 
-            .split-section.large {
-                min-height: auto;
+            .split-section.reverse {
+                flex-direction: row-reverse;
             }
 
             .split-image {
-                height: 350px;
+                flex: 1;
+                min-height: 400px;
+            }
+
+            .split-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .split-content {
-                padding: 30px;
+                flex: 1;
+                padding: 40px 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .split-content.bg-navy {
                 background: #002B50 !important;
             }
 
+            .split-content.bg-navy h2,
+            .split-content.bg-navy p {
+                color: white !important;
+            }
+
             .split-content.bg-gray {
-                background: #f8f9fa !important;
+                background: #f5f5f5 !important;
             }
 
             .section-badge {
+                display: inline-block;
                 background: #4CBB17 !important;
                 color: white !important;
+                padding: 6px 18px;
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+
+            .split-content h2 {
+                font-size: 1.8rem;
+                color: #002B50 !important;
+                margin-bottom: 15px;
+            }
+
+            .split-content > p {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 12px;
             }
 
             .highlight-box {
                 background: #4CBB17 !important;
                 color: white !important;
-                border-left-color: #002B50 !important;
+                padding: 20px 25px;
+                border-left: 5px solid #002B50 !important;
+                margin-top: 20px;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .highlight-box p {
+                color: white !important;
+                font-size: 1.1rem;
+                font-style: italic;
             }
 
             .highlight-box.blue {
@@ -1653,30 +1858,43 @@
                 border-left-color: #4CBB17 !important;
             }
 
-            /* Gala Section */
-            .gala-gallery {
-                display: none;
-            }
-
+            /* ===== PAGE 8: GALA ===== */
             .gala-section {
-                background: #002B50 !important;
-                padding: 40px 0;
-                page-break-inside: avoid;
+                min-height: 40vh;
+                padding: 60px 50px;
+                background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
 
-            .gala-description {
+            .gala-section .section-header {
+                margin-bottom: 30px;
+            }
+
+            .gala-section .section-header h2 {
+                font-size: 2.5rem;
                 color: white !important;
             }
 
-            /* Sponsors Section */
+            .gala-description {
+                font-size: 1.2rem;
+                color: rgba(255,255,255,0.9) !important;
+                max-width: 700px;
+                line-height: 1.8;
+            }
+
+            /* ===== PAGES 9-10: SPONSORS ===== */
             .sponsors-section {
-                padding: 0;
                 page-break-before: always;
             }
 
             .sponsors-header {
+                padding: 50px 50px 70px;
                 background: linear-gradient(135deg, #002B50 0%, #00539B 100%) !important;
-                padding: 40px 0 60px;
+                text-align: center;
             }
 
             .sponsors-header::before {
@@ -1684,107 +1902,205 @@
             }
 
             .sponsors-header h2 {
+                font-size: 2.2rem;
                 color: white !important;
-                font-size: 2rem;
+                margin-bottom: 8px;
             }
 
             .sponsors-header p {
                 color: rgba(255,255,255,0.9) !important;
+                font-size: 1rem;
             }
 
             .presenting-sponsor {
-                margin-top: -30px;
-                padding: 30px;
+                max-width: 500px;
+                margin: -40px auto 30px;
+                padding: 35px 40px;
+                background: white !important;
+                border-radius: 12px;
                 box-shadow: none;
-                border: 1px solid #ddd;
+                border: 2px solid #4CBB17;
+                text-align: center;
+            }
+
+            .presenting-sponsor::before {
+                display: none;
             }
 
             .presenting-badge {
+                display: inline-block;
                 background: #4CBB17 !important;
                 color: white !important;
+                padding: 6px 20px;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
             }
 
             .presenting-sponsor h3 {
+                font-size: 1.3rem;
                 color: #002B50 !important;
+                margin-bottom: 5px;
+            }
+
+            .presenting-sponsor p {
+                color: #666;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .presenting-logo {
+                max-height: 80px;
             }
 
             .sponsors-content {
-                padding: 30px 0;
+                padding: 30px 50px 50px;
+                background: white !important;
+            }
+
+            .sponsor-tiers {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
             }
 
             .sponsor-tier {
                 padding: 25px 0;
                 background: white !important;
+                border-bottom: 1px solid #eee;
+            }
+
+            .sponsor-tier:last-child {
+                border-bottom: none;
+            }
+
+            .sponsor-tier.featured {
+                padding: 30px 0;
+                background: #f8f9fa !important;
+            }
+
+            .tier-header {
+                text-align: center;
+                margin-bottom: 20px;
             }
 
             .tier-title {
-                font-size: 0.85rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 0.9rem;
+                font-weight: 700;
                 color: #002B50 !important;
+                text-transform: uppercase;
+                letter-spacing: 2px;
             }
 
             .tier-title::before,
             .tier-title::after {
+                content: '';
+                width: 40px;
+                height: 2px;
                 background: #4CBB17 !important;
             }
 
+            .sponsor-logos {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+            }
+
             .sponsor-logo-wrapper {
-                padding: 10px 15px;
-                box-shadow: none;
-                border: 1px solid #eee;
+                padding: 12px 20px;
+                background: white !important;
+                border: 1px solid #e0e0e0;
+                border-radius: 6px;
             }
 
             .sponsor-logo {
-                max-height: 40px;
-                max-width: 100px;
+                max-height: 45px;
+                max-width: 120px;
+                object-fit: contain;
             }
 
             .sponsor-logo.large {
-                max-height: 50px;
-                max-width: 130px;
+                max-height: 55px;
+                max-width: 150px;
             }
 
             .sponsor-logo.xlarge {
                 max-height: 70px;
-                max-width: 180px;
+                max-width: 200px;
             }
 
             .sponsor-grid-small {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
+                gap: 15px;
             }
 
             .sponsor-grid-small .sponsor-logo-wrapper {
-                padding: 8px 12px;
+                padding: 10px 15px;
             }
 
             .sponsor-grid-small .sponsor-logo {
                 max-height: 35px;
-                max-width: 90px;
+                max-width: 100px;
             }
 
-            /* Financials Section */
+            /* ===== PAGE 11: FINANCIALS ===== */
             .financials-section {
-                padding: 40px 0;
+                min-height: 100vh;
+                padding: 50px;
                 background: #f8f9fa !important;
                 page-break-before: always;
+            }
+
+            .financials-section .section-header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .financials-section .section-header h2 {
+                font-size: 2rem;
+                color: #002B50 !important;
             }
 
             .financials-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 25px;
+                gap: 30px;
+                margin-bottom: 30px;
             }
 
             .financial-card {
+                background: white !important;
+                border-radius: 12px;
+                padding: 30px;
                 box-shadow: none;
                 border: 1px solid #ddd;
             }
 
+            .financial-card h3 {
+                font-size: 1.2rem;
+                color: #002B50 !important;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
             .pie-chart-container {
-                width: 140px;
-                height: 140px;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 20px;
+            }
+
+            .pie-chart {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
             }
 
             .revenue-chart {
@@ -1806,67 +2122,96 @@
                 ) !important;
             }
 
+            .chart-legend {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .legend-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+
+            .legend-color {
+                width: 14px;
+                height: 14px;
+                border-radius: 3px;
+            }
+
             .cost-highlight {
                 background: #4CBB17 !important;
-                color: white !important;
+                padding: 25px 30px;
+                border-radius: 12px;
+                text-align: center;
             }
 
             .cost-highlight h3 {
                 color: white !important;
+                font-size: 1rem;
+                margin-bottom: 5px;
             }
 
-            /* Events Section */
-            .events-section {
-                background: #00539B !important;
-                padding: 40px 0;
-                page-break-inside: avoid;
-            }
-
-            .events-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-
-            .event-card {
-                background: rgba(255,255,255,0.1) !important;
-                border: 1px solid rgba(255,255,255,0.2);
-            }
-
-            .event-icon {
-                background: #4CBB17 !important;
-            }
-
-            .event-date, .event-description {
+            .cost-highlight .highlight-number {
                 color: white !important;
+                font-size: 2.5rem;
+                font-weight: 800;
             }
 
-            .event-name {
-                color: #4CBB17 !important;
+            .cost-highlight p {
+                color: rgba(255,255,255,0.9) !important;
+                font-size: 0.9rem;
             }
 
-            /* Thank You Section */
+            /* ===== HIDE EVENTS SECTION IN PRINT ===== */
+            .events-section {
+                display: none !important;
+            }
+
+            /* ===== PAGE 12: THANK YOU / BACK COVER ===== */
             .thank-you-section {
-                background: #4CBB17 !important;
-                padding: 50px 0;
-                page-break-inside: avoid;
+                min-height: 100vh;
+                padding: 60px 50px;
+                background: linear-gradient(135deg, #4CBB17 0%, #3a9212 100%) !important;
+                page-break-before: always;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
 
             .thank-you-section::before {
-                background: #002B50 !important;
+                display: none;
             }
 
-            .thank-you-content h2, .thank-you-content p {
+            .thank-you-content {
+                max-width: 600px;
+            }
+
+            .thank-you-content h2 {
+                font-size: 2.5rem;
                 color: white !important;
+                margin-bottom: 20px;
+            }
+
+            .thank-you-content p {
+                font-size: 1.1rem;
+                color: white !important;
+                line-height: 1.8;
+                margin-bottom: 30px;
             }
 
             .thank-you-image {
-                max-width: 600px;
+                max-width: 450px;
+                border-radius: 12px;
+                border: 4px solid white;
                 box-shadow: none;
-                border: 3px solid white;
             }
 
-            /* General Print Optimizations */
+            /* ===== GENERAL PRINT OPTIMIZATIONS ===== */
             h2, h3 {
                 page-break-after: avoid;
             }
@@ -1875,12 +2220,9 @@
                 page-break-inside: avoid;
             }
 
-            * {
-                box-shadow: none !important;
-            }
-
-            .download-btn {
-                display: none !important;
+            .container, .container-wide {
+                max-width: 100%;
+                padding: 0;
             }
         }
 
