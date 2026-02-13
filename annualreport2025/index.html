@@ -1874,10 +1874,75 @@
             * {
                 box-shadow: none !important;
             }
+
+            .download-btn {
+                display: none !important;
+            }
+        }
+
+        /* ========== DOWNLOAD BUTTON ========== */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--sparc-kelly-green);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(76, 187, 23, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+
+        .download-btn:hover {
+            background: var(--sparc-kelly-green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(76, 187, 23, 0.5);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 600px) {
+            .download-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 20px;
+                font-size: 0.8rem;
+            }
+
+            .download-btn span {
+                display: none;
+            }
+
+            .download-btn svg {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Download/Print Button -->
+    <button class="download-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+        <span>Download PDF</span>
+    </button>
 
     <!-- ========== COVER ========== -->
     <section class="report-cover">
