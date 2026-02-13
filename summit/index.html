@@ -87,6 +87,30 @@
             position: absolute;
             left: 0;
         }
+        .sponsor-tier.sold {
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .sponsor-tier.sold::after {
+            content: "SOLD!";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 5rem;
+            font-weight: 900;
+            color: #cc0000;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            border: 8px solid #cc0000;
+            padding: 10px 40px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.85);
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
         .addon-section {
             background: var(--sparc-soft-gray);
             padding: 60px 0;
@@ -472,7 +496,7 @@
                 </div>
 
                 <div class="sponsor-tiers fade-in">
-                    <div class="sponsor-tier presenting" style="cursor: pointer;" onclick="openRegistration('4938755')">
+                    <div class="sponsor-tier presenting sold">
                         <h3>Presenting Sponsor</h3>
                         <div class="price">$25,000 <span style="font-size: 0.9rem; font-weight: normal;">(Exclusive)</span></div>
                         <ul>
@@ -485,10 +509,9 @@
                             <li>Recognition in SPARC Annual Report and post-event briefing</li>
                             <li>Priority seating for sponsor guests</li>
                         </ul>
-                        <span class="btn btn-primary" style="background-color: var(--sparc-dark-navy); border-color: var(--sparc-dark-navy); margin-top: 15px; display: inline-block;">Sponsor Now</span>
                     </div>
 
-                    <div class="sponsor-tier" style="display: none; cursor: pointer;" onclick="openRegistration('4938756')">
+                    <div class="sponsor-tier" style="cursor: pointer;" onclick="openRegistration('4938756')">
                         <h3>Event Sponsor</h3>
                         <div class="price">$15,000 <span style="font-size: 0.9rem; font-weight: normal;">(Four Available)</span></div>
                         <ul>
@@ -503,7 +526,7 @@
                         <span class="btn btn-primary" style="background-color: var(--sparc-dark-navy); border-color: var(--sparc-dark-navy); margin-top: 15px; display: inline-block;">Sponsor Now</span>
                     </div>
 
-                    <div class="sponsor-tier" style="display: none; cursor: pointer;" onclick="openRegistration('4938757')">
+                    <div class="sponsor-tier" style="cursor: pointer;" onclick="openRegistration('4938757')">
                         <h3>Supporting Sponsor</h3>
                         <div class="price">$5,000</div>
                         <ul>
@@ -515,7 +538,7 @@
                         <span class="btn btn-primary" style="background-color: var(--sparc-dark-navy); border-color: var(--sparc-dark-navy); margin-top: 15px; display: inline-block;">Sponsor Now</span>
                     </div>
 
-                    <div class="sponsor-tier" style="display: none; cursor: pointer;" onclick="openRegistration('4938758')">
+                    <div class="sponsor-tier" style="cursor: pointer;" onclick="openRegistration('4938758')">
                         <h3>Community Sponsor</h3>
                         <div class="price">$1,000</div>
                         <ul>
@@ -1218,8 +1241,8 @@
 '    <div class="errors hidden"></div>' +
 '    <div class="section registrationType">' +
 '      <h3>A Call to Conscience Registration</h3>' +
-'      <div class="field radio 4938755 required" >' +
-'<label for="4938755"><input id="4938755" name="registration-type" class="required" type="radio" value="25000.000000" maxlength="255" data-short-name="Presenting Sponsor" data-ticket-quantity="6" data-registration-type-value="4942849" data-non-deductible-amount="0.000000"></input><span class="label">$25,000.00 - Presenting Sponsor</span></label>' +
+'      <div class="field radio 4938755 required" style="display:none">' +
+'<label for="4938755"><input id="4938755" name="registration-type" class="required" type="radio" value="25000.000000" maxlength="255" data-short-name="Presenting Sponsor" data-ticket-quantity="6" data-registration-type-value="4942849" data-non-deductible-amount="0.000000" disabled></input><span class="label">$25,000.00 - Presenting Sponsor (SOLD)</span></label>' +
 '</div>' +
 '<div class="field radio 4938756 required" >' +
 '<label for="4938756"><input id="4938756" name="registration-type" class="required" type="radio" value="15000.000000" maxlength="255" data-short-name="Event Sponsor" data-ticket-quantity="4" data-registration-type-value="4942850" data-non-deductible-amount="0.000000"></input><span class="label">$15,000.00 - Event Sponsor</span></label>' +
