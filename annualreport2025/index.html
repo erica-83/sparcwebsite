@@ -1598,7 +1598,8 @@
             }
 
             .letters-grid {
-                display: block;
+                display: flex;
+                gap: 15px;
             }
 
             .letter-card {
@@ -1606,23 +1607,18 @@
                 border: 1px solid #ddd;
                 border-radius: 6px;
                 overflow: hidden;
-                max-width: 100%;
-                margin-bottom: 20px;
+                flex: 1;
             }
 
-            /* First letter (Debi) - takes full width */
             .letter-card:first-child {
-                page-break-after: always;
+                page-break-after: auto;
             }
 
-            /* Second letter (Ellen) - centered on its own page */
             .letter-card:last-child {
-                max-width: 550px;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                min-height: 80vh;
+                max-width: none;
+                margin: 0;
+                display: block;
+                min-height: auto;
             }
 
             .letter-header {
@@ -1664,9 +1660,9 @@
             }
 
             .letter-body p {
-                font-size: 0.75rem;
-                line-height: 1.45;
-                margin-bottom: 6px;
+                font-size: 0.65rem;
+                line-height: 1.4;
+                margin-bottom: 4px;
             }
 
             .letter-greeting {
@@ -2666,8 +2662,8 @@
                             <span class="tier-title featured">Hero</span>
                         </div>
                         <div class="sponsor-logos">
-                            <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper">
-                                <img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="sponsor-logo xlarge" style="max-height: 440px; max-width: 600px;">
+                            <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener" class="sponsor-logo-wrapper" style="padding: 50px 70px;">
+                                <img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="presenting-logo">
                             </a>
                         </div>
                     </div>
