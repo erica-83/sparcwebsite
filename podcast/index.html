@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PD1XQ0NDCD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PD1XQ0NDCD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Access Point Podcast - Accessibility Reimagined. Join host Kat and SPARC participants as they discuss breaking barriers and redefining what's possible for adults with disabilities.">
+    <title>The Access Point Podcast | SPARC - Specially Adapted Resource Centers</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .podcast-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3a5c 50%, #1a1a2e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .podcast-logo {
+            max-width: 300px;
+            margin: 0 auto 30px;
+        }
+        .podcast-tagline {
+            font-size: 1.5rem;
+            color: var(--sparc-kelly-green);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .podcast-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        .host-section {
+            background: var(--sparc-soft-gray);
+            padding: 80px 0;
+        }
+        .host-card {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .host-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sparc-dark-navy), var(--sparc-kelly-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .host-info h3 {
+            color: var(--sparc-dark-navy);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .host-role {
+            color: var(--sparc-kelly-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .host-bio {
+            color: var(--sparc-charcoal);
+            line-height: 1.8;
+        }
+        .episodes-section {
+            padding: 80px 0;
+        }
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .episode-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .episode-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .episode-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .episode-info {
+            padding: 20px;
+        }
+        .episode-info h4 {
+            color: var(--sparc-dark-navy);
+            margin-bottom: 10px;
+        }
+        .episode-info p {
+            color: var(--sparc-charcoal);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .live-section {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .subscribe-section {
+            background: var(--sparc-dark-navy);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .subscribe-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .subscribe-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .subscribe-btn:hover {
+            transform: scale(1.05);
+        }
+        .subscribe-btn.youtube {
+            background: #FF0000;
+            color: white;
+        }
+        .subscribe-btn.spotify {
+            background: #1DB954;
+            color: white;
+        }
+        .subscribe-btn.apple {
+            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+            color: white;
+        }
+        .cta-podcast {
+            background: var(--sparc-kelly-green);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .cta-podcast h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .cta-podcast p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+        @media (max-width: 768px) {
+            .host-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .episode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="SPARC - Specially Adapted Resource Centers" style="height: 50px; width: auto;">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="/about/" class="nav-link">About</a>
+                    <div class="dropdown-menu">
+                        <a href="/team/">Our Team</a>
+                        <a href="/board/">Board of Directors</a>
+                        <a href="/financials/">Financials</a>
+                        <a href="/strategic-plan/">Strategic Plan</a>
+                        <a href="/news/">SPARC in the News</a>
+                        <a href="/compliance/">ADA Compliance</a>
+                    </div>
+                </li>
+                <li><a href="/programs/" class="nav-link">Programs</a></li>
+                <li><a href="/locations/" class="nav-link">Locations</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="/stories/" class="nav-link active">Stories</a>
+                    <div class="dropdown-menu">
+                        <a href="/podcast/">The Access Point Podcast</a>
+                        <a href="/blog/">Blog</a>
+                        <a href="/newsletter/">Newsletter</a>
+                    </div>
+                </li>
+                <li class="nav-item-dropdown">
+                    <a href="/events/" class="nav-link">Events</a>
+                    <div class="dropdown-menu">
+                        <a href="/gala/">An Evening to SPARCle</a>
+                        <a href="/summit/">A Call to Conscience</a>
+                        <a href="/bingo/">Bingo</a>
+                    </div>
+                </li>
+                <li class="nav-item-dropdown">
+                    <a href="/get-involved/" class="nav-link">Get Involved</a>
+                    <div class="dropdown-menu">
+                        <a href="/advocate/">Advocate for SPARC</a>
+                        <a href="/get-involved/">Volunteer</a>
+                        <a href="/participants/">Participants & Families</a>
+                        <a href="javascript:void(0)" onclick="openMailingListModal()">Join Our Mailing List</a>
+                        <a href="https://teamlocker.squadlocker.com/#/lockers/specially-adapted-resource-centers" target="_blank" rel="noopener noreferrer">Purchase SPARC Swag</a>
+                    </div>
+                </li>
+                <li><a href="/donate-checkout/" class="nav-link nav-donate">Donate</a></li>
+            </ul>
+
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Podcast Hero -->
+    <section class="podcast-hero">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">The Access Point</h1>
+            <p class="podcast-tagline">Accessibility Reimagined</p>
+            <p class="podcast-description">
+                Real conversations about real barriers. Join SPARC participants as they share their experiences,
+                challenge assumptions, and redefine what's possible for adults with disabilities.
+                Every episode is a step toward a more inclusive world.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Meet the Host -->
+        <section class="host-section">
+            <div class="container">
+                <div class="section-header fade-in" style="text-align: center; margin-bottom: 40px;">
+                    <h2>Meet Your Host</h2>
+                </div>
+                <div class="host-card fade-in">
+                    <div class="host-photo">K</div>
+                    <div class="host-info">
+                        <h3>Kat</h3>
+                        <p class="host-role">Host of The Access Point</p>
+                        <p class="host-bio">
+                            Kat brings warmth, curiosity, and a passion for authentic storytelling to every episode of The Access Point.
+                            With a gift for creating space where guests feel comfortable sharing their truths, Kat guides conversations
+                            that go beyond surface-level discussions of disability to explore the real experiences, challenges, and
+                            triumphs of SPARC participants. Each episode is an invitation to see the world through a different lens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What to Expect -->
+        <section style="padding: 80px 0; background: white;">
+            <div class="container">
+                <div class="section-header fade-in" style="text-align: center; margin-bottom: 50px;">
+                    <h2>What You'll Discover</h2>
+                    <p>Every episode breaks down barriers and builds understanding</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <div class="fade-in" style="text-align: center; padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: var(--sparc-kelly-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <svg width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <h3 style="color: var(--sparc-dark-navy); margin-bottom: 15px;">Breaking Barriers</h3>
+                        <p style="color: var(--sparc-charcoal);">Hear firsthand accounts of the obstacles our participants face daily and the creative solutions they've found.</p>
+                    </div>
+                    <div class="fade-in" style="text-align: center; padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: var(--sparc-dark-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <svg width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <h3 style="color: var(--sparc-dark-navy); margin-bottom: 15px;">Community Voices</h3>
+                        <p style="color: var(--sparc-charcoal);">SPARC participants share their stories in their own words, bringing visibility to experiences too often overlooked.</p>
+                    </div>
+                    <div class="fade-in" style="text-align: center; padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: var(--sparc-kelly-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <svg width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                        </div>
+                        <h3 style="color: var(--sparc-dark-navy); margin-bottom: 15px;">Changing Perspectives</h3>
+                        <p style="color: var(--sparc-charcoal);">Challenge your assumptions and discover new ways of thinking about accessibility, inclusion, and belonging.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Episodes -->
+        <section class="episodes-section" style="background: var(--sparc-soft-gray);">
+            <div class="container">
+                <div class="section-header fade-in" style="text-align: center;">
+                    <h2>Latest Episodes</h2>
+                    <p>New episodes released regularly</p>
+                </div>
+                <div class="episode-grid">
+                    <!-- Episode placeholder - will be replaced with actual YouTube embeds -->
+                    <div class="episode-card fade-in">
+                        <div class="episode-video">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--sparc-dark-navy), var(--sparc-kelly-green)); display: flex; align-items: center; justify-content: center; color: white;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <svg width="60" height="60" fill="white" viewBox="0 0 24 24" style="margin-bottom: 15px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                    <p style="font-size: 1.1rem; font-weight: 600;">Coming Soon</p>
+                                    <p style="opacity: 0.8; font-size: 0.9rem;">First episode launching soon!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="episode-info">
+                            <h4>Premiere Episode</h4>
+                            <p>Stay tuned for our first episode where we introduce The Access Point and share what you can expect from this groundbreaking podcast.</p>
+                        </div>
+                    </div>
+                    <!-- More episode cards will be added here as episodes are published -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Section (hidden by default, can be shown when live) -->
+        <section class="live-section" id="liveSection" style="display: none;">
+            <div class="container">
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Live Now</span>
+                </div>
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">We're Live!</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.95;">Join the conversation happening right now. Watch live and participate in the chat.</p>
+                <div style="max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden;">
+                    <!-- YouTube Live embed will go here when streaming -->
+                    <div id="liveVideoContainer" style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(0,0,0,0.3);">
+                        <!-- iframe will be inserted here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Never Miss an Episode</h2>
+                <p style="opacity: 0.9;">Subscribe and follow The Access Point on your favorite platform</p>
+                <div class="subscribe-buttons">
+                    <a href="https://www.youtube.com/@SPARCSolutions" target="_blank" rel="noopener noreferrer" class="subscribe-btn youtube">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        YouTube
+                    </a>
+                    <a href="#" class="subscribe-btn spotify" style="opacity: 0.6; cursor: not-allowed;">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                        Spotify (Coming Soon)
+                    </a>
+                    <a href="#" class="subscribe-btn apple" style="opacity: 0.6; cursor: not-allowed;">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 3.6c.398 0 .972.06 1.572.227a4.127 4.127 0 011.983 1.263c.09.104.165.217.232.336-.42.252-1.327.846-1.327 2.446 0 1.916 1.699 2.59 1.75 2.61-.017.064-.272.932-.898 1.842-.555.806-1.132 1.61-2.04 1.627-.888.017-1.175-.526-2.19-.526-1.016 0-1.337.509-2.175.543-.877.034-1.545-.872-2.104-1.676-1.145-1.645-2.02-4.648-0.844-6.676a3.273 3.273 0 012.756-1.676c.856-.017 1.664.576 2.19.576.523 0 1.505-.713 2.535-.613zm.008-2.4c-.27 1.008-.74 1.88-1.406 2.52-.65.619-1.463 1.02-2.36 1.088-.043-.348-.043-.712.018-1.076.192-.99.73-1.912 1.38-2.496.34-.31.75-.568 1.204-.754.454-.186.892-.292 1.312-.325.026.348.002.696-.148 1.043z"/></svg>
+                        Apple (Coming Soon)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-podcast">
+            <div class="container">
+                <h2>Have a Story to Share?</h2>
+                <p>We're always looking for guests who want to share their experiences and help others understand the realities of living with a disability.</p>
+                <a href="mailto:info@sparcsolutions.org?subject=The Access Point Podcast - Guest Inquiry" class="btn btn-primary" style="background: white; color: var(--sparc-kelly-green); border: none; font-weight: 600;">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="color: white;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="/images/SPARC_logo_white.png" alt="SPARC" style="height: 60px; width: auto; margin-bottom: 15px;">
+                    <p>Specially Adapted Resource Centers provides community-integrated day programs for adults with severe and multiple disabilities in Northern Virginia. We believe every adult deserves a meaningful life filled with connection, purpose, and belonging.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100064372517571" class="social-link" aria-label="Facebook" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/sparc_solutions/?hl=en" class="social-link" aria-label="Instagram" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/specially-adapted-resource-clubs" class="social-link" aria-label="LinkedIn" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SPARCSolutions" class="social-link" aria-label="YouTube" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/programs/">Programs</a></li>
+                        <li><a href="/locations/">Locations</a></li>
+                        <li><a href="/events/">Events</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="/donate-checkout/">Donate</a></li>
+                        <li><a href="/get-involved/">Volunteer</a></li>
+                        <li><a href="/advocate/">Advocate</a></li>
+                        <li><a href="/participants/">For Participants</a></li>
+                        <li><a href="https://teamlocker.squadlocker.com/#/lockers/specially-adapted-resource-centers" target="_blank">SPARC Swag</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>
+                        <strong>Tysons Office:</strong><br>
+                        1775 Tysons Blvd, Fifth Floor<br>
+                        Tysons, VA 22102
+                    </p>
+                    <p>
+                        <strong>Phone:</strong> <a href="tel:+17035083889">(703) 508-3889</a><br>
+                        <strong>Email:</strong> <a href="mailto:info@sparcsolutions.org">info@sparcsolutions.org</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SPARC - Specially Adapted Resource Centers. All rights reserved. | EIN: 20-5513060</p>
+                <p><a href="/accessibility/">Accessibility Statement</a> | <a href="/compliance/">ADA Compliance</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mailing List Modal -->
+    <div class="modal" id="mailingListModal" style="display: none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <span class="close-modal" onclick="closeMailingListModal()">&times;</span>
+            <h3 style="margin-bottom: 20px;">Join Our Mailing List</h3>
+            <p style="margin-bottom: 20px;">Stay updated on SPARC events, news, and ways to get involved.</p>
+            <form id="mailingListForm" action="https://formspree.io/f/xwpewpjv" method="POST">
+                <div style="margin-bottom: 15px;">
+                    <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Mailing list modal
+        function openMailingListModal() {
+            document.getElementById('mailingListModal').style.display = 'flex';
+        }
+        function closeMailingListModal() {
+            document.getElementById('mailingListModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('mailingListModal');
+            if (e.target === modal) {
+                closeMailingListModal();
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Function to show live section (call this when going live)
+        function goLive(youtubeVideoId) {
+            const liveSection = document.getElementById('liveSection');
+            const videoContainer = document.getElementById('liveVideoContainer');
+            liveSection.style.display = 'block';
+            videoContainer.innerHTML = `<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            liveSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Function to end live stream
+        function endLive() {
+            document.getElementById('liveSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
