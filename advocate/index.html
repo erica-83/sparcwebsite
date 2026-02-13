@@ -798,6 +798,10 @@
                                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                                 Download Word
                             </button>
+                            <button class="download-btn" onclick="emailLetter()" style="background-color: #ea4335;">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                Email This Letter
+                            </button>
                         </div>
                     </div>
                     <div class="letter-body" id="letterBody">
@@ -1397,6 +1401,83 @@
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
+        }
+
+        // Email letter directly
+        function emailLetter() {
+            // Track in GA
+            gtag('event', 'email', {'event_category': 'advocacy', 'event_label': 'letter_template_email'});
+
+            // Check if any required fields are still placeholders and warn (excluding optional personal sentence)
+            let hasUnfilled = false;
+            document.querySelectorAll('.letter-body .fill-in').forEach(field => {
+                const placeholder = field.getAttribute('data-placeholder');
+                if (field.id === 'personal-sentence') return;
+                if (field.textContent === placeholder) {
+                    hasUnfilled = true;
+                }
+            });
+
+            if (hasUnfilled) {
+                if (!confirm('Some fields are not filled in. Continue anyway?')) {
+                    return;
+                }
+            }
+
+            // Get field values
+            const getName = (selector) => {
+                const el = document.querySelector(selector);
+                if (!el) return '';
+                const text = el.textContent.trim();
+                const placeholder = el.getAttribute('data-placeholder');
+                return text === placeholder ? '' : text;
+            };
+
+            const senderName = getName('.address-block .fill-in:first-child') || 'Your Name';
+            const senderAddress = getName('.address-block .fill-in:nth-child(2)') || 'Your Street Address';
+            const senderCityState = getName('.address-block .fill-in:nth-child(3)') || 'City, State ZIP';
+            const dateField = getName('.date-line .fill-in') || 'Date';
+            const recipientName = getName('.salutation .fill-in') || 'Title & Name';
+            const relationship = getName('p:not(.salutation):not(.closing) .fill-in[data-placeholder="your relationship to SPARC"]') || 'your relationship to SPARC';
+
+            // Check personal sentence
+            const personalSentence = document.getElementById('personal-sentence');
+            const personalPlaceholder = personalSentence.getAttribute('data-placeholder');
+            const personalText = personalSentence.textContent.trim();
+            const includePersonal = personalText && personalText !== personalPlaceholder;
+
+            // Build email body
+            let body = `${senderName}
+${senderAddress}
+${senderCityState}
+
+${dateField}
+
+Dear ${recipientName},
+
+I am writing as ${relationship} who lives in your district. I am asking you to support the SPARC budget amendments currently before the General Assembly:
+
+• House: HB30 Item 300 #7h - Specially Adapted Resources Clubs (SPARC)
+• Senate: SB30 Item 300 #8s - Specially Adapted Resources Clubs (SPARC)
+
+SPARC provides integrated, community-based day services for adults with complex disabilities who are unable to work and require continuous one-to-one personal care support. This is the exact population Virginia has struggled - over decades - to serve in compliance with the Americans with Disabilities Act and the Permanent Injunction issued against Virginia in United States v. Virginia.
+
+${includePersonal ? personalText + '\n\n' : ''}SPARC is not a pilot or a proposal. It is an established, fully operating program already delivering the integrated services the Commonwealth is legally required to provide - at substantially lower cost than Medicaid-funded day programs and with a significantly higher level of programming, including richer community integration, individualized engagement, and meaningful daily activities that far exceed the programs currently serving adults with complex needs.
+
+Funding SPARC is a strategic, direct, and cost effective way for Virginia to demonstrate measurable progress toward compliance with the Permanent Injunction.
+
+I urge you to support these budget amendments and help ensure that adults with severe disabilities in Virginia have access to the quality community-based services they deserve.
+
+Sincerely,
+
+${senderName}`;
+
+            // Create mailto link
+            const subject = encodeURIComponent('Support for SPARC Budget Amendments');
+            const encodedBody = encodeURIComponent(body);
+
+            // Open email client
+            window.location.href = `mailto:?subject=${subject}&body=${encodedBody}`;
         }
 
         // County panel toggle functionality
