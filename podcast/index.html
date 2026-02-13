@@ -556,7 +556,23 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Function to show live section (call this when going live)
+        // ============================================
+        // GO LIVE INSTRUCTIONS
+        // ============================================
+        // When you start a live stream on YouTube via Riverside:
+        //
+        // 1. Copy your YouTube live stream video ID from the URL
+        //    Example: If your live URL is https://www.youtube.com/watch?v=ABC123xyz
+        //    The video ID is: ABC123xyz
+        //
+        // 2. Share this link to show the live stream on your podcast page:
+        //    https://sparcsolutions.org/podcast?live=ABC123xyz
+        //
+        // 3. To end the live stream display, just share the regular link:
+        //    https://sparcsolutions.org/podcast
+        // ============================================
+
+        // Function to show live section
         function goLive(youtubeVideoId) {
             const liveSection = document.getElementById('liveSection');
             const videoContainer = document.getElementById('liveVideoContainer');
@@ -569,6 +585,18 @@
         function endLive() {
             document.getElementById('liveSection').style.display = 'none';
         }
+
+        // AUTO-DETECT: Check URL for ?live=VIDEO_ID parameter
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const liveVideoId = urlParams.get('live');
+            if (liveVideoId) {
+                // Wait for page to load, then activate live stream
+                setTimeout(function() {
+                    goLive(liveVideoId);
+                }, 500);
+            }
+        })();
     </script>
 </body>
 </html>
