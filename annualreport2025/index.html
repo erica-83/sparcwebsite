@@ -108,42 +108,6 @@
             color: var(--white);
         }
 
-        /* ========== GEOMETRIC TRIANGLE ACCENTS ========== */
-        .triangle-accent {
-            position: absolute;
-            width: 0;
-            height: 0;
-            pointer-events: none;
-        }
-
-        .triangle-tl {
-            top: 0;
-            left: 0;
-            border-left: 120px solid var(--sparc-kelly-green);
-            border-bottom: 120px solid transparent;
-        }
-
-        .triangle-tr {
-            top: 0;
-            right: 0;
-            border-right: 120px solid var(--sparc-kelly-green);
-            border-bottom: 120px solid transparent;
-        }
-
-        .triangle-br {
-            bottom: 0;
-            right: 0;
-            border-right: 150px solid var(--sparc-kelly-green);
-            border-top: 150px solid transparent;
-        }
-
-        .triangle-bl {
-            bottom: 0;
-            left: 0;
-            border-left: 100px solid var(--sparc-kelly-green);
-            border-top: 100px solid transparent;
-        }
-
         /* ========== PAGE 1: COVER ========== */
         .report-cover {
             min-height: 100vh;
@@ -152,6 +116,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--sparc-dark-navy) 0%, var(--sparc-royal-blue) 50%, var(--sparc-dark-navy) 100%);
         }
 
         .cover-image {
@@ -167,31 +132,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .cover-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                rgba(0, 43, 80, 0.88) 0%,
-                rgba(0, 83, 155, 0.82) 50%,
-                rgba(0, 43, 80, 0.9) 100%);
-            z-index: 2;
-        }
-
-        .cover-triangle-1 {
-            z-index: 3;
-            border-left: 200px solid rgba(76, 187, 23, 0.25);
-            border-bottom: 200px solid transparent;
-        }
-
-        .cover-triangle-2 {
-            z-index: 3;
-            border-right: 300px solid rgba(76, 187, 23, 0.15);
-            border-top: 300px solid transparent;
+            opacity: 0.25;
         }
 
         .cover-content {
@@ -207,36 +148,34 @@
         }
 
         .cover-logo img {
-            height: 70px;
+            height: 80px;
             width: auto;
             margin: 0 auto;
-            filter: brightness(0) invert(1);
         }
 
         .cover-year {
             display: inline-block;
             background: var(--sparc-kelly-green);
-            padding: 10px 35px;
-            font-size: 0.8rem;
+            padding: 12px 40px;
+            font-size: 0.85rem;
             font-weight: 800;
             color: var(--white);
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .cover-title {
-            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-size: clamp(3.5rem, 10vw, 6rem);
             font-weight: 900;
             color: var(--white);
-            margin-bottom: 20px;
-            line-height: 0.95;
+            margin-bottom: 25px;
+            line-height: 1;
             letter-spacing: -2px;
-            text-transform: uppercase;
         }
 
         .cover-tagline {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             color: var(--sparc-kelly-green);
             font-weight: 700;
             margin-bottom: 20px;
@@ -244,9 +183,9 @@
         }
 
         .cover-subtitle {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.8);
-            max-width: 500px;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 550px;
             margin: 0 auto;
         }
 
@@ -261,44 +200,18 @@
 
         .cover-scroll span {
             display: block;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
+            color: var(--sparc-kelly-green);
+            font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 10px;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        .scroll-indicator {
-            width: 28px;
-            height: 45px;
-            border: 2px solid rgba(255,255,255,0.4);
-            border-radius: 14px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .scroll-indicator::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--sparc-kelly-green);
-            border-radius: 2px;
-            animation: scroll-bounce 2s infinite;
-        }
-
-        @keyframes scroll-bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-            50% { transform: translateX(-50%) translateY(12px); opacity: 0.3; }
-        }
-
-        /* ========== FULL-BLEED PHOTO DIVIDERS ========== */
+        /* ========== PHOTO DIVIDERS ========== */
         .photo-divider {
             position: relative;
-            height: 50vh;
-            min-height: 350px;
+            height: 45vh;
+            min-height: 300px;
             overflow: hidden;
         }
 
@@ -308,37 +221,178 @@
             object-fit: cover;
         }
 
-        .photo-divider .triangle-accent {
-            opacity: 0.9;
-        }
-
         .photo-divider-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 80px 40px 30px;
-            background: linear-gradient(to top, rgba(0,43,80,0.95), transparent);
+            padding: 60px 40px 25px;
+            background: linear-gradient(to top, rgba(0,43,80,0.9), transparent);
             color: var(--white);
         }
 
         .photo-divider-caption h3 {
             color: var(--white);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .photo-divider-caption p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             opacity: 0.85;
         }
 
-        /* ========== TWO-COLUMN MAGAZINE LAYOUTS ========== */
+        /* ========== LETTERS SECTION ========== */
+        .letters-section {
+            padding: 80px 0;
+            background: var(--off-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .section-header h2::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--sparc-kelly-green);
+            margin: 0 auto 20px;
+        }
+
+        .letters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .letter-card {
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .letter-header {
+            background: linear-gradient(135deg, var(--sparc-dark-navy), var(--sparc-royal-blue));
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .letter-photo {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--sparc-kelly-green);
+            flex-shrink: 0;
+        }
+
+        .letter-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .letter-author h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 3px;
+            font-weight: 800;
+        }
+
+        .letter-author p {
+            color: var(--sparc-kelly-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .letter-body {
+            padding: 30px;
+        }
+
+        .letter-greeting {
+            font-size: 1.15rem;
+            color: var(--sparc-royal-blue);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .letter-body p {
+            margin-bottom: 15px;
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        .letter-signature {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 2px solid var(--light-gray);
+        }
+
+        .letter-signature p {
+            font-style: italic;
+            color: var(--medium-gray);
+            margin-bottom: 5px;
+        }
+
+        .signature-name {
+            font-weight: 800;
+            color: var(--sparc-royal-blue);
+            font-style: normal;
+            font-size: 1.05rem;
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats-section {
+            background: var(--sparc-dark-navy);
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 35px 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--sparc-kelly-green);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ========== SPLIT LAYOUTS ========== */
         .split-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 80vh;
+            min-height: 500px;
         }
 
         .split-section.reverse {
@@ -361,11 +415,10 @@
         }
 
         .split-content {
-            padding: 80px 60px;
+            padding: 60px 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
         }
 
         .split-content.bg-navy {
@@ -378,285 +431,69 @@
             color: var(--white);
         }
 
-        .split-content.bg-blue {
-            background: var(--sparc-royal-blue);
-            color: var(--white);
-        }
-
-        .split-content.bg-blue h2,
-        .split-content.bg-blue h3 {
-            color: var(--white);
-        }
-
         .split-content.bg-gray {
             background: var(--off-white);
         }
 
-        /* ========== SECTION BADGES ========== */
         .section-badge {
             display: inline-block;
             background: var(--sparc-kelly-green);
             color: var(--white);
-            padding: 8px 20px;
+            padding: 6px 16px;
             font-size: 0.7rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .section-badge.blue {
-            background: var(--sparc-royal-blue);
-        }
-
-        /* ========== HIGHLIGHT BOXES (Pull Quotes) ========== */
         .highlight-box {
             background: var(--sparc-kelly-green);
             color: var(--white);
-            padding: 30px 35px;
-            margin: 30px 0;
-            position: relative;
-        }
-
-        .highlight-box::before {
-            content: '"';
-            position: absolute;
-            top: 5px;
-            left: 15px;
-            font-size: 4rem;
-            color: rgba(255,255,255,0.25);
-            font-family: Georgia, serif;
-            line-height: 1;
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-left: 5px solid var(--sparc-dark-navy);
         }
 
         .highlight-box p {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 600;
             font-style: italic;
             line-height: 1.5;
             margin: 0;
-            position: relative;
-            z-index: 1;
         }
 
         .highlight-box.blue {
             background: var(--sparc-royal-blue);
         }
 
-        .highlight-box.navy {
-            background: var(--sparc-dark-navy);
-        }
-
-        /* ========== SECTION HEADERS ========== */
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-header h2::before {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--sparc-kelly-green);
-            margin: 0 auto 20px;
-        }
-
-        .section-header p {
-            font-size: 1.15rem;
-            color: var(--medium-gray);
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        /* ========== LETTERS SECTION ========== */
-        .letters-section {
-            padding: 100px 0;
-            background: var(--off-white);
-            position: relative;
-        }
-
-        .letters-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .letter-card {
-            background: var(--white);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .letter-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--sparc-kelly-green), var(--sparc-royal-blue));
-        }
-
-        .letter-header {
-            padding: 35px 35px 25px 45px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .letter-photo {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--sparc-kelly-green);
-            flex-shrink: 0;
-        }
-
-        .letter-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .letter-author h3 {
-            font-size: 1.3rem;
-            margin-bottom: 3px;
-            font-weight: 800;
-        }
-
-        .letter-author p {
-            color: var(--sparc-kelly-green);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .letter-body {
-            padding: 30px 35px 35px 45px;
-        }
-
-        .letter-greeting {
-            font-size: 1.3rem;
-            color: var(--sparc-royal-blue);
-            font-weight: 800;
-            margin-bottom: 20px;
-            font-family: var(--font-heading);
-        }
-
-        .letter-body p {
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-
-        .letter-signature {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px solid var(--light-gray);
-        }
-
-        .letter-signature p {
-            font-style: italic;
-            color: var(--medium-gray);
-            margin-bottom: 5px;
-        }
-
-        .signature-name {
-            font-weight: 800;
-            color: var(--sparc-royal-blue);
-            font-style: normal;
-            font-size: 1.1rem;
-            font-family: var(--font-heading);
-        }
-
-        /* ========== STATS SECTION ========== */
-        .stats-section {
-            background: var(--sparc-dark-navy);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section .triangle-accent {
-            opacity: 0.15;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 40px 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            background: rgba(76, 187, 23, 0.1);
-            border-color: var(--sparc-kelly-green);
-        }
-
-        .stat-number {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 7vw, 5rem);
-            font-weight: 900;
-            color: var(--sparc-kelly-green);
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
         /* ========== PROGRAMS SECTION ========== */
         .programs-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: var(--white);
         }
 
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
         .program-card {
             position: relative;
             aspect-ratio: 3/4;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .program-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
         .program-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
         .program-overlay {
@@ -664,50 +501,105 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 100px 25px 25px;
-            background: linear-gradient(to top, rgba(0,43,80,0.95) 0%, rgba(0,43,80,0.7) 50%, transparent 100%);
+            padding: 80px 20px 20px;
+            background: linear-gradient(to top, rgba(0,43,80,0.95), transparent);
             color: var(--white);
         }
 
         .program-overlay h3 {
             color: var(--white);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .program-overlay p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             opacity: 0.9;
         }
 
+        /* ========== GALA SECTION ========== */
+        .gala-section {
+            background: var(--sparc-dark-navy);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .gala-badge {
+            display: inline-block;
+            background: var(--sparc-kelly-green);
+            color: var(--white);
+            padding: 8px 25px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .gala-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .gala-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .gala-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .gala-stat {
+            text-align: center;
+        }
+
+        .gala-stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--sparc-kelly-green);
+            font-family: var(--font-heading);
+        }
+
+        .gala-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         /* ========== SPONSORS SECTION ========== */
         .sponsors-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: var(--white);
         }
 
         .sponsor-tier {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .tier-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
         .tier-title {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--white);
             background: var(--sparc-royal-blue);
-            padding: 10px 35px;
+            padding: 8px 30px;
         }
 
         .tier-title.green {
@@ -719,115 +611,87 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 35px;
         }
 
         .sponsor-logo {
-            max-height: 70px;
-            max-width: 160px;
+            max-height: 60px;
+            max-width: 150px;
             object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .sponsor-logo:hover {
-            transform: scale(1.05);
         }
 
         .sponsor-logo.large {
-            max-height: 90px;
-            max-width: 200px;
+            max-height: 80px;
+            max-width: 180px;
         }
 
         .sponsor-logo.xlarge {
-            max-height: 250px;
-            max-width: 500px;
+            max-height: 200px;
+            max-width: 400px;
         }
 
-        .donor-names {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px 25px;
-            color: var(--medium-gray);
-            font-size: 0.95rem;
-            margin-top: 15px;
-        }
-
-        .thanks-card {
+        .presenting-sponsor {
             background: var(--sparc-dark-navy);
-            padding: 50px;
+            padding: 40px;
             text-align: center;
             color: var(--white);
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 50px;
         }
 
-        .thanks-card .triangle-accent {
-            opacity: 0.1;
-        }
-
-        .thanks-card h3 {
+        .presenting-sponsor h3 {
             color: var(--white);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
-        .thanks-card p {
-            font-size: 1rem;
-            opacity: 0.9;
-            max-width: 600px;
+        .presenting-sponsor p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        .presenting-logo {
+            max-height: 150px;
             margin: 0 auto;
-        }
-
-        .thanks-logo {
-            max-height: 180px;
-            margin: 30px auto 0;
             filter: brightness(0) invert(1);
         }
 
         /* ========== FINANCIALS SECTION ========== */
         .financials-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: var(--off-white);
         }
 
         .financials-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 35px;
         }
 
         .financial-card {
             background: var(--white);
-            padding: 45px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            padding: 40px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
         }
 
         .financial-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 35px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             text-align: center;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .pie-chart-container {
             position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
         }
 
         .pie-chart {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .revenue-chart {
@@ -855,8 +719,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             background: var(--white);
             border-radius: 50%;
         }
@@ -864,57 +728,47 @@
         .chart-legend {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
+            gap: 10px;
+            font-size: 0.85rem;
         }
 
         .legend-color {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             flex-shrink: 0;
         }
 
-        .legend-label {
-            flex: 1;
-            color: var(--sparc-charcoal);
-        }
-
         .legend-value {
-            font-weight: 800;
+            font-weight: 700;
             color: var(--sparc-royal-blue);
-            font-family: var(--font-heading);
+            margin-left: auto;
         }
 
-        .financial-highlight {
+        .cost-highlight {
             background: var(--sparc-kelly-green);
-            padding: 50px;
+            padding: 45px;
             text-align: center;
             color: var(--white);
-            margin-top: 50px;
-            position: relative;
-            overflow: hidden;
+            margin-top: 40px;
         }
 
-        .financial-highlight h3 {
+        .cost-highlight h3 {
             color: var(--white);
-            margin-bottom: 12px;
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
 
         .cost-comparison {
             display: flex;
             justify-content: center;
-            gap: 80px;
-            margin-top: 35px;
+            gap: 60px;
+            margin-top: 25px;
         }
 
         .cost-item {
@@ -922,68 +776,57 @@
         }
 
         .cost-amount {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(1.8rem, 4vw, 3rem);
             font-weight: 900;
             font-family: var(--font-heading);
         }
 
         .cost-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
+            font-size: 0.85rem;
+            margin-top: 5px;
         }
 
         /* ========== EVENTS SECTION ========== */
         .events-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: var(--sparc-royal-blue);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .events-section .triangle-accent {
-            opacity: 0.1;
         }
 
         .events-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
+            gap: 30px;
         }
 
         .event-card {
             background: rgba(255,255,255,0.08);
-            padding: 50px 40px;
+            padding: 45px 35px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
             text-decoration: none;
-            color: inherit;
             display: block;
+            transition: all 0.3s ease;
         }
 
         .event-card:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
-            color: inherit;
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-3px);
         }
 
         .event-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: var(--sparc-kelly-green);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             border-radius: 50%;
         }
 
         .event-icon svg {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             stroke: var(--white);
             fill: none;
             stroke-width: 1.5;
@@ -991,110 +834,86 @@
 
         .event-date {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: var(--white);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .event-name {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: var(--sparc-kelly-green);
-            font-weight: 800;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .event-description {
             color: rgba(255,255,255,0.85);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         /* ========== THANK YOU SECTION ========== */
         .thank-you-section {
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
             background: var(--sparc-kelly-green);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .thank-you-section .triangle-accent {
-            opacity: 0.15;
-            border-color: var(--white);
         }
 
         .thank-you-content h2 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             color: var(--white);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .thank-you-content p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: rgba(255,255,255,0.95);
             max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+            margin: 0 auto 35px;
         }
 
         .thank-you-image {
-            max-width: 850px;
+            max-width: 750px;
             margin: 0 auto;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             overflow: hidden;
-        }
-
-        .thank-you-image img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* ========== DOWNLOAD SECTION ========== */
-        .download-section {
-            padding: 70px 0;
-            background: var(--off-white);
-            text-align: center;
         }
 
         /* ========== FOOTER ========== */
         .report-footer {
             background: var(--sparc-dark-navy);
             color: var(--white);
-            padding: 80px 0 40px;
+            padding: 60px 0 35px;
         }
 
         .footer-main {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-about img {
-            height: 55px;
-            margin-bottom: 20px;
+            height: 50px;
+            margin-bottom: 18px;
         }
 
         .footer-about p {
             color: rgba(255,255,255,0.8);
             line-height: 1.7;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-links h4,
         .footer-contact h4 {
             color: var(--white);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .footer-links ul {
@@ -1102,43 +921,37 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-links a {
             color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
+            font-size: 0.85rem;
         }
 
         .footer-links a:hover {
             color: var(--sparc-kelly-green);
-            padding-left: 5px;
         }
 
         .footer-contact p {
             color: rgba(255,255,255,0.8);
-            margin-bottom: 8px;
-            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
         }
 
         .footer-contact a {
             color: rgba(255,255,255,0.8);
         }
 
-        .footer-contact a:hover {
-            color: var(--sparc-kelly-green);
-        }
-
         .social-links {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 18px;
         }
 
         .social-link {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
@@ -1150,42 +963,27 @@
 
         .social-link:hover {
             background: var(--sparc-kelly-green);
-            transform: translateY(-2px);
         }
 
         .social-link svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
+            padding-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
         }
 
         .footer-bottom p {
             color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin: 0;
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 25px;
-        }
-
-        .footer-legal a {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
-        }
-
-        .footer-legal a:hover {
-            color: var(--sparc-kelly-green);
         }
 
         /* ========== RESPONSIVE ========== */
@@ -1199,12 +997,7 @@
             }
 
             .split-image {
-                height: 50vh;
-                min-height: 350px;
-            }
-
-            .split-content {
-                padding: 60px 40px;
+                height: 350px;
             }
 
             .letters-grid {
@@ -1230,7 +1023,7 @@
 
         @media (max-width: 768px) {
             .cover-title {
-                font-size: clamp(2.5rem, 12vw, 4rem);
+                font-size: clamp(2.5rem, 12vw, 3.5rem);
             }
 
             .stats-grid {
@@ -1243,6 +1036,11 @@
 
             .events-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .gala-stats {
+                flex-direction: column;
+                gap: 25px;
             }
 
             .footer-main {
@@ -1261,38 +1059,111 @@
 
             .cost-comparison {
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
             }
 
             .letter-header {
                 flex-direction: column;
                 text-align: center;
-                padding: 25px 25px 20px;
             }
 
-            .letter-card::before {
-                width: 100%;
-                height: 5px;
-                top: 0;
+            .split-content {
+                padding: 40px 25px;
             }
-
-            .letter-body {
-                padding: 25px;
-            }
-
-            .triangle-tl { border-left-width: 80px; border-bottom-width: 80px; }
-            .triangle-tr { border-right-width: 80px; border-bottom-width: 80px; }
-            .triangle-br { border-right-width: 100px; border-top-width: 100px; }
-            .triangle-bl { border-left-width: 70px; border-top-width: 70px; }
         }
 
         /* ========== PRINT STYLES ========== */
         @media print {
-            .btn, .download-section, .scroll-indicator, .cover-scroll { display: none !important; }
-            .report-cover { min-height: auto; page-break-after: always; }
-            .split-section { display: block; }
-            .split-image { height: auto; }
-            * { box-shadow: none !important; }
+            body {
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            .btn, .cover-scroll, .social-links {
+                display: none !important;
+            }
+
+            .report-cover {
+                min-height: auto;
+                padding: 60px 40px;
+                page-break-after: always;
+            }
+
+            .cover-image {
+                display: none;
+            }
+
+            .report-cover {
+                background: var(--sparc-dark-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .split-section {
+                display: block;
+                page-break-inside: avoid;
+            }
+
+            .split-image {
+                height: 250px;
+                page-break-inside: avoid;
+            }
+
+            .split-content {
+                padding: 30px;
+            }
+
+            .letters-section {
+                page-break-after: always;
+            }
+
+            .letter-card {
+                page-break-inside: avoid;
+                margin-bottom: 30px;
+            }
+
+            .stats-section {
+                page-break-after: always;
+            }
+
+            .programs-section {
+                page-break-after: always;
+            }
+
+            .sponsors-section {
+                page-break-before: always;
+            }
+
+            .financials-section {
+                page-break-before: always;
+                page-break-after: always;
+            }
+
+            .photo-divider {
+                height: 200px;
+                page-break-inside: avoid;
+            }
+
+            h2, h3 {
+                page-break-after: avoid;
+            }
+
+            img {
+                page-break-inside: avoid;
+            }
+
+            * {
+                box-shadow: none !important;
+            }
+
+            .highlight-box, .cost-highlight, .presenting-sponsor, .gala-section, .events-section, .thank-you-section, .stats-section {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
@@ -1301,35 +1172,30 @@
     <!-- ========== COVER ========== -->
     <section class="report-cover">
         <div class="cover-image">
-            <img src="SPARC team.jpeg" alt="SPARC Team">
+            <img src="/images/Social Group at Fire Safety Day.jpg" alt="SPARC Community">
         </div>
-        <div class="cover-overlay"></div>
-        <div class="triangle-accent triangle-tl cover-triangle-1"></div>
-        <div class="triangle-accent triangle-br cover-triangle-2"></div>
 
         <div class="cover-content">
             <div class="cover-logo">
-                <img src="/images/logo.png" alt="SPARC - Specially Adapted Resource Centers">
+                <img src="/images/SPARC_logo_white.png" alt="SPARC - Specially Adapted Resource Centers">
             </div>
             <div class="cover-year">Fiscal Year 2025</div>
-            <h1 class="cover-title">Annual<br>Report</h1>
+            <h1 class="cover-title">Annual Report</h1>
             <p class="cover-tagline">Fearless Compassion Builds Fearless Futures</p>
             <p class="cover-subtitle">Serving adults with severe and multiple disabilities across Northern Virginia since 2006</p>
         </div>
 
         <div class="cover-scroll">
             <span>sparcsolutions.org</span>
-            <div class="scroll-indicator"></div>
         </div>
     </section>
 
-    <!-- ========== PHOTO DIVIDER: ART THERAPY ========== -->
+    <!-- ========== PHOTO DIVIDER ========== -->
     <div class="photo-divider">
-        <img src="art therapy.jpg" alt="Art Therapy at SPARC">
-        <div class="triangle-accent triangle-br" style="border-right-color: var(--sparc-kelly-green);"></div>
+        <img src="/images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC Pancake Breakfast 2025">
         <div class="photo-divider-caption">
-            <h3>Art Therapy</h3>
-            <p>Creative expression that nurtures growth and connection</p>
+            <h3>Pancake Breakfast Fundraiser 2025</h3>
+            <p>Community leaders and SPARC participants celebrate together</p>
         </div>
     </div>
 
@@ -1355,15 +1221,10 @@
                     <div class="letter-body">
                         <p class="letter-greeting">Dear SPARC Friends,</p>
                         <p>This past year marked a turning point for SPARC—not only in what we delivered in our centers, but in how we engaged with the Commonwealth on behalf of the adults and families we serve.</p>
-
-                        <div class="highlight-box blue">
-                            <p>Virginia remains under permanent federal court supervision because it has failed to provide adults with disabilities access to services in the most integrated settings.</p>
-                        </div>
-
-                        <p>Throughout much of the year, SPARC undertook an intensive legal review of Virginia's obligations under the Americans with Disabilities Act. That research helped us fully understand the scope, rarity, and consequences of the Permanent Injunction now governing Virginia's disability service system.</p>
-
-                        <p>The question before us now is not whether Virginia must comply with the Permanent Injunction — the courts have already answered that. The question is whether we will rise to this moment and ensure that all people, including those with the most complex needs, are fully included in the life of our communities.</p>
-
+                        <p>Throughout much of the year, SPARC undertook an intensive legal review of Virginia's obligations under the Americans with Disabilities Act and the long-running case <em>United States v. Virginia</em>. That research was led by our Board Vice Chair, Hannah Irsfeld, whose work helped us fully understand the scope, rarity, and consequences of the Permanent Injunction now governing Virginia's disability service system.</p>
+                        <p>What we learned was sobering and clarifying: Virginia remains under permanent federal court supervision because it has failed, for decades, to provide adults with disabilities access to services in the most integrated settings appropriate to their needs. Permanent injunctions are extraordinarily rare.</p>
+                        <p>For SPARC, this legal reality confirmed what families have been telling us for years. Adults with severe and multiple disabilities—especially those who cannot work and require continuous one-to-one support—have been effectively left out of Virginia's service system.</p>
+                        <p>This is why SPARC's legislative work matters so deeply. Our advocacy is not about expanding one organization for its own sake. It is about helping Virginia meet its civil-rights obligations and ensure that adults with the most significant disabilities are no longer invisible in public policy.</p>
                         <div class="letter-signature">
                             <p>With gratitude and resolve,</p>
                             <p class="signature-name">Debi Alexander</p>
@@ -1385,15 +1246,9 @@
                     <div class="letter-body">
                         <p class="letter-greeting">Dear Friends and Supporters,</p>
                         <p>In 2025, SPARC began shaping a national summit, <em>A Call to Conscience: Advancing Dignity for Adults with Severe and Multiple Disabilities</em>. It marked a significant step beyond our long-familiar Northern Virginia roots and into the national arena.</p>
-
-                        <div class="highlight-box">
-                            <p>Civil rights are not self-executing. They require vigilance, courage, and our collective effort.</p>
-                        </div>
-
-                        <p>At the summit, leaders, innovators, adults with complex needs and their families will: imagine systems that honor interdependence as a source of strength; center the voices of families whose lives are shaped by love, advocacy, and daily realities; and design a future where purpose, dignity, and joy are not luxuries, but rights.</p>
-
-                        <p>We hope to see you at the summit on Monday, July 27, 2026, at the Jack Morton Auditorium on George Washington University's Foggy Bottom campus.</p>
-
+                        <p>At the summit, leaders, innovators, adults with complex needs and their families will: imagine systems that honor interdependence as a source of strength; center the voices of families whose lives are shaped by love, advocacy, and the daily realities of supporting adults with complex needs; challenge narratives that diminish potential, like ableism and implicit bias; illuminate systemic barriers that isolate; and design a future where purpose, dignity, and joy are not luxuries, but rights.</p>
+                        <p>Together, we hope to move our country closer to the promise made thirty years ago by the Americans with Disabilities Act—a reminder that civil rights are not self-executing. They require vigilance, courage, and our collective effort.</p>
+                        <p>We hope to see you at the summit on Monday, July 27, 2026, at the Jack Morton Auditorium on George Washington University's Foggy Bottom campus, when SPARC, in partnership with GW, calls the nation to reckon with its unfinished promises and to build systems worthy of every person's inherent dignity.</p>
                         <div class="letter-signature">
                             <p>With hope and determination,</p>
                             <p class="signature-name">Ellen Dyke</p>
@@ -1404,21 +1259,8 @@
         </div>
     </section>
 
-    <!-- ========== PHOTO DIVIDER: MUSIC THERAPY ========== -->
-    <div class="photo-divider">
-        <img src="music therapy joy use this one.jpg" alt="Music Therapy Joy">
-        <div class="triangle-accent triangle-tl" style="border-left-color: var(--sparc-royal-blue);"></div>
-        <div class="photo-divider-caption">
-            <h3>Music Therapy</h3>
-            <p>Joy through musical expression and connection</p>
-        </div>
-    </div>
-
     <!-- ========== STATS SECTION ========== -->
     <section class="stats-section">
-        <div class="triangle-accent triangle-tr" style="border-right-color: var(--sparc-kelly-green);"></div>
-        <div class="triangle-accent triangle-bl" style="border-left-color: var(--sparc-kelly-green);"></div>
-
         <div class="container">
             <div class="section-header">
                 <h2 style="color: white;">SPARC by the Numbers</h2>
@@ -1428,7 +1270,7 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">65+</div>
-                    <div class="stat-label">Adults Served</div>
+                    <div class="stat-label">Adults Served Daily</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">20</div>
@@ -1454,25 +1296,6 @@
         </div>
     </section>
 
-    <!-- ========== CONNOR'S STORY - SPLIT LAYOUT ========== -->
-    <section class="split-section">
-        <div class="split-image">
-            <img src="Christiana.jpg" alt="SPARC Participant">
-        </div>
-        <div class="split-content bg-gray">
-            <span class="section-badge">Participant Story</span>
-            <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 25px;">Connor's Story</h2>
-            <p>Before finding SPARC, Connor spent years aging out of the school system and being turned away from program after program because his needs were deemed "too complex." Without access to a suitable day program, his world grew smaller and more isolated.</p>
-            <p>His family rearranged their lives to fill a gap that should never have existed. This is what happens in communities without SPARC: adults are excluded, families are stretched to the breaking point, and isolation replaces opportunity.</p>
-
-            <div class="highlight-box navy">
-                <p>What made the difference was not a miracle—it was design. SPARC was built for exactly this: to meet people where they are and help them grow.</p>
-            </div>
-
-            <p>When Connor finally walked through SPARC's doors, the outcome was profoundly different. With skilled, patient, credentialed professionals and a model designed specifically for complex needs, Connor found belonging, learned boundaries, built friendships, and began to thrive.</p>
-        </div>
-    </section>
-
     <!-- ========== PROGRAMS SECTION ========== -->
     <section class="programs-section">
         <div class="container">
@@ -1487,72 +1310,87 @@
                     <img src="art therapy.jpg" alt="Art Therapy">
                     <div class="program-overlay">
                         <h3>Art Therapy</h3>
-                        <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development.</p>
+                        <p>Creative expression through adapted art activities designed to support social, emotional, and cognitive development in an inclusive environment.</p>
                     </div>
                 </div>
                 <div class="program-card">
                     <img src="music therapy joy use this one.jpg" alt="Music Therapy">
                     <div class="program-overlay">
                         <h3>Music Therapy</h3>
-                        <p>Evidence-based musical interventions that promote communication, motor skills, and emotional well-being.</p>
+                        <p>Evidence-based musical interventions that promote communication, motor skills, and emotional well-being for participants of all ability levels.</p>
                     </div>
                 </div>
                 <div class="program-card">
                     <img src="Field trip.jpg" alt="Community Integration">
                     <div class="program-overlay">
                         <h3>Community Integration</h3>
-                        <p>Meaningful participation in everyday community life through outings, events, and local partnerships.</p>
+                        <p>Meaningful participation in everyday community life through outings, events, and local partnerships that foster belonging.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== PHOTO DIVIDER: FIELD TRIP ========== -->
-    <div class="photo-divider">
-        <img src="/images/Regatta SPARC friends.jpg" alt="SPARC Friends at Regatta">
-        <div class="triangle-accent triangle-bl" style="border-left-color: var(--sparc-kelly-green);"></div>
-        <div class="photo-divider-caption">
-            <h3>Cardboard Regatta</h3>
-            <p>Community fun and connection on the water</p>
+    <!-- ========== CONNOR'S STORY ========== -->
+    <section class="split-section">
+        <div class="split-image">
+            <!-- NOTE: Add Connor's photo (red Washington Wizards hoodie) as "connor.jpg" to this folder -->
+            <img src="connor.jpg" alt="Connor at SPARC">
         </div>
-    </div>
+        <div class="split-content bg-gray">
+            <span class="section-badge">Participant Story</span>
+            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 20px;">Connor's Story</h2>
+            <p>Before finding SPARC, Connor spent years aging out of the school system and being turned away from program after program because his needs were deemed "too complex." Without access to a suitable day program, his world grew smaller and more isolated.</p>
+            <p>His family rearranged their lives to fill a gap that should never have existed. This is what happens in communities without SPARC: adults are excluded, families are stretched to the breaking point, and isolation replaces opportunity.</p>
+            <p>When Connor finally walked through SPARC's doors, the outcome was profoundly different. With skilled, patient, credentialed professionals and a model designed specifically for complex needs, Connor found belonging, learned boundaries, built friendships, and began to thrive.</p>
 
-    <!-- ========== LEGAL ANALYSIS - SPLIT LAYOUT (REVERSED) ========== -->
+            <div class="highlight-box">
+                <p>"His story is not exceptional—it is replicable. But only if systems choose to recognize and serve this population."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SPOTLIGHT: HANNAH IRSFELD ========== -->
     <section class="split-section reverse">
         <div class="split-image">
             <img src="/images/board/hannah-irsfeld.jpg" alt="Hannah Irsfeld">
         </div>
         <div class="split-content bg-navy">
             <span class="section-badge">Legal Analysis</span>
-            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 25px;">Reframing the Question</h2>
-            <p style="color: rgba(255,255,255,0.9);">For nearly twenty years, families caring for adults with severe and multiple disabilities were given the same answer when they asked why meaningful community day services did not exist: <em>"Medicaid doesn't cover it."</em></p>
+            <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 20px;">Reframing the Question</h2>
+            <p style="color: rgba(255,255,255,0.9);">For nearly twenty years, families caring for adults with severe and multiple disabilities were given the same answer: "Medicaid doesn't cover it."</p>
+            <p style="color: rgba(255,255,255,0.9);">In late 2025, SPARC's Board Vice Chair, Hannah Irsfeld, was asked: <strong>Is that actually true?</strong></p>
 
-            <div class="highlight-box">
-                <p>How a service is funded is not the same as whether the service must be provided.</p>
+            <div class="highlight-box blue">
+                <p>"How a service is funded is not the same as whether the service must be provided."</p>
             </div>
 
-            <p style="color: rgba(255,255,255,0.9);">In late 2025, SPARC's Board Vice Chair, Hannah Irsfeld, was asked a deceptively simple question: <strong>Is that actually true?</strong> What followed was months of rigorous legal analysis that fundamentally reframed the issue.</p>
+            <p style="color: rgba(255,255,255,0.9);">Hannah's analysis uncovered a critical distinction: Virginia's obligation to provide community-integrated services arises independently under federal civil rights law—including Title II of the ADA and the Supreme Court's Olmstead decision.</p>
+            <p style="color: rgba(255,255,255,0.9);">Her conclusion: the right to services in the most integrated setting appropriate does not depend on whether Medicaid happens to fund a particular service configuration.</p>
 
-            <p style="color: rgba(255,255,255,0.9);">Hannah's analysis uncovered a critical but long-overlooked distinction: Virginia's obligation to provide community-integrated services arises independently under federal civil rights law—including Title II of the Americans with Disabilities Act, Section 504 of the Rehabilitation Act, and the Supreme Court's Olmstead decision.</p>
-
-            <a href="/compliance/" class="btn btn-primary" style="margin-top: 25px;">Read the Full Analysis</a>
+            <a href="/compliance/" class="btn btn-primary" style="margin-top: 20px;">Read the Full Analysis</a>
         </div>
     </section>
 
-    <!-- ========== GALA - SPLIT LAYOUT ========== -->
-    <section class="split-section">
-        <div class="split-image">
-            <img src="Chair Randall.jpeg" alt="Gala Recognition">
-        </div>
-        <div class="split-content bg-blue">
-            <span class="section-badge" style="background: var(--white); color: var(--sparc-royal-blue);">November 2025</span>
-            <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 25px;">An Evening to SPARCle</h2>
-            <p style="color: rgba(255,255,255,0.95);">Our 3rd Annual Gala brought together over 200 community members to celebrate the power of inclusion and raise critical funds for adults with severe and multiple disabilities.</p>
-            <p style="color: rgba(255,255,255,0.95);">The evening featured inspiring stories from SPARC families, recognition of our incredible sponsors, and a renewed commitment to building a more inclusive Virginia.</p>
-
-            <div class="highlight-box" style="background: var(--sparc-dark-navy);">
-                <p>Together, we raised awareness and resources to ensure every adult has access to meaningful community integration.</p>
+    <!-- ========== GALA SECTION ========== -->
+    <section class="gala-section">
+        <div class="container">
+            <div class="gala-badge">November 2025</div>
+            <h2 class="gala-title">An Evening to SPARCle</h2>
+            <p class="gala-description">Our 3rd Annual Gala brought together over 300 community members, sponsors, and advocates to celebrate the power of inclusion and raise critical funds for adults with severe and multiple disabilities.</p>
+            <div class="gala-stats">
+                <div class="gala-stat">
+                    <div class="gala-stat-number">300+</div>
+                    <div class="gala-stat-label">Guests Attended</div>
+                </div>
+                <div class="gala-stat">
+                    <div class="gala-stat-number">$250K+</div>
+                    <div class="gala-stat-label">Raised for SPARC</div>
+                </div>
+                <div class="gala-stat">
+                    <div class="gala-stat-number">50+</div>
+                    <div class="gala-stat-label">Sponsors & Partners</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1565,13 +1403,11 @@
                 <p>Thank you to our 2025 Gala Sponsors and Partners</p>
             </div>
 
-            <!-- Presenting Sponsor -->
-            <div class="thanks-card">
-                <div class="triangle-accent triangle-tr" style="border-right-color: var(--sparc-kelly-green);"></div>
-                <h3>Presenting Sponsor</h3>
-                <p>Marriott Washington Dulles Airport has been an incredible partner, providing world-class hospitality and unwavering support for our mission.</p>
+            <div class="presenting-sponsor">
+                <h3>Special Thanks to Our Presenting Sponsor</h3>
+                <p>Marriott Washington Dulles Airport</p>
                 <a href="https://www.marriott.com/en-us/hotels/iadap-washington-dulles-airport-marriott/overview/" target="_blank" rel="noopener">
-                    <img src="/images/sponsors/Marriott logo.png" alt="Marriott" class="thanks-logo" style="max-height: 200px; max-width: 600px;">
+                    <img src="/images/sponsors/Marriott logo.png" alt="Marriott" class="presenting-logo">
                 </a>
             </div>
 
@@ -1581,9 +1417,6 @@
                 </div>
                 <div class="sponsor-logos">
                     <img src="/images/sponsors/Burmester Family Endowment.svg" alt="Burmester Family Endowment" class="sponsor-logo xlarge">
-                </div>
-                <div class="donor-names">
-                    <span>Anonymous</span>
                 </div>
             </div>
 
@@ -1602,7 +1435,7 @@
                     <span class="tier-title green">Hero</span>
                 </div>
                 <div class="sponsor-logos">
-                    <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="sponsor-logo xlarge" style="max-height: 300px;"></a>
+                    <a href="https://www.qtsdatacenters.com/" target="_blank" rel="noopener"><img src="/images/sponsors/QTS-Logo_new.svg" alt="QTS" class="sponsor-logo xlarge"></a>
                 </div>
             </div>
 
@@ -1615,7 +1448,6 @@
                     <a href="https://www.dullesgreenway.com/" target="_blank" rel="noopener"><img src="/images/sponsors/dulles greenway.png" alt="Dulles Greenway" class="sponsor-logo"></a>
                     <img src="/images/sponsors/Shrivastava family.jpg" alt="Shrivastava Family" class="sponsor-logo">
                     <a href="https://www.hcahealthcare.com/" target="_blank" rel="noopener"><img src="/images/sponsors/HCA Updated.svg" alt="HCA Virginia" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/TF_KS.jpg" alt="Knox Singleton & Tracy Fitzsimmons" class="sponsor-logo">
                     <a href="https://www.micron.com/" target="_blank" rel="noopener"><img src="/images/sponsors/micron-logo-black.png" alt="Micron" class="sponsor-logo"></a>
                     <a href="https://comstock.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Comstock.png" alt="Comstock" class="sponsor-logo"></a>
                 </div>
@@ -1660,33 +1492,10 @@
                     <a href="https://www.wegmans.com/" target="_blank" rel="noopener"><img src="/images/sponsors/wegamans.webp" alt="Wegmans" class="sponsor-logo"></a>
                     <a href="https://theceowoman.com/" target="_blank" rel="noopener"><img src="/images/sponsors/ceo woman.jpg" alt="The CEO Woman" class="sponsor-logo"></a>
                     <a href="https://www.maidbrigade.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Maid Brigade.png" alt="Maid Brigade" class="sponsor-logo"></a>
-                    <img src="/images/sponsors/Dave and Joanne adams.png" alt="Dave & JoAnne Adams" class="sponsor-logo">
-                    <img src="/images/sponsors/Nancy Lu.jpg" alt="Varol Okun & Nancy Lu" class="sponsor-logo">
-                    <img src="/images/sponsors/bill and debi alexander.jpg" alt="Bill & Debi Alexander" class="sponsor-logo">
-                    <img src="/images/sponsors/alex alexander.jpg" alt="Alex Alexander & Angelica" class="sponsor-logo">
-                    <a href="https://www.501st.com/" target="_blank" rel="noopener"><img src="/images/sponsors/501st Legion.png" alt="501st Legion" class="sponsor-logo"></a>
-                    <a href="https://rebellegion.com/" target="_blank" rel="noopener"><img src="/images/sponsors/Rebel Legion logo.webp" alt="Rebel Legion" class="sponsor-logo"></a>
                 </div>
-            </div>
-
-            <!-- Media Partner -->
-            <div class="thanks-card" style="background: linear-gradient(135deg, var(--sparc-kelly-green), var(--sparc-kelly-green-dark));">
-                <h3>Media Partner</h3>
-                <p>Thank you to the Washington Business Journal for helping share our mission with the greater Washington community.</p>
-                <img src="/images/sponsors/wbj-logo-300x225-2 (1).jpg" alt="Washington Business Journal" class="thanks-logo" style="filter: none; max-height: 90px;">
             </div>
         </div>
     </section>
-
-    <!-- ========== PHOTO DIVIDER: PANCAKE BREAKFAST ========== -->
-    <div class="photo-divider">
-        <img src="/images/SPARC Pancake Breakfast 2025.jpg" alt="SPARC Pancake Breakfast 2025">
-        <div class="triangle-accent triangle-tr" style="border-right-color: var(--sparc-royal-blue);"></div>
-        <div class="photo-divider-caption">
-            <h3>Pancake Breakfast Fundraiser</h3>
-            <p>Community support in action</p>
-        </div>
-    </div>
 
     <!-- ========== FINANCIALS SECTION ========== -->
     <section class="financials-section">
@@ -1705,27 +1514,27 @@
                     <div class="chart-legend">
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--sparc-kelly-green);"></span>
-                            <span class="legend-label">Individual Donations & Events</span>
+                            <span>Individual Donations & Events</span>
                             <span class="legend-value">35%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--sparc-royal-blue);"></span>
-                            <span class="legend-label">Government Grants</span>
+                            <span>Government Grants</span>
                             <span class="legend-value">20%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: #0066bf;"></span>
-                            <span class="legend-label">Foundation Grants</span>
+                            <span>Foundation Grants</span>
                             <span class="legend-value">20%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: #00a8e8;"></span>
-                            <span class="legend-label">Participant Fees</span>
+                            <span>Participant Fees</span>
                             <span class="legend-value">15%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--medium-gray);"></span>
-                            <span class="legend-label">Corporate Sponsorships</span>
+                            <span>Corporate Sponsorships</span>
                             <span class="legend-value">10%</span>
                         </div>
                     </div>
@@ -1739,29 +1548,29 @@
                     <div class="chart-legend">
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--sparc-royal-blue);"></span>
-                            <span class="legend-label">Program Services</span>
+                            <span>Program Services</span>
                             <span class="legend-value">65%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--sparc-kelly-green);"></span>
-                            <span class="legend-label">Scholarships & Financial Aid</span>
+                            <span>Scholarships & Financial Aid</span>
                             <span class="legend-value">15%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: #0066bf;"></span>
-                            <span class="legend-label">Administration</span>
+                            <span>Administration</span>
                             <span class="legend-value">12%</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color" style="background: var(--medium-gray);"></span>
-                            <span class="legend-label">Fundraising</span>
+                            <span>Fundraising</span>
                             <span class="legend-value">8%</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="financial-highlight">
+            <div class="cost-highlight">
                 <h3>Cost-Effective Care</h3>
                 <p>SPARC's innovative participant-directed model delivers exceptional outcomes at a fraction of traditional costs</p>
                 <div class="cost-comparison">
@@ -1778,21 +1587,8 @@
         </div>
     </section>
 
-    <!-- ========== PHOTO DIVIDER: MUSCLE DEVELOPMENT ========== -->
-    <div class="photo-divider">
-        <img src="muscle development.jpg" alt="Physical Development at SPARC">
-        <div class="triangle-accent triangle-bl" style="border-left-color: var(--sparc-kelly-green);"></div>
-        <div class="photo-divider-caption">
-            <h3>Physical Development</h3>
-            <p>Individualized support for strength and mobility</p>
-        </div>
-    </div>
-
     <!-- ========== EVENTS SECTION ========== -->
     <section class="events-section">
-        <div class="triangle-accent triangle-tl" style="border-left-color: rgba(255,255,255,0.1);"></div>
-        <div class="triangle-accent triangle-br" style="border-right-color: var(--sparc-kelly-green);"></div>
-
         <div class="container">
             <div class="section-header">
                 <h2 style="color: white;">Save the Dates</h2>
@@ -1830,31 +1626,14 @@
 
     <!-- ========== THANK YOU SECTION ========== -->
     <section class="thank-you-section">
-        <div class="triangle-accent triangle-tl" style="border-left-color: rgba(255,255,255,0.2);"></div>
-        <div class="triangle-accent triangle-br" style="border-right-color: rgba(255,255,255,0.15);"></div>
-
         <div class="container">
             <div class="thank-you-content">
                 <h2>Thank You</h2>
                 <p>Your support makes it possible for adults with severe and multiple disabilities to find belonging, purpose, and joy. Together, we are building fearless futures.</p>
             </div>
             <div class="thank-you-image">
-                <img src="SPARC team.jpeg" alt="SPARC Community">
+                <img src="SPARC team.jpeg" alt="SPARC Team">
             </div>
-        </div>
-    </section>
-
-    <!-- ========== DOWNLOAD SECTION ========== -->
-    <section class="download-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Download This Report</h2>
-                <p>Save a copy of our 2025 Annual Report</p>
-            </div>
-            <a href="/documents/SPARC 2025 Annual Report - Print Version.pdf" class="btn btn-primary" download style="margin-top: 15px;">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: inline-block; vertical-align: middle; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Download PDF
-            </a>
         </div>
     </section>
 
@@ -1877,9 +1656,6 @@
                         </a>
                         <a href="https://www.youtube.com/@SPARC_VA" class="social-link" aria-label="YouTube" target="_blank">
                             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
-                        <a href="mailto:debi@sparcsolutions.org" class="social-link" aria-label="Email">
-                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
                         </a>
                     </div>
                 </div>
@@ -1909,16 +1685,12 @@
                     Tysons, VA 22102</p>
                     <p><strong>Phone:</strong> <a href="tel:571-407-1807">(571) 407-1807</a></p>
                     <p><a href="mailto:debi@sparcsolutions.org">debi@sparcsolutions.org</a></p>
-                    <p style="margin-top: 12px;"><a href="/" style="color: var(--sparc-kelly-green); font-weight: 600;">sparcsolutions.org</a></p>
+                    <p style="margin-top: 10px;"><a href="/" style="color: var(--sparc-kelly-green); font-weight: 600;">sparcsolutions.org</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 SPARC - Specially Adapted Resource Centers. All rights reserved.</p>
                 <p>501(c)(3) Nonprofit Organization | EIN: 20-5513060</p>
-                <div class="footer-legal">
-                    <a href="/accessibility/">Accessibility</a>
-                    <a href="/contact/">Contact</a>
-                </div>
             </div>
         </div>
     </footer>
